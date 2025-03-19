@@ -1,0 +1,73 @@
+.warnabarubirutua{
+    background-color: #030918;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.warnalogo{
+    color: #252525;
+}
+
+.containerku{
+    background-image: url(item/dekanat.png);
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+}
+
+.warnaputih{
+    color: white;
+    text-decoration: none;
+}
+
+.posisi{
+    top: 60%;
+}
+
+.backgroundbirutua{
+    background-color: #030918;
+}
+
+.warnakunigtua{
+    background-color: #F69D37;
+}
+
+.waranputihkeabuan{
+    background-color: #D9D9D9;
+}
+
+
+.sejarahimg{
+    background-image: url(Artikel/Sejarah/img/Image.png);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+
+}
+
+.BCnews{
+    background-image: url(Artikel/Artikel/img/Image.png);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+
+}
+
+.visimisi{
+    background-image: url(allacces/VisiMisi/img/visimisi.png);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+
+}
+
+.prestasi{
+    background-image: url(allacces/Prestasi/img/latar.png);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+
+}
