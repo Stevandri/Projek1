@@ -82,3 +82,11 @@ a {
     height: 400px;
 
 }
+
+.prestasi{
+    background-image: url(allacces/openrecruitment/latar.png);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+
+}
