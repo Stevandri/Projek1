@@ -132,9 +132,9 @@
 	        </button>
         </div>
 				<div class="p-4 zindexatas">
-		  		<h1><a href="index.html" class="logo">Hallo Admin<span>> Beranda</span></a></h1>
+		  		<h1><a href="index.html" class="logo">Hallo Admin<span>> Pengguna</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
-	          <li class="active">
+	          <li>
 	            <a href="admin-beranda.html"><span class="fa fa-home mr-3"></span> Beranda</a>
 	          </li>
 	          <li>
@@ -146,7 +146,7 @@
 	          <li>
               <a href="admin-partitur.html"><span class="fa fa-sticky-note mr-3"></span> Partitur</a>
 	          </li>
-	          <li>
+	          <li  class="active">
               <a href="admin-pengguna.html"><span class="fa fa-suitcase mr-3"></span> Pengguna</a>
 	          </li>
 
@@ -175,55 +175,62 @@
           <div class="row">
               <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                      <h1 class="h2">Beranda</h1>
+                      <h1 class="h2">Daftar Pengguna</h1>
                   </div>
-  
-                  <div class="row">
-                      <div class="col-md-4">
-                          <div class="card bg-primary text-white mb-4">
-                              <div class="card-body">
-                                  <h5><b>Total Pengguna</b></h5>
-                                  <p class="card-text display-2">56</p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="card bg-success text-white mb-4">
-                              <div class="card-body">
-                                  <h5><b>Pengguna Online</b></h5>
-                                  <p class="card-text display-2">20</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-  
-                  <h2>Pengguna Online</h2>
-                  <div class="table-responsive">
-                      <table class="table table-striped table-sm">
-                          <thead>
-                              <tr>
-                                  <th>ID</th>
-                                  <th>Nama</th>
-                                  <th>Email</th>
-                                  <th>Tanggal</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Syifabela S</td>
-                                  <td>Syifabela@gmail.com</td>
-                                  <td>2025-03-15</td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>Salsabila</td>
-                                  <td>salsabila@gmail.com</td>
-                                  <td>2025-03-14</td>
-                              </tr>
-                              </tbody>
-                      </table>
-                  </div>
+                  <div class="container mt-5">
+                    <a href="admin-tambahpengguna.html" class="btn btn-success mb-3">Tambah Pengguna</a>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nama</th>
+                                    <th>NIM</th>
+                                    <th>Email</th>
+                                    <th>Nomor Telepon</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    // Koneksi ke database (ganti dengan kredensial Anda)
+                                    $servername = "localhost";
+                                    $username = "root";
+                                    $password = "";
+                                    $dbname = "nama_database";
+            
+                                    $conn = new mysqli($servername, $username, $password, $dbname);
+            
+                                    if ($conn->connect_error) {
+                                        die("Koneksi gagal: " . $conn->connect_error);
+                                    }
+            
+                                    $sql = "SELECT * FROM users";
+                                    $result = $conn->query($sql);
+            
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td>" . $row["id"] . "</td>";
+                                            echo "<td>" . $row["nama"] . "</td>";
+                                            echo "<td>" . $row["nim"] . "</td>";
+                                            echo "<td>" . $row["email"] . "</td>";
+                                            echo "<td>" . $row["telepon"] . "</td>";
+                                            echo "<td>";
+                                            echo "<a href='hapus_pengguna.php?id=" . $row["id"] . "' class='btn btn-sm btn-danger'>Hapus</a>";
+                                            echo "</td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='6'>Tidak ada pengguna yang terdaftar.</td></tr>";
+                                    }
+            
+                                    $conn->close();
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
               </main>
           </div>
       </div>
