@@ -1,9 +1,30 @@
+<?php
+session_start();
+include 'Database/database.php';
+
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    $result = $conn->query($query);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['password'] = $row['password'];
+        header('Location: user/index.html');
+    } else {
+        echo "Username atau password salah";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="color.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -414,50 +435,34 @@
       
           <!-- Login Modal -->
           <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="loginModalLabel">Masuk</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                          <form class="form-login d-flex text-center flex-column">
-                              <!-- Bootstrap Logo -->
-                              <img src="item/Logo.png" alt="The company logo" height="70" width="90" class="mb-4 mx-auto">
-      
-                              <!-- Heading -->
-                              <h1 class="h3 mb-4">Masuk ke BlueChoir</h1>
-                              
-                              <!-- Labels & input Email -->
-                              <input 
-                              type="email"
-                              id="inputEmail"
-                              placeholder="Masukkan email"
-                              class="form-control mb-2 border border-dark"
-                              required
-                              autofocus>
-      
-                              <!-- Labels & Input Password -->
-                              <input 
-                              type="password"
-                              id="inputPassword"
-                              placeholder="Masukkan Kata Sandi"
-                              class="form-control mb-2 border border-dark"
-                              required
-                              autofocus>
-      
-                              <!-- Checkbox -->
-                              <div class=" mb-3">
-                                  <p><a href="" class="text-black">Lupa kata sandi</a></p>
-                              </div>
-      
-                              <!-- Login Button -->
-                              <button type="submit" class="btn btn-primary btn-block">Masuk</button>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>    
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Masuk</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-login d-flex text-center flex-column" method="post">
+                    <img src="item/Logo.png" alt="Logo Blue Choir" height="70" width="90" class="mb-4 mx-auto">
+
+                    <h1 class="h3 mb-4">Masuk ke BlueChoir</h1>
+
+                    <label for="username" class="sr-only"></label>
+                    <input type="text" id="username" name="username" class="form-control mb-2 border border-dark" placeholder="Masukkan Username" required autofocus>
+
+                    <label for="password" class="sr-only"></label>
+                    <input type="password" id="password" name="password" class="form-control mb-2 border border-dark" placeholder="Masukkan Kata Sandi" required autofocus>
+
+                    <div class=" mb-3">
+                        <p><a href="" class="text-black">Lupa kata sandi</a></p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" name="login" value="Login">Masuk</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
     <!--Login Form end-->
     
 <!--Social media-->
