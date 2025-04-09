@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Beranda</title>
+  	<title>Admin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -124,7 +124,7 @@
 	
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
+			<nav id="sidebar" class="min-vh-100">
 				<div class="custom-menu zindexmedium">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -138,16 +138,16 @@
 	            <a href="admin-beranda.html"><span class="fa fa-home mr-3"></span> Beranda</a>
 	          </li>
 	          <li>
-	              <a href="admin-pengumuman.html"><span class="fa fa-user mr-3"></span> Buat Pengumuman</a>
+	              <a href="admin-pengumuman.html"><span class="fa fa-info mr-3"></span> Buat Pengumuman</a>
 	          </li>
 	          <li>
-              <a href="admin-kegiatan.html"><span class="fa fa-briefcase mr-3"></span> Kegiatan</a>
+              <a href="admin-kegiatan.html"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
 	          </li>
 	          <li  class="active">
-              <a href="admin-partitur.html"><span class="fa fa-sticky-note mr-3"></span> Partitur</a>
+              <a href="admin-partitur.html"><span class="fa fa-file mr-3"></span> Partitur</a>
 	          </li>
 	          <li>
-              <a href="admin-pengguna.html"><span class="fa fa-suitcase mr-3"></span> Pengguna</a>
+              <a href="admin-pengguna.html"><span class="fa fa-user mr-3"></span> Pengguna</a>
 	          </li>
 
 	        </ul>
@@ -183,7 +183,7 @@
 
                 <!--Daftar partitur-->
                 <div class="container mt-5">
-                    <?php
+                    <!-- <?php
                         // Koneksi ke database (ganti dengan kredensial Anda)
                         $servername = "localhost";
                         $username = "root";
@@ -202,16 +202,16 @@
             
                         if ($result->num_rows > 0) {
                             $row = $result->fetch_assoc();
-                    ?>
+                    ?> -->
                     <form action="proses_ubah.php" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="id">
                         <div class="mb-3">
                             <label for="judul" class="form-label">Judul Partitur</label>
-                            <input type="text" class="form-control" id="judul" name="judul" value="<?php echo $row['judul']; ?>" required>
+                            <input type="text" class="form-control" id="judul" name="judul" required>
                         </div>
                         <div class="mb-3">
                             <label for="pencipta" class="form-label">Pencipta</label>
-                            <input type="text" class="form-control" id="pencipta" name="pencipta" value="<?php echo $row['pencipta']; ?>" required>
+                            <input type="text" class="form-control" id="pencipta" name="pencipta" required>
                         </div>
                         <div class="mb-3">
                             <label for="sampul" class="form-label">Gambar Sampul (JPG/PNG)</label>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Beranda</title>
+  	<title>Admin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -124,7 +124,7 @@
 	
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
+			<nav id="sidebar" class="min-vh-100">
 				<div class="custom-menu zindexmedium">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -138,16 +138,16 @@
 	            <a href="admin-beranda.html"><span class="fa fa-home mr-3"></span> Beranda</a>
 	          </li>
 	          <li>
-	              <a href="admin-pengumuman.html"><span class="fa fa-user mr-3"></span> Buat Pengumuman</a>
+	              <a href="admin-pengumuman.html"><span class="fa fa-info mr-3"></span> Buat Pengumuman</a>
 	          </li>
 	          <li>
-              <a href="admin-kegiatan.html"><span class="fa fa-briefcase mr-3"></span> Kegiatan</a>
+              <a href="admin-kegiatan.html"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
 	          </li>
 	          <li>
-              <a href="admin-partitur.html"><span class="fa fa-sticky-note mr-3"></span> Partitur</a>
+              <a href="admin-partitur.html"><span class="fa fa-file mr-3"></span> Partitur</a>
 	          </li>
 	          <li  class="active">
-              <a href="admin-pengguna.html"><span class="fa fa-suitcase mr-3"></span> Pengguna</a>
+              <a href="admin-pengguna.html"><span class="fa fa-user mr-3"></span> Pengguna</a>
 	          </li>
 
 	        </ul>
@@ -180,7 +180,64 @@
                   <div class="container mt-5">
                     <a href="admin-tambahpengguna.html" class="btn btn-success mb-3">Tambah Pengguna</a>
                     <div class="table-responsive">
-                        <table class="table table-striped">
+
+                      <div class="container-fluid bg-light p-4">
+                        <h2 class="mb-4">Daftar Mahasiswa</h2>
+                        <table class="table table-hover table-bordered align-middle bg-white">
+                          <thead class="table-light">
+                            <tr>
+                              <th>ID</th>
+                              <th>Nama</th>
+                              <th>NIM</th>
+                              <th>Email</th>
+                              <th>Password</th>
+                              <th>Nomor Telepon</th>
+                              <th>Aksi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>Stevandri V. Patty</td>
+                              <td>220211060047</td>
+                              <td>stevandri@unsrat.ac.id</td>
+                              <td>12644sd</td>
+                              <td>0812-3456-7890</td>
+                              <td>
+                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Syifabela S</td>
+                              <td>220211060021</td>
+                              <td>Syifabelak@unsrat.ac.id</td>
+                              <td>454554d</td>
+                              <td>0852-1234-5678</td>
+                              <td>
+                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Salsabilla</td>
+                              <td>22021106055</td>
+                              <td>Syifabela@unsrat.ac.id</td>
+                              <td>454554d</td>
+                              <td>0852-1234-5678</td>
+                              <td>
+                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+
+                        <!-- <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -191,8 +248,8 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
+                            <tbody> -->
+                                <!-- <?php
                                     // Koneksi ke database (ganti dengan kredensial Anda)
                                     $servername = "localhost";
                                     $username = "root";
@@ -226,9 +283,9 @@
                                     }
             
                                     $conn->close();
-                                ?>
-                            </tbody>
-                        </table>
+                                ?> -->
+                            <!-- </tbody>
+                        </table> -->
                     </div>
                 </div>
               </main>

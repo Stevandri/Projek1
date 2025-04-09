@@ -8193,7 +8193,8 @@ h1, h2, h3, h4, h5,
 #sidebar {
   min-width: 270px;
   max-width: 270px;
-  background-image: url("../UserBC/assets/latar.png");
+  background-image: url("../item/latarsidebar.png");
+  background-size: cover;
   color: #fff;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;

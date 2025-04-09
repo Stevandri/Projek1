@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Beranda</title>
+  	<title>Admin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -138,16 +138,16 @@
 	            <a href="admin-beranda.html"><span class="fa fa-home mr-3"></span> Beranda</a>
 	          </li>
 	          <li>
-	              <a href="admin-pengumuman.html"><span class="fa fa-user mr-3"></span> Buat Pengumuman</a>
+	              <a href="admin-pengumuman.html"><span class="fa fa-info mr-3"></span> Buat Pengumuman</a>
 	          </li>
 	          <li>
-              <a href="admin-kegiatan.html"><span class="fa fa-briefcase mr-3"></span> Kegiatan</a>
+              <a href="admin-kegiatan.html"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
 	          </li>
 	          <li  class="active">
-              <a href="admin-partitur.html"><span class="fa fa-sticky-note mr-3"></span> Partitur</a>
+              <a href="admin-partitur.html"><span class="fa fa-file mr-3"></span> Partitur</a>
 	          </li>
 	          <li>
-              <a href="admin-pengguna.html"><span class="fa fa-suitcase mr-3"></span> Pengguna</a>
+              <a href="admin-pengguna.html"><span class="fa fa-user mr-3"></span> Pengguna</a>
 	          </li>
 
 	        </ul>
@@ -202,7 +202,55 @@
 
 
                 <!--Daftar partitur-->
-                <h2 class="mt-5">Daftar Partitur</h2>
+                <div class="container-fluid bg-light mt-5 min-vh-100 p-4">
+                  <h2 class="mb-4">Daftar Partitur</h2>
+                  <table class="table table-hover table-bordered align-middle bg-white">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Judul</th>
+                        <th>Pencipta</th>
+                        <th>File</th>
+                        <th>Sampul</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>I Will Lift Mine</td>
+                        <td>Jake Runestad</td>
+                        <td><a href="file/mars-unsrat.pdf" target="_blank">Lihat PDF</a></td>
+                        <td><img src="../UserBC/Partitur/cover/i_will_lift_mine_eyes.png" alt="Sampul Mars Unsrat" width="60"></td>
+                        <td>
+                          <a href="admin-ubahpartitur.html" class="btn btn-sm btn-warning">Edit</a>
+                          <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Orde-E</td>
+                        <td>Lester Delgado</td>
+                        <td><a href="file/hymne-unsrat.pdf" target="_blank">Lihat PDF</a></td>
+                        <td><img src="../UserBC/Partitur/cover/i_will_lift_mine_eyes.png" alt="Sampul Hymne Unsrat" width="60"></td>
+                        <td>
+                          <a href="admin-ubahpartitur.html" class="btn btn-sm btn-warning">Edit</a>
+                          <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Paris Barantai</td>
+                        <td>Ken Steven</td>
+                        <td><a href="file/hymne-unsrat.pdf" target="_blank">Lihat PDF</a></td>
+                        <td><img src="../UserBC/Partitur/cover/i_will_lift_mine_eyes.png" alt="Sampul Hymne Unsrat" width="60"></td>
+                        <td>
+                          <a href="admin-ubahpartitur.html" class="btn btn-sm btn-warning">Edit</a>
+                          <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+
+                <!-- <h2 class="mt-5">Daftar Partitur</h2>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -213,8 +261,8 @@
                                 <th>Sampul</th>
                                 <th>Aksi</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                        </thead> -->
+                        <!-- <tbody>
                             <?php
                                 // Koneksi ke database (ganti dengan kredensial Anda)
                                 $servername = "localhost";
@@ -250,7 +298,7 @@
         
                                 $conn->close();
                             ?>
-                        </tbody>
+                        </tbody> -->
                     </table>
                 </div>
             </div>
