@@ -55,7 +55,7 @@ a {
     background-image: url(Artikel/Sejarah/img/Image.png);
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 300px;
 
 }
 
@@ -63,7 +63,7 @@ a {
     background-image: url(Artikel/Artikel/img/Image.png);
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 300px;
 
 }
 
@@ -71,16 +71,16 @@ a {
     background-image: url(allacces/VisiMisi/img/visimisi.png);
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 300px;
 
 }
 
-.prestasi{
-    background-image: url(allacces/Prestasi/img/latar.png);
+
+.latarbiru{
+    background-image: url(allacces/openrecruitment/latar1.png);
     background-size: cover;
     background-position: center;
-    height: 400px;
-
+    height: 300px;
 }
 
 .prestasi{
@@ -88,5 +88,14 @@ a {
     background-size: cover;
     background-position: center;
     height: 500px;
+
+}
+
+
+.pengurushome{
+    background-image: url(Artikel/Artikel/img/Image.png);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
 
 }

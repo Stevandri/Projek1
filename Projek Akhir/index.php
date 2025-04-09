@@ -33,24 +33,7 @@ if (isset($_POST['login'])) {
 
 
 <body>
-    <!--Ini untuk navbar1-->
-    <nav class="navbar-expand-lg warnabarubirutua" data-aos="fade-down">
-         <div class="container">
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li>
-                <a class="position-relative py-2 px-4 warnaputih" href="#"><img src="item/telephone-forward-fill.svg" alt="Bootstrap" width="20" height="14"> Manado, Sulawesi Utara</a>
-              </li>
-              <li>
-                <a class="position-relative py-2 px-4 warnaputih" href="#"><img src="item/envelope-fill.svg" alt="Bootstrap" width="20" height="14"> bluechoir16@gmail.com</a>
-              </li>
-              <li>
-                <a class="position-relative py-2 px-4 warnaputih" href="#"><img src="item/geo-alt-fill.svg" alt="Bootstrap" width="20" height="14"> telp +6281248798145</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav> <!-- navbar1 end-->
+
 
       <!--Ini navbar ke2-->
       <section data-aos="fade-down" class="position-relative col-12">
@@ -110,7 +93,7 @@ if (isset($_POST['login'])) {
                     <div class="d-flex flex-column gap-7 mb-4 mb-md-0">
                       <div class="d-flex flex-column gap-3 mb-md-5">
                         <div class="d-flex flex-row align-items-center ">
-                          <a href="#" class="border px-3 rounded-pill text-decoration-none py-1 small">
+                          <a href="allacces\openrecruitment\openrecruitment.html" class="border px-3 rounded-pill text-decoration-none py-1 small">
                             <span class="warnaputih">Gabung Bersama Kami!</span>
                             <span class="ms-1">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="warnaputih bi bi-arrow-right" viewBox="0 0 16 16">
@@ -150,9 +133,9 @@ if (isset($_POST['login'])) {
               </div>
             </div>
           </div>
-          <div class="row g-4" data-aos="zoom-in" >
-            <div class="col-lg-4 col-md-6 "  >
-              <div class="border rounded p-5" >
+          <div class="row g-4" >
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" >
+              <div class="border rounded p-5 shadow-lg" >
                 <div class="icon d-flex align-items-center " >
                   <i class="bi bi-trophy fs-1 me-3 text-primary"></i>
                   <h4 class="my-3 fs-5" >Kompetisi</h4>
@@ -162,8 +145,8 @@ if (isset($_POST['login'])) {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 "  >
-              <div class="border rounded p-5" >
+            <div class="col-lg-4 col-md-6 "  data-aos="zoom-in">
+              <div class="border rounded p-5 shadow-lg" >
                 <div class="icon d-flex align-items-center " >
                   <i class="bi bi-star fs-1 me-3 text-danger"></i>
                   <h4 class="my-3 fs-5" >Pelayanan Mingguan</h4>
@@ -173,8 +156,8 @@ if (isset($_POST['login'])) {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 "  >
-              <div class="border rounded p-5" >
+            <div class="col-lg-4 col-md-6 "  data-aos="zoom-in">
+              <div class="border rounded p-5 shadow-lg" >
                 <div class="icon d-flex align-items-center " >
                   <i class="bi bi-person-standing fs-1 me-3 text-danger"></i>
                   <h4 class="my-3 fs-5" >BC on Stage</h4>
@@ -184,8 +167,8 @@ if (isset($_POST['login'])) {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 "  >
-              <div class="border rounded p-5" >
+            <div class="col-lg-4 col-md-6 "  data-aos="zoom-in">
+              <div class="border rounded p-5 shadow-lg" >
                 <div class="icon d-flex align-items-center " >
                   <i class="bi bi-book fs-1 me-3 text-success"></i>
                   <h4 class="my-3 fs-5" >BC Learning</h4>
@@ -195,8 +178,8 @@ if (isset($_POST['login'])) {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 "  >
-              <div class="border rounded p-5" >
+            <div class="col-lg-4 col-md-6 " data-aos="zoom-in" >
+              <div class="border rounded p-5 shadow-lg" >
                 <div class="icon d-flex align-items-center " >
                   <i class="bi bi-backpack2 fs-1 me-3"></i>
                   <h4 class="my-3 fs-5" >Far From Home</h4>
@@ -206,8 +189,8 @@ if (isset($_POST['login'])) {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 "  >
-              <div class="border rounded p-5" >
+            <div class="col-lg-4 col-md-6 "  data-aos="zoom-in">
+              <div class="border rounded p-5 shadow-lg" >
                 <div class="icon d-flex align-items-center " >
                   <i class="bi bi-emoji-laughing fs-1 me-3 text-primary"></i>
                   <h4 class="my-3 fs-5" >Choral Clinic</h4>
@@ -233,7 +216,7 @@ if (isset($_POST['login'])) {
           </div>
         </div>
         <div class="container"  >
-          <div class="row gy-4 gy-lg-0 align-items-lg-center"  >
+          <div class="row gy-4 gy-lg-0 align-items-lg-center shadow-lg"  >
             <div class="col-12 col-lg-6 embed-responsive embed-responsive-16by9"  >
               <video class="w-100" autoplay muted loop controls>
                 <source src="item/bc.mp4" type="video/mp4">
@@ -284,7 +267,7 @@ if (isset($_POST['login'])) {
       <!--Tim kepemimpinan kami-->
       <section class="py-5 bg-opacity-10 bg-secondary" data-aos="fade-right">
         <div class="container py-lg-5"  >
-          <div class="row "  >
+          <div class="row"  >
             <div class="col-md-6 "  >
               <div class="mb-7 pb-2 mb-5" >
                 <h2 class="mb-3 fw-semibold" >Tim Kepemimpinan Blue Choir 2025</h2>
@@ -303,7 +286,7 @@ if (isset($_POST['login'])) {
                       </div>
                       <div class="mb-2 " >
                         <h4 class="mb-0 h5" >Jueen Titiahy</h4>
-                        <span class="small" >S1 - PWK</span>
+                        <span class="small" >Ketua - PWK</span>
                       </div>
                     </div>
                   </div>
@@ -318,7 +301,7 @@ if (isset($_POST['login'])) {
                       </div>
                       <div class="mb-2 " >
                         <h4 class="mb-0 h5" >Lordy Parihala</h4>
-                        <span class="small" >S1 - Teknik Informatika</span>
+                        <span class="small" >Wakil - Informatika</span>
                       </div>
                     </div>
                   </div>
@@ -333,7 +316,7 @@ if (isset($_POST['login'])) {
                       </div>
                       <div class="mb-2 " >
                         <h4 class="mb-0 h5" >Marcho T</h4>
-                        <span class="small" >S1 Teknik Elektro</span>
+                        <span class="small" >Sekretaris - Elektro</span>
                       </div>
                     </div>
                   </div>
@@ -348,7 +331,7 @@ if (isset($_POST['login'])) {
                       </div>
                       <div class="mb-2 " >
                         <h4 class="mb-0 h5" >Natasha Najoan</h4>
-                        <span class="small" >S1 - Teknik Informatika</span>
+                        <span class="small" >Bendahara - Informatika</span>
                       </div>
                     </div>
                   </div>
@@ -361,8 +344,11 @@ if (isset($_POST['login'])) {
       <!--Tim kepemimpinan end-->
 
       <!--Berita-->
-      <section class="bg-light pg-lib-item py-5" >
-        <div class="container py-5"  >
+      <section class="bg-light pg-lib-item" >
+        <div class="container py-3"  >
+        <div class="mb-7 mb-5" >
+                <h2 class="mb-3 fw-semibold" >BCNews</h2>
+              </div>
           <div class="justify-content-center row g-4"  >
             <div class="col-lg-4 col-md-6"  >
               <div class="bg-white shadow rounded" >
@@ -510,7 +496,6 @@ if (isset($_POST['login'])) {
                   <div class="mb-4">
                     <h3 class="fw-semibold">Blue Choir</h3>
                   </div>
-                  <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
                 </div>
               </div>
               <div class="col-lg-2 col-md-6 col-sm-6">
@@ -518,13 +503,7 @@ if (isset($_POST['login'])) {
                   <h4 class="text-capitalize mb-4 fs-5 fw-medium">Organisasi</h4>
                   <ul class="list-unstyled">
                     <li class="mb-1">
-                      <a href="#" class="text-decoration-none text-reset fw-light">Berita</a>
-                    </li>
-                    <li class="mb-1">
-                      <a href="#" class="text-decoration-none text-reset fw-light">Tentang</a>
-                    </li>
-                    <li class="mb-1">
-                      <a href="#" class="text-decoration-none text-reset fw-light">Kami</a>
+                      <a href="#" class="text-decoration-none text-reset fw-light">BCNews</a>
                     </li>
                     <li class="mb-1">
                       <a href="#" class="text-decoration-none text-reset fw-light">Open Recruitment</a>
@@ -537,13 +516,16 @@ if (isset($_POST['login'])) {
                   <h4 class="text-capitalize mb-4 fs-5 fw-medium">Sosial Media</h4>
                   <ul class="list-unstyled">
                     <li class="mb-1">
-                      <a href="#" class="text-decoration-none text-reset fw-light">Instagram</a>
+                      <a href="https://www.instagram.com/bluechoir/" target="_blank" class="text-decoration-none text-reset fw-light">Instagram</a>
                     </li>
                     <li class="mb-1">
-                      <a href="#" class="text-decoration-none text-reset fw-light">Facebook</a>
+                      <a href="https://www.facebook.com/share/16FAoCaZdh/" target="_blank" class="text-decoration-none text-reset fw-light">Facebook</a>
                     </li>
                     <li class="mb-1">
-                      <a href="#" class="text-decoration-none text-reset">FAQ</a>
+                      <a href="https://www.youtube.com/@bluechoir1996" target="_blank" class="text-decoration-none text-reset fw-light">Youtube</a>
+                    </li>
+                    <li class="mb-1">
+                      <a href="https://www.tiktok.com/@blue.choir" target="_blank" class="text-decoration-none text-reset fw-light">Tiktok</a>
                     </li>
                   </ul>
                 </div>
@@ -552,24 +534,17 @@ if (isset($_POST['login'])) {
                 <div class="mb-5 mb-lg-0">
                   <h4 class="text-capitalize mb-4 fs-5 fw-medium">Kontak</h4>
                   <h6>
-                    <a href="#" class="text-decoration-none text-reset fw-light">
+                    <a href="mailto:bluechoir16@gmail.com" target="_blank" class="text-decoration-none text-reset fw-light">
                       <i class="bi bi-envelope me-3"></i>
                       bluechoir16@gmail.com
                     </a>
                   </h6>
                   <h6>
-                    <a href="#" class="text-decoration-none text-reset fw-light">
+                    <a href="https://wa.me/6281248798145" class="text-decoration-none text-reset fw-light">
                       <i class="bi bi-headset me-3"></i>
                       +6281248798145
                     </a>
                   </h6>
-                </div>
-              </div>
-            </div>
-            <div class="py-4">
-              <div class="row justify-content-center">
-                <div class="col-lg-6">
-                  <div class="text-center fw-light">© Copyright 2024</div>
                 </div>
               </div>
             </div>
