@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Akun</title>
+  	<title>Kegiatan</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="../../css/style.css">
   </head>
   <style>
 	body{
@@ -96,6 +96,8 @@
 	.in-progress { background-color: #f8d7da; color: #721c24; }
 </style>
   <body>
+	
+		
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class="min-vh-100">
 				<div class="custom-menu zindexmedium">
@@ -105,7 +107,7 @@
 	        </button>
         </div>
 				<div class="p-4 zindexatas">
-		  		<h1><a href="index.html" class="logo">Blue Choir <span>> Akun</span></a></h1>
+		  		<h1><a href="index.html" class="logo">Blue Choir <span>> Kegiatan</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
 	          <li>
 	            <a href="{{ route('userbcdashboard') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
@@ -113,13 +115,13 @@
 	          <li>
 	              <a href="{{ route('pengumuman.index') }}"><span class="fa fa-info mr-3"></span> Pengumuman</a>
 	          </li>
-	          <li>
+	          <li class="active">
               <a href="{{ route('kegiatan.index') }}"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
 	          </li>
 	          <li>
               <a href="{{ route('partitur.index') }}"><span class="fa fa-file mr-3"></span> Partitur</a>
 	          </li>
-	          <li class="active">
+	          <li>
               <a href="{{ route('profil.show') }}"><span class="fa fa-user mr-3"></span> Akun</a>
 	          </li>
 	        </ul>
@@ -138,46 +140,55 @@
 
 	  </div>
     	</nav>
-	<div class="container containerku">
+	<div class="container my-5">
         <div class="row">
-            <div class="col-lg-12">
-
-				<!--pengumuman-->
-        <div class="container my-5">
-          <div class="card shadow-sm">
-            <div class="row g-0">
-              <!-- Bagian Foto Profil -->
-              <div class="col-md-4 d-flex justify-content-center align-items-center p-4">
-                                @if(Auth::user()->profile_picture)
-                    <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
-                         alt="Foto Profil {{ Auth::user()->namadepan }}"
-                         class="profile-img-display">
-                @else
-                    {{-- Ganti 'path/ke/gambar/default_avatar.png' dengan path gambar default Anda yang sebenarnya di folder public --}}
-                    <img src="{{ asset('item/profildefault.png') }}" width="350" height="auto" alt="Profil" class="profile-img-display">
-                @endif
-              </div>
-              <!-- Bagian Informasi Profil -->
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h3 class="card-title mb-3"><b>{{ Auth::user()->namadepan . ' ' . Auth::user()->namabelakang }}</b></h3>
-                  <p class="card-text mb-2"><strong>Status: </strong>{{ Auth::user()->status}}</p>
-                  <p class="card-text mb-2"><strong>Posisi: </strong>{{ Auth::user()->posisi}}</p>
-                  <p class="card-text mb-2"><strong>Posisi Suara: </strong>{{ Auth::user()->posisi_suara }}</p>
-                  <p class="card-text mb-2"><strong>NIM:</strong> {{ Auth::user()->nim }}</p>
-                  <p class="card-text mb-2"><strong>Email:</strong> {{ Auth::user()->email }}</p>
-                  <p class="card-text mb-2"><strong>No. Telepon:</strong> {{ Auth::user()->telepon }}</p>
-                  <!-- Tombol Edit Profil -->
-                  <a href="editprofilBC.html" class="btn btn-primary mt-3">Edit Profil</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    
-	<!--pengumuman end-->
+            <div class="col-md-12">
+                <h2 class="text-dark">Kegiatan</h2>
+				<!--Kalender-->
+                <div class="container">
+                    <div class="row">
+                      <!-- Kolom Kiri: Kartu Kegiatan -->
+                      <div class="col-md-6">
+                        <div class="card mt-3 p-4 rounded-lg shadow-sm">
+                          <h5><b>Kegiatan yang akan datang</b></h5>
+                          <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              Latihan reguler 
+                              <span class="card-status bg-warning text-dark">Kamis, 03 April 2025</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              Latihan reguler
+                              <span class="card-status completed">Selasa, 25 Maret 2025</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              Latihan reguler
+                              <span class="card-status completed">Kamis, 27 Maret 2025</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                  
+                      <!-- Kolom Kanan: Kalender Google -->
+                      <div class="col-md-6">
+                        <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FMakassar&hl=id&showPrint=0&src=c3RldmFuZHJpcGF0dHkwMjZAc3R1ZGVudC51bnNyYXQuYWMuaWQ&color=%23039BE5" 
+                                style="border:solid 1px #000" 
+                                width="100%" 
+                                height="400"
+                                class="mt-3" 
+                                frameborder="0" 
+                                scrolling="yes">
+                        </iframe>
+                      </div>
+                    </div>
+                  </div>
+                  
+	<!--kelender end-->
 	
 		</div>
+        </div>
+        </div>
+		
+
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/popper.js"></script>
     <script src="../../js/bootstrap.min.js"></script>

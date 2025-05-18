@@ -177,14 +177,14 @@
                                     <h2 class="card-title text-center mb-4">Profil Saya</h2>
                 
                                     <div class="text-center mb-4">
-                                        <img id="profile-picture" src="../../../allacces/Kepengurusan2025/Item/kewira/ping.png" alt="Foto Profil" class="rounded-circle img-fluid" width="150" height="150">
+                                        <img id="profile-picture" src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('item/profildefault.png') }}" width="350" height="auto" alt="Profil" class="profile-img-display">
                                         <label for="photo-upload" class="custom-file-upload mt-2">
                                             Ubah Foto
                                         </label>
-                                        <input type="file" id="photo-upload" accept="image/*">
+                                        <input type="file" id="photo-upload" name="profile_picture" accept="image/*">
                                     </div>
                 
-                                    <form id="profile-form" action="{{ route('profil.update') }}" method="POST">
+                                    <form id="profile-form" action="{{ route('profil.update') }}" method="POST" enctype="multipart/form-data">
                                       @csrf
                                   
                                       <div class="mb-3">
@@ -195,16 +195,16 @@
                                       <div class="mb-3">
                                           <label for="posisi-suara" class="form-label">Posisi Suara</label>
                                           <select class="form-select" id="posisi-suara" name="posisi_suara" required>
-                                              <option value="" disabled {{ old('posisi_suara', $user->posisi_suara) == '' ? 'selected' : '' }}>Pilih Posisi Suara</option>
-                                              <option value="Sopran" {{ old('posisi_suara', $user->posisi_suara) == 'Sopran' ? 'selected' : '' }}>Sopran 1</option>
-                                              <option value="Sopran" {{ old('posisi_suara', $user->posisi_suara) == 'Sopran' ? 'selected' : '' }}>Sopran 2</option>
-                                              <option value="Alto" {{ old('posisi_suara', $user->posisi_suara) == 'Alto' ? 'selected' : '' }}>Alto 1</option>
-                                              <option value="Alto" {{ old('posisi_suara', $user->posisi_suara) == 'Alto' ? 'selected' : '' }}>Alto 2</option>
-                                              <option value="Tenor" {{ old('posisi_suara', $user->posisi_suara) == 'Tenor' ? 'selected' : '' }}>Tenor 1</option>
-                                              <option value="Tenor" {{ old('posisi_suara', $user->posisi_suara) == 'Tenor' ? 'selected' : '' }}>Tenor 2</option>
-                                              <option value="Bass" {{ old('posisi_suara', $user->posisi_suara) == 'Bass' ? 'selected' : '' }}>Bass 1</option>
-                                              <option value="Bass" {{ old('posisi_suara', $user->posisi_suara) == 'Bass' ? 'selected' : '' }}>Bass 2</option>
-                                          </select>
+                                            <option value="" disabled {{ old('posisi_suara', $user->posisi_suara ?? '') == '' ? 'selected' : '' }}>Pilih Posisi Suara</option>
+                                            <option value="Sopran 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Sopran 1' ? 'selected' : '' }}>Sopran 1</option>
+                                            <option value="Sopran 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Sopran 2' ? 'selected' : '' }}>Sopran 2</option>
+                                            <option value="Alto 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Alto 1' ? 'selected' : '' }}>Alto 1</option>
+                                            <option value="Alto 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Alto 2' ? 'selected' : '' }}>Alto 2</option>
+                                            <option value="Tenor 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Tenor 1' ? 'selected' : '' }}>Tenor 1</option>
+                                            <option value="Tenor 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Tenor 2' ? 'selected' : '' }}>Tenor 2</option>
+                                            <option value="Bass 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Bass 1' ? 'selected' : '' }}>Bass 1</option>
+                                            <option value="Bass 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Bass 2' ? 'selected' : '' }}>Bass 2</option>
+                                      </select>
                                       </div>
                                   
                                       <div class="mb-3">
@@ -246,5 +246,16 @@
     <script src="../../js/popper.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/main.js"></script>
+    <script>
+$(document).ready(function(){
+    $('#photo-upload').on('change', function(event){
+        var reader = new FileReader();
+        reader.onload = function(){
+            $('#profile-picture').attr('src', reader.result);
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    });
+});
+</script>
   </body>
 </html>

@@ -121,8 +121,6 @@
 	.in-progress { background-color: #f8d7da; color: #721c24; }
 </style>
   <body>
-	
-		
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class="min-vh-100">
 				<div class="custom-menu zindexmedium">
@@ -175,66 +173,43 @@
           <div class="row">
               <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                      <h1 class="h2">Daftar Pengguna</h1>
+                      <h1 class="h2">Ubah Pengguna</h1>
                   </div>
-                  <div class="container mt-5">
-                    <a href="admin-tambahpengguna.html" class="btn btn-success mb-3">Tambah Pengguna</a>
-                    <div class="table-responsive">
-
-                      <div class="container-fluid bg-light p-4">
-                        <h2 class="mb-4">Daftar Anggota BC</h2>
-                        <table class="table table-hover table-bordered align-middle bg-white">
-                          <thead class="table-light">
-                            <tr>
-                              <th>ID</th>
-                              <th>Nama</th>
-                              <th>NIM</th>
-                              <th>Email</th>
-                              <th>Password</th>
-                              <th>Nomor Telepon</th>
-                              <th>Aksi</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>Stevandri V. Patty</td>
-                              <td>220211060047</td>
-                              <td>stevandri@unsrat.ac.id</td>
-                              <td>12644sd</td>
-                              <td>0812-3456-7890</td>
-                              <td>
-                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>Syifabela S</td>
-                              <td>220211060021</td>
-                              <td>Syifabelak@unsrat.ac.id</td>
-                              <td>454554d</td>
-                              <td>0852-1234-5678</td>
-                              <td>
-                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>Salsabilla</td>
-                              <td>22021106055</td>
-                              <td>Syifabela@unsrat.ac.id</td>
-                              <td>454554d</td>
-                              <td>0852-1234-5678</td>
-                              <td>
-                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                  <div class="container p-4 bg-white rounded shadow" style="max-width: 600px;">
+                    <h3 class="mb-4 text-center">Ubah - Stevandri</h3>
+                    
+                    <form>
+                      <div class="mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="nama" value="Stevandri V. Patty">
                       </div>
+                
+                      <div class="mb-3">
+                        <label for="nim" class="form-label">NIM</label>
+                        <input type="text" class="form-control" id="nim" value="220211060047">
+                      </div>
+                
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" value="stevandri@unsrat.ac.id">
+                      </div>
+                
+                      <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="password" value="12345678">
+                      </div>
+                
+                      <div class="mb-3">
+                        <label for="telepon" class="form-label">Nomor Telepon</label>
+                        <input type="tel" class="form-control" id="telepon" value="0812-3456-7890">
+                      </div>
+                
+                      <div class="d-flex justify-content-between">
+                        <a href="admin-pengguna.html" class="btn btn-secondary">Kembali</a>
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                      </div>
+                    </form>
+                  </div>
                       
 
                         <!-- <table class="table table-striped">

@@ -108,31 +108,36 @@
 		  		<h1><a href="index.html" class="logo">Blue Choir <span>> Beranda</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
-	            <a href="index.html"><span class="fa fa-home mr-3"></span> Beranda</a>
+	            <a href="{{ route('userbcdashboard') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
 	          </li>
 	          <li>
-	              <a href="UserBC/Pengumuman/pengumuman.html"><span class="fa fa-info mr-3"></span> Pengumuman</a>
+	              <a href="{{ route('pengumuman.index') }}"><span class="fa fa-info mr-3"></span> Pengumuman</a>
 	          </li>
 	          <li>
-              <a href="UserBC/Kegiatan/kegiatan.html"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
+              <a href="{{ route('kegiatan.index') }}"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
 	          </li>
 	          <li>
-              <a href="UserBC/Partitur/partitur.html"><span class="fa fa-file mr-3"></span> Partitur</a>
+              <a href="{{ route('partitur.index') }}"><span class="fa fa-file mr-3"></span> Partitur</a>
 	          </li>
 	          <li>
-              <a href="UserBC/profil/profilBC.html"><span class="fa fa-user mr-3"></span> Akun</a>
+              <a href="{{ route('profil.show') }}"><span class="fa fa-user mr-3"></span> Akun</a>
 	          </li>
-
 	        </ul>
 
 
 	        <div class="footer ">
 				<ul class="list-unstyled components mb-5">
-					<li>
-						<a href="../Database/keluar.php"><span class="fa fa-sticky-note mr-3"></span> Keluar</a>
-						</li>
-					</ul>
-
+    				<li>
+        				<a href="{{ route('logout') }}"
+           					onclick="event.preventDefault();
+                         	document.getElementById('logout-form').submit();">
+            				<span class="fa fa-sticky-note mr-3"></span> Keluar
+        				</a>
+        				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            			@csrf
+        				</form>
+    				</li>
+				</ul>
 	      </div>
 		  <div class="footer ">
 			<p>@bluechoir</p>

@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Akun</title>
+  	<title>Pengumuman</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="../../css/style.css">
   </head>
   <style>
 	body{
@@ -96,6 +96,8 @@
 	.in-progress { background-color: #f8d7da; color: #721c24; }
 </style>
   <body>
+	
+		
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class="min-vh-100">
 				<div class="custom-menu zindexmedium">
@@ -105,12 +107,12 @@
 	        </button>
         </div>
 				<div class="p-4 zindexatas">
-		  		<h1><a href="index.html" class="logo">Blue Choir <span>> Akun</span></a></h1>
+		  		<h1><a href="index.html" class="logo">Blue Choir <span>> Pengumuman</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
 	          <li>
 	            <a href="{{ route('userbcdashboard') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
 	          </li>
-	          <li>
+	          <li class="active">
 	              <a href="{{ route('pengumuman.index') }}"><span class="fa fa-info mr-3"></span> Pengumuman</a>
 	          </li>
 	          <li>
@@ -119,7 +121,7 @@
 	          <li>
               <a href="{{ route('partitur.index') }}"><span class="fa fa-file mr-3"></span> Partitur</a>
 	          </li>
-	          <li class="active">
+	          <li>
               <a href="{{ route('profil.show') }}"><span class="fa fa-user mr-3"></span> Akun</a>
 	          </li>
 	        </ul>
@@ -128,7 +130,7 @@
 	        <div class="footer ">
 				<ul class="list-unstyled components mb-5">
 					<li>
-						<a href="../../../Database/keluar.php"><span class="fa fa-sticky-note mr-3"></span> Keluar</a>
+						<a href="#"><span class="fa fa-sticky-note mr-3"></span> Keluar</a>
 						</li>
 					</ul>
 
@@ -143,37 +145,39 @@
             <div class="col-lg-12">
 
 				<!--pengumuman-->
-        <div class="container my-5">
-          <div class="card shadow-sm">
-            <div class="row g-0">
-              <!-- Bagian Foto Profil -->
-              <div class="col-md-4 d-flex justify-content-center align-items-center p-4">
-                                @if(Auth::user()->profile_picture)
-                    <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
-                         alt="Foto Profil {{ Auth::user()->namadepan }}"
-                         class="profile-img-display">
-                @else
-                    {{-- Ganti 'path/ke/gambar/default_avatar.png' dengan path gambar default Anda yang sebenarnya di folder public --}}
-                    <img src="{{ asset('item/profildefault.png') }}" width="350" height="auto" alt="Profil" class="profile-img-display">
-                @endif
-              </div>
-              <!-- Bagian Informasi Profil -->
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h3 class="card-title mb-3"><b>{{ Auth::user()->namadepan . ' ' . Auth::user()->namabelakang }}</b></h3>
-                  <p class="card-text mb-2"><strong>Status: </strong>{{ Auth::user()->status}}</p>
-                  <p class="card-text mb-2"><strong>Posisi: </strong>{{ Auth::user()->posisi}}</p>
-                  <p class="card-text mb-2"><strong>Posisi Suara: </strong>{{ Auth::user()->posisi_suara }}</p>
-                  <p class="card-text mb-2"><strong>NIM:</strong> {{ Auth::user()->nim }}</p>
-                  <p class="card-text mb-2"><strong>Email:</strong> {{ Auth::user()->email }}</p>
-                  <p class="card-text mb-2"><strong>No. Telepon:</strong> {{ Auth::user()->telepon }}</p>
-                  <!-- Tombol Edit Profil -->
-                  <a href="editprofilBC.html" class="btn btn-primary mt-3">Edit Profil</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="container my-5">
+    <!-- Judul Halaman -->
+    <h2 class="text-dark">Pengumuman</h2>
+
+    <!-- Pengumuman1 -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <!-- Judul Pengumuman -->
+        <h5 class="card-title text-primary"><b>Persiapan Tim Lomba!</b></h5>
+        <!-- Waktu Pengumuman -->
+        <p class="text-muted small mb-2">Waktu: 20 Maret 2025, 10:00 WITA</p>
+        <!-- Isi Pengumuman -->
+        <p class="card-text">
+            Pendaftaran untuk Tim Lomba Blue Choir kini resmi dibuka! Jangan lewatkan kesempatan untuk menunjukkan bakat terbaikmu dalam kompetisi paduan suara yang penuh semangat dan kreativitas.
+        </p>
+        <!-- Tombol Baca Selengkapnya -->
+        <a href="#" class="btn btn-link">Baca Selengkapnya</a>
+      </div>
+    </div>
+
+    <!-- Pengumuman2 -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title text-primary"><b>Selamat datang!</b></h5>
+        <p class="text-muted small mb-2">Waktu: 25 Maret 2025, 09:00 WITA</p>
+        <p class="card-text">
+            Selamat datang di website Blue Choir. Website ini dapat digunakan untuk mengakses berbagai informasi organisasi, kegiatan dan informasi lainnya.
+        </p>
+        <a href="#" class="btn btn-link">Baca Selengkapnya</a>
+      </div>
+    </div>
+</div>
+
     
 	<!--pengumuman end-->
 	
