@@ -1,15 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
-  	<title>Admin</title>
+    <title>Admin - Manajemen Pengguna</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../css/style.css">
-  </head>
-  <style>
-            body {
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+     <style>
+                   body {
             background-color: #f8f9fa; /* Warna latar belakang yang lebih lembut */
         }
         .card {
@@ -111,20 +110,23 @@
     .btn-close-custom:hover {
       color: #000;
     }
-	.zindexmedium{
-		z-index: 90;
+	@media (max-width: 576px) {
+  .zindexmedium {
+    z-index: 90;
+  }
+}
+
 	}
 	.zindexatas{
 		z-index: 100;
 	}
 	.completed { background-color: #d4edda; color: #155724; }
 	.in-progress { background-color: #f8d7da; color: #721c24; }
-</style>
+    </style>
+  </head>
   <body>
-	
-		
-		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar" class="min-vh-100">
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="min-vh-100">
 				<div class="custom-menu zindexmedium">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -166,138 +168,100 @@
 
 	  </div>
     	</nav>
-	<div class="container containerku">
-        <div class="row">
-            <div class="col-lg-12">
 
-				<!--pengumuman-->
-        <div class="container-fluid">
-          <div class="row">
-              <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                      <h1 class="h2">Daftar Pengguna</h1>
-                  </div>
-                  <div class="container mt-5">
-                    <a href="admin-tambahpengguna.html" class="btn btn-success mb-3">Tambah Pengguna</a>
-                    <div class="table-responsive">
 
-                      <div class="container-fluid bg-light p-4">
-                        <h2 class="mb-4">Daftar Anggota BC</h2>
-                        <table class="table table-hover table-bordered align-middle bg-white">
-                          <thead class="table-light">
-                            <tr>
-                              <th>ID</th>
-                              <th>Nama</th>
-                              <th>NIM</th>
-                              <th>Email</th>
-                              <th>Password</th>
-                              <th>Nomor Telepon</th>
-                              <th>Aksi</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>Stevandri V. Patty</td>
-                              <td>220211060047</td>
-                              <td>stevandri@unsrat.ac.id</td>
-                              <td>12644sd</td>
-                              <td>0812-3456-7890</td>
-                              <td>
-                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>Syifabela S</td>
-                              <td>220211060021</td>
-                              <td>Syifabelak@unsrat.ac.id</td>
-                              <td>454554d</td>
-                              <td>0852-1234-5678</td>
-                              <td>
-                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>Salsabilla</td>
-                              <td>22021106055</td>
-                              <td>Syifabela@unsrat.ac.id</td>
-                              <td>454554d</td>
-                              <td>0852-1234-5678</td>
-                              <td>
-                                <a href="admin-ubahpengguna.html" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Manajemen Pengguna</h1>
+                    {{-- <a href="#" class="btn btn-success">Tambah Pengguna</a> --}}
+                    {{-- Aktifkan jika rute admin.pengguna.create sudah ada --}}
+                    {{-- <a href="{{ route('admin.pengguna.create') }}" class="btn btn-success">Tambah Pengguna</a> --}}
+                </div>
 
-                        <!-- <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nama</th>
-                                    <th>NIM</th>
-                                    <th>Email</th>
-                                    <th>Nomor Telepon</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody> -->
-                                <!-- <?php
-                                    // Koneksi ke database (ganti dengan kredensial Anda)
-                                    $servername = "localhost";
-                                    $username = "root";
-                                    $password = "";
-                                    $dbname = "nama_database";
-            
-                                    $conn = new mysqli($servername, $username, $password, $dbname);
-            
-                                    if ($conn->connect_error) {
-                                        die("Koneksi gagal: " . $conn->connect_error);
-                                    }
-            
-                                    $sql = "SELECT * FROM users";
-                                    $result = $conn->query($sql);
-            
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["nama"] . "</td>";
-                                            echo "<td>" . $row["nim"] . "</td>";
-                                            echo "<td>" . $row["email"] . "</td>";
-                                            echo "<td>" . $row["telepon"] . "</td>";
-                                            echo "<td>";
-                                            echo "<a href='hapus_pengguna.php?id=" . $row["id"] . "' class='btn btn-sm btn-danger'>Hapus</a>";
-                                            echo "</td>";
-                                            echo "</tr>";
-                                        }
-                                    } else {
-                                        echo "<tr><td colspan='6'>Tidak ada pengguna yang terdaftar.</td></tr>";
-                                    }
-            
-                                    $conn->close();
-                                ?> -->
-                            <!-- </tbody>
-                        </table> -->
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        Daftar Anggota Blue Choir
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>NIM</th>
+                                        <th>Email</th>
+                                        <th>Telepon</th>
+                                        <th>Posisi</th>
+                                        <th>Posisi Suara</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->namadepan }} {{ $user->namabelakang }}</td>
+                                        <td>{{ $user->nim ?? '-' }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->telepon ?? '-' }}</td>
+                                        <td>
+                                            <span class="badge text-light {{ $user->posisi === 'NonBidang' ? 'bg-danger' : 'bg-primary' }}">
+                                                {{ $user->posisi === 'NonBidang' ? 'Admin (NonBidang)' : ucfirst($user->posisi ?? 'Belum diatur') }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge {{ $user->status === 'aktif' ? 'bg-success' : 'bg-warning text-dark' }}">
+                                                {{ ucfirst($user->posisi_suara ?? 'Tidak diketahui') }}
+                                            </span>
+                                        </td>
+                                        <td class="btn-action-group">
+                                          <a href="#" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></a>
+                                            {{-- Tombol Hapus akan memicu modal --}}
+                                            <form action="{{ route('admin.pengguna.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" title="Hapus">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            
+                                        </td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="8" class="text-center">Tidak ada data pengguna.</td>
+                                    </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                        {{-- Jika Anda menggunakan paginasi: {{ $users->links() }} --}}
                     </div>
                 </div>
-              </main>
-          </div>
-      </div>
-	<!--pengumuman end-->
-	
-		</div>
-  
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/main.js"></script>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.js') }}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
   </body>
 </html>

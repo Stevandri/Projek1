@@ -405,14 +405,37 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('postlogin') }}" class="form-login d-flex text-center flex-column" method="post">
-                  {{ csrf_field() }}
+            @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show login-card-error" role="alert">
+                            <ul class="mb-0 ps-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('status')) {{-- Pesan sukses, misal setelah logout --}}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('status') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('error')) {{-- Pesan error dari redirect, misal IsAdmin --}}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                <form action="{{ route('postlogin.attempt') }}" class="form-login d-flex text-center flex-column" method="POST">
+                   @csrf
                     <img src="item/Logo.png" alt="Logo Blue Choir" height="70" width="90" class="mb-4 mx-auto">
 
                     <h1 class="h3 mb-4">Masuk ke BlueChoir</h1>
 
                     <label for="username" class="sr-only"></label>
-                    <input type="text" id="username" name="nim" class="form-control mb-2 border border-dark" placeholder="Masukkan Username" required autofocus>
+                    <input type="text" id="nim" name="nim" class="form-control mb-2 border border-dark" placeholder="Masukkan NIM" required autofocus>
 
                     <label for="password" class="sr-only"></label>
                     <input type="password" id="password" name="password" class="form-control mb-2 border border-dark" placeholder="Masukkan Kata Sandi" required autofocus>
@@ -535,6 +558,13 @@
       <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <script>
         AOS.init();
+        @if ($errors->has('nim') || $errors->has('password'))
+        var loginModalEl = document.getElementById('loginModal');
+        if (loginModalEl) {
+            var loginModalInstance = bootstrap.Modal.getInstance(loginModalEl) || new bootstrap.Modal(loginModalEl);
+            loginModalInstance.show();
+        }
+      @endif
       </script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

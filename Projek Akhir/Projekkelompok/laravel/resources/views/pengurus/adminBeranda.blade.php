@@ -111,9 +111,12 @@
     .btn-close-custom:hover {
       color: #000;
     }
-	.zindexmedium{
-		z-index: 90;
-	}
+@media (max-width: 576px) {
+  .zindexmedium {
+    z-index: 90;
+  }
+}
+
 	.zindexatas{
 		z-index: 100;
 	}
@@ -221,7 +224,7 @@
                               <td>{{ $pengguna->namadepan ?? 'N/A' }} {{ $pengguna->namabelakang ?? '' }}</td>
                               <td>
                                 <span class="badge {{ $pengguna->posisi === 'NonBidang' ? 'bg-danger text-white' : 'bg-secondary text-white' }}">
-                                  {{ $pengguna->posisi === 'NonBidang' ? 'Admin' : ucfirst($pengguna->posisi ?? 'Tidak diketahui') }}
+                                  {{ $pengguna->posisi === 'NonBidang' ? 'NonBidang' : ucfirst($pengguna->posisi ?? 'Tidak diketahui') }}
                                 </span>
                               </td>
                               <td>{{ $pengguna->last_seen_at ? $pengguna->last_seen_at->locale('id')->diffForHumans() : 'Belum pernah' }}</td>

@@ -16,6 +16,6 @@ class IsAdmin
         }
 
         // Jika bukan admin:
-        return redirect('/')->with('error', 'Anda tidak memiliki akses admin.');
+        return redirect('userbcdashboard');
     }
 }
