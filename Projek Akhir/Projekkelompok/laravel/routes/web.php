@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/', function () {
@@ -10,10 +11,6 @@ Route::get('/', function () {
 });
 
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
-
-Route::get('/beranda', function () {
-    return view('userBC.userbcdashboard');
-})->name('userbcdashboard');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
@@ -23,31 +20,40 @@ Route::get('/postlogin', function () {
 
 
 
-//profil
-Route::get('/profil', function () {
-    return view('userBC.profilBC');
-})->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/beranda', function () {
+        return view('userBC.userbcdashboard'); // Dashboard pengguna biasa
+    })->name('userbcdashboard');
 
-//editprofilny
-Route::middleware('auth')->group(function () {
+    Route::get('/profil', function () { // Ini mungkin duplikat dengan profil.show, pilih salah satu
+        return view('userBC.profilBC');
+    })->name('profil.show.simple'); // Beri nama berbeda jika ingin dipertahankan
+
+    Route::get('/profil', [ProfilController::class, 'show'])->name('profil.show'); // Jika ProfilController punya method show
     Route::get('/profil/edit', [ProfilController::class, 'edit'])->name('profil.edit');
-    Route::post('/profil', [ProfilController::class, 'update'])->name('profil.update');
+    Route::post('/profil', [ProfilController::class, 'update'])->name('profil.update'); // Biasanya PUT/PATCH untuk update
+
+    Route::get('/kegiatan', function () {
+        return view('userBC.kegiatan');
+    })->name('kegiatan.index');
+
+    Route::get('/pengumuman', function () {
+        return view('userBC.pengumuman');
+    })->name('pengumuman.index');
+
+    Route::get('/partitur', function () {
+        return view('userBC.partitur');
+    })->name('partitur.index');
 });
 
-// web.php
-Route::get('/profil', function () {
-    return view('userBC.profilBC');
-})->name('profil.show')->middleware('auth'); // Tambahkan ->name('nama.rute.anda')
+
+//admin
+Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(function () {
+    // Dashboard Admin
+    Route::get('/beranda', [AdminController::class, 'dashboard'])->name('beranda');
 
 
-Route::get('/kegiatan', function () {
-    return view('userBC.kegiatan'); // Sesuaikan dengan nama view Anda
-})->name('kegiatan.index')->middleware('auth');
-
-Route::get('/pengumuman', function () {
-    return view('userBC.pengumuman'); // Sesuaikan dengan nama view Anda
-})->name('pengumuman.index')->middleware('auth');
-
-Route::get('/partitur', function () {
-    return view('userBC.partitur'); // Sesuaikan dengan nama view Anda
-})->name('partitur.index')->middleware('auth');
+    // Route::get('/pengguna', [AdminController::class, 'daftarPengguna'])->name('pengguna.index');
+    // Route::get('/pengumuman/buat', [AdminController::class, 'buatPengumuman'])->name('pengumuman.create');
+    // Route::post('/pengumuman', [AdminController::class, 'simpanPengumuman'])->name('pengumuman.store');
+});
