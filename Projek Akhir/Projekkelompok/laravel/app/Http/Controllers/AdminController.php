@@ -33,6 +33,44 @@ class AdminController extends Controller
         return view('pengurus.adminPengguna', compact('users')); //
     }
 
+    //form tambah ucer
+    public function createUser()
+    {
+        return view('pengurus.adminTambahpengguna');
+    }
+
+    //AKsi untuk tambah user
+    public function storeUser(Request $request)
+    {
+        // Validasi input
+        $validatedData = $request->validate([
+            'nama_depan'    => 'required|string|max:255',
+            'nama_belakang' => 'nullable|string|max:255', 
+            'nim'           => 'required|string|max:50|unique:users,nim', 
+            'email'         => 'required|string|email|max:255|unique:users,email',
+            'telepon'       => 'nullable|string|max:20',
+            'posisi_suara'  => 'nullable|string|max:100',
+                                                        
+            'posisi'        => 'required|string|max:100', 
+            'password'      => 'required|string|min:8',
+        ]);
+
+        // Buat pengguna baru
+        User::create([
+            'namadepan'     => $validatedData['nama_depan'],
+            'namabelakang'  => $validatedData['nama_belakang'],
+            'nim'           => $validatedData['nim'],
+            'email'         => $validatedData['email'],
+            'telepon'       => $validatedData['telepon'],
+            'posisi_suara'  => $request->input('posisi_suara_from_select'), 
+            'posisi'        => $validatedData['posisi'],      
+            'status'        => 'aktif', 
+            'password'      => Hash::make($validatedData['password']),
+        ]);
+
+        return redirect()->route('admin.pengguna.index')->with('success', 'Pengguna baru berhasil ditambahkan.');
+    }
+
     public function destroyUser(User $user) // Hapus untuk pengguna dan admin lain
     {
         if ($user->id === Auth::id()) {

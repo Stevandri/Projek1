@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
   <style>
             body {
@@ -112,9 +112,11 @@
     .btn-close-custom:hover {
       color: #000;
     }
-	.zindexmedium{
-		z-index: 90;
-	}
+@media (max-width: 576px) {
+  .zindexmedium {
+    z-index: 90;
+  }
+}
 	.zindexatas{
 		z-index: 100;
 	}
@@ -176,88 +178,128 @@
           <div class="row">
               <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                      <h1 class="h2">Tambah Pengguna</h1>
-                  </div>
-                  <div class="container mt-5">
-                    <form action="proses_tambah_pengguna.php" method="post">
-                    <div class="mb-3">
-                      <label for="nama_depan" class="form-label">Nama Depan</label>
-                        <div class="input-group">
-                          <span class="input-group-text border border-secondary"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control border border-secondary" id="nama_depan" name="nama_depan" required>
-                        </div>
-                      </div>
-                  <div class="mb-3">
-                        <label for="nama_belakang" class="form-label">Nama Belakang</label>
-                        <div class="input-group">
-                          <span class="input-group-text border border-secondary"><i class="bi bi-person"></i></span>
-                          <input type="text" class="form-control border border-secondary" id="nama_belakang" name="nama_belakang" required>
-                  </div>
+                      <h1 class="h2">Tambah Pengguna Baru</h1>
+                    <a href="{{ route('admin.pengguna.index') }}" class="btn btn-outline-secondary">Kembali ke Daftar Pengguna</a>
                 </div>
-                <div class="mb-3">
-                      <label for="nim" class="form-label">NIM</label>
-                      <div class="input-group">
-                        <span class="input-group-text border border-secondary"><i class="bi bi-card-list"></i></span>
-                        <input type="text" class="form-control border border-secondary" id="nim" name="nim" required>
-                      </div>
-                </div>
-                <div class="mb-3">
-                      <label for="email" class="form-label">Email</label>
-                      <div class="input-group">
-                        <span class="input-group-text border border-secondary"><i class="bi bi-envelope"></i></span>
-                        <input type="email" class="form-control border border-secondary" id="email" name="email" required>
-                      </div>
-                </div>
-                <div class="mb-3">
-                      <label for="telepon" class="form-label">Nomor Telepon</label>
-                      <div class="input-group">
-                        <span class="input-group-text border border-secondary"><i class="bi bi-telephone"></i></span>
-                        <input type="tel" class="form-control border border-secondary" id="telepon" name="telepon" required>
-                      </div>
-                </div>
-                <div class="mb-3" style="width: 400px;">
-                      <label for="posisi_suara" class="form-label text-muted">Posisi Suara</label>
-                      <div class="input-group">
-                        <span class="input-group-text border border-secondary"><i class="bi bi-mic"></i></span>
-                        <select class="form-select shadow-sm rounded" id="posisi_suara" name="posisi" required style="background-color: white; width: 100%;">
-                            <option disabled selected>-- Pilih Posisi Suara --</option>
-                            <option value="Sopran1">Sopran 1</option>
-                            <option value="Sopran2">Sopran 2</option>
-                            <option value="Alto1">Alto 1</option>
-                            <option value="Alto2">Alto 2</option>
-                            <option value="Tenor1">Tenor 1</option>
-                            <option value="Tenor2">Tenor 2</option>
-                        </select>
-                      </div>
-                    </div>
-                <div class="mb-3" style="width: 400px;">
-                    <label for="posisi_pengurus" class="form-label text-muted">Posisi</label>
-                    <div class="input-group">
-                        <span class="input-group-text border border-secondary"><i class="bi bi-person-badge"></i></span>
-                        <select class="form-select shadow-sm rounded" id="posisi_pengurus" name="posisi" required style="background-color: white; width: 100%;">
-                            <option disabled selected>-- Pilih Posisi --</option>
-                            <option value="Ketua">Anggota</option>
-                            <option value="Wakil Ketua">Tim Artistik</option>
-                            <option value="Sekretaris">Bidang Kepelatihan</option>
-                            <option value="Bendahara">Bidang Keanggotaan</option>
-                            <option value="Admin">Bidang Aset & Perlengkapan</option>
-                            <option value="Anggota">Bidang Media & Dokumentasi</option>
-                            <option value="Anggota">Bidang Peribadatan</option>
-                            <option value="Anggota">Bidang Kewirausahaan</option>
-                            <option value="Anggota">Pelatih</option>
-                        </select>
-                    </div>
-                    </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Kata Sandi</label>
-                            <div class="input-group">
-                                <span class="input-group-text border border-secondary"><i class="bi bi-lock"></i></span>
-                                <input type="text" class="form-control border border-secondary" id="password" name="password" required>
-                            </div>
-                        </div>
-                  <button type="submit" class="btn btn-primary">Tambah Pengguna</button>
-                  </form>
 
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        {{-- Menampilkan error validasi --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        {{-- Form Anda sebelumnya action="proses_tambah_pengguna.php" --}}
+                        <form action="{{ route('admin.pengguna.store') }}" method="POST">
+                            @csrf {{-- Token CSRF untuk keamanan --}}
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nama_depan" class="form-label ">Nama Depan <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        <input type="text" class="form-control border border-secondary @error('nama_depan') is-invalid @enderror" id="nama_depan" name="nama_depan" value="{{ old('nama_depan') }}" required>
+                                    </div>
+                                    @error('nama_depan') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="nama_belakang" class="form-label">Nama Belakang</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        <input type="text" class="form-control border border-secondary @error('nama_belakang') is-invalid @enderror" id="nama_belakang" name="nama_belakang" value="{{ old('nama_belakang') }}">
+                                    </div>
+                                    @error('nama_belakang') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nim" class="form-label">NIM <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-card-list"></i></span>
+                                    <input type="text" class="form-control border border-secondary @error('nim') is-invalid @enderror" id="nim" name="nim" value="{{ old('nim') }}" required>
+                                </div>
+                                @error('nim') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control border border-secondary @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                                </div>
+                                @error('email') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="telepon" class="form-label">Nomor Telepon</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                                    <input type="tel" class="form-control border border-secondary @error('telepon') is-invalid @enderror" id="telepon" name="telepon" value="{{ old('telepon') }}">
+                                </div>
+                                @error('telepon') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="posisi_suara_from_select" class="form-label">Posisi Suara</label> {{-- name diubah --}}
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-mic"></i></span>
+                                        {{-- Atribut name di file Anda "posisi", saya ubah menjadi "posisi_suara_from_select" --}}
+                                        <select class="form-select @error('posisi_suara_from_select') is-invalid @enderror" id="posisi_suara_from_select" name="posisi_suara_from_select">
+                                            <option value="" disabled {{ old('posisi_suara_from_select') ? '' : 'selected' }}>-- Pilih Posisi Suara --</option>
+                                            <option value="Sopran 1" {{ old('posisi_suara_from_select') == 'Sopran 1' ? 'selected' : '' }}>Sopran 1</option>
+                                            <option value="Sopran 2" {{ old('posisi_suara_from_select') == 'Sopran 2' ? 'selected' : '' }}>Sopran 2</option>
+                                            <option value="Alto 1" {{ old('posisi_suara_from_select') == 'Alto 1' ? 'selected' : '' }}>Alto 1</option>
+                                            <option value="Alto 2" {{ old('posisi_suara_from_select') == 'Alto 2' ? 'selected' : '' }}>Alto 2</option>
+                                            <option value="Tenor 1" {{ old('posisi_suara_from_select') == 'Tenor 1' ? 'selected' : '' }}>Tenor 1</option>
+                                            <option value="Tenor 2" {{ old('posisi_suara_from_select') == 'Tenor 2' ? 'selected' : '' }}>Tenor 2</option>
+                                            <option value="Bass 1" {{ old('posisi_suara_from_select') == 'Bass 1' ? 'selected' : '' }}>Bass 1</option>
+                                            <option value="Bass 2" {{ old('posisi_suara_from_select') == 'Bass 2' ? 'selected' : '' }}>Bass 2</option>
+                                            <option value="Baritone" {{ old('posisi_suara_from_select') == 'Baritone' ? 'selected' : '' }}>Baritone</option>
+                                        </select>
+                                    </div>
+                                    @error('posisi_suara_from_select') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="posisi_pengurus" class="form-label">Posisi (Peran) <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                                        {{-- Atribut name di file Anda "posisi", ini dipertahankan untuk peran --}}
+                                        <select class="form-select @error('posisi') is-invalid @enderror" id="posisi_pengurus" name="posisi" required>
+                                            <option value="" disabled {{ old('posisi') ? '' : 'selected' }}>-- Pilih Posisi/Peran --</option>
+                                            <option value="Anggota" {{ old('posisi') == 'Anggota' ? 'selected' : '' }}>Anggota</option>
+                                            <option value="Tim Aset & Perlengkapan" {{ old('posisi') == 'Tim Aset & Perlengkapan' ? 'selected' : '' }}>Tim Aset & Perlengkapan</option>
+                                            <option value="NonBidang" {{ old('posisi') == 'NonBidang' ? 'selected' : '' }}>Admin (NonBidang)</option>
+                                            {{-- Tambahkan opsi peran/posisi lain yang valid sesuai database Anda --}}
+                                            {{-- <option value="Ketua">Ketua</option> --}}
+                                        </select>
+                                    </div>
+                                    @error('posisi') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Kata Sandi <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                    {{-- Type di file Anda "text", seharusnya "password" --}}
+                                    <input type="password" class="form-control border border-secondary @error('password') is-invalid @enderror" id="password" name="password" required>
+                                </div>
+                                @error('password') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Tambah Pengguna</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
               </main>
           </div>
@@ -266,9 +308,9 @@
 	
 		</div>
   
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
   </body>
 </html>

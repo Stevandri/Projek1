@@ -86,9 +86,11 @@
     .btn-close-custom:hover {
       color: #000;
     }
-	.zindexmedium{
-		z-index: 90;
-	}
+@media (max-width: 576px) {
+  .zindexmedium {
+    z-index: 90;
+  }
+}
 	.zindexatas{
 		z-index: 100;
 	}

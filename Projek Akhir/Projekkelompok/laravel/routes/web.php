@@ -43,7 +43,8 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(f
     // Dashboard Admin
     Route::get('/beranda', [AdminController::class, 'dashboard'])->name('beranda');
     Route::get('/pengguna', [AdminController::class, 'indexUsers'])->name('pengguna.index');
-    // Route::get('/pengumuman/buat', [AdminController::class, 'buatPengumuman'])->name('pengumuman.create');
+    Route::get('/pengguna/tambah', [AdminController::class, 'createUser'])->name('pengguna.create'); 
+    Route::post('/pengguna', [AdminController::class, 'storeUser'])->name('pengguna.store');
     // Route::post('/pengumuman', [AdminController::class, 'simpanPengumuman'])->name('pengumuman.store');
     Route::delete('/pengguna/{user}', [AdminController::class, 'destroyUser'])->name('pengguna.destroy');
 });
