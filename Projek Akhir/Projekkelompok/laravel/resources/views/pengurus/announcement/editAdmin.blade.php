@@ -2,7 +2,6 @@
 <html lang="id">
   <head>
     <title>Admin - Edit Pengumuman</title>
-    {{-- Referensi ke <head> dari adminEditPengumuman.blade.php Anda --}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -27,6 +26,11 @@
         .form-control, .form-select { border-radius: .25rem; box-shadow: none !important; }
         .custom-menu { position: absolute; top: 15px; right: -50px; z-index: 1050; }
         .custom-menu button { color: #fff; background-color: #007bff; border: none; }
+        /* CSS untuk textarea agar bisa di-resize dan memiliki tinggi awal yang lebih kecil */
+        textarea.resizable-textarea {
+            min-height: 80px; /* Tinggi awal yang lebih kecil */
+            resize: vertical; /* Memungkinkan resize vertikal oleh pengguna */
+        }
     </style>
   </head>
   <body>
@@ -42,7 +46,9 @@
                 <ul class="list-unstyled components mb-5">
                   <li><a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a></li>
                   <li class="active"><a href="{{ route('admin.announcement.index') }}"><span class="fa fa-bullhorn mr-3"></span> Pengumuman</a></li>
-                  {{-- ... link sidebar lainnya ... --}}
+                  <li><a href="#"><span class="fa fa-calendar mr-3"></span> Kegiatan</a></li>
+                  <li><a href="#"><span class="fa fa-music mr-3"></span> Partitur</a></li>
+                  <li><a href="{{ route('admin.pengguna.index') }}"><span class="fa fa-users mr-3"></span> Pengguna</a></li>
                 </ul>
                  <div class="footer">
                     <ul class="list-unstyled components mb-5"><li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-edit-announcement').submit();"><span class="fa fa-sign-out mr-3"></span> Keluar</a><form id="logout-form-edit-announcement" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form></li></ul>
@@ -70,34 +76,45 @@
                             </div>
                         @endif
 
-                        {{-- File Anda: <form method="post" action="proses_pengumuman.php"> --}}
+                        {{-- Form action dari file Anda: proses_pengumuman.php --}}
+                        {{-- Action yang benar untuk update: route('admin.announcement.update', $announcement->id) --}}
                         <form action="{{ route('admin.announcement.update', $announcement->id) }}" method="POST">
                             @csrf
                             @method('PUT') {{-- Method spoofing untuk update --}}
 
                             <div class="mb-3">
                                 <label for="subject" class="form-label">Subjek Pengumuman <span class="text-danger">*</span></label>
+                                {{-- name di file Anda 'subjek', saya ganti 'subject' --}}
                                 <input type="text" class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject" value="{{ old('subject', $announcement->subject) }}" required>
                                 @error('subject') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="content" class="form-label">Isi Pengumuman <span class="text-danger">*</span></label>
-                                <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="6" required>{{ old('content', $announcement->content) }}</textarea>
+                                {{-- name di file Anda 'konten', saya ganti 'content' --}}
+                                {{-- Atribut rows diubah menjadi 3, dan tambahkan class resizable-textarea --}}
+                                <textarea class="form-control resizable-textarea @error('content') is-invalid @enderror" id="content" name="content" rows="3" required>{{ old('content', $announcement->content) }}</textarea>
                                 @error('content') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="sender" class="form-label">Pengirim <span class="text-danger">*</span></label>
-                                    {{-- File Anda menampilkan select tanpa options di sini, saya ubah ke input teks --}}
-                                    <input type="text" class="form-control @error('sender') is-invalid @enderror" id="sender" name="sender" value="{{ old('sender', $announcement->sender) }}" required>
-                                    @error('sender') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    {{-- File Anda menggunakan select yang tidak valid di sini. Saya ganti dengan input text. --}}
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                        <input type="text" class="form-control @error('sender') is-invalid @enderror" id="sender" name="sender" value="{{ old('sender', $announcement->sender) }}" required>
+                                    </div>
+                                    @error('sender') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="publish_date" class="form-label">Tanggal Publish <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control @error('publish_date') is-invalid @enderror" id="publish_date" name="publish_date" value="{{ old('publish_date', $announcement->publish_date->format('Y-m-d')) }}" required>
-                                    @error('publish_date') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    {{-- name di file Anda 'tanggal', saya ganti 'publish_date' --}}
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
+                                        <input type="date" class="form-control @error('publish_date') is-invalid @enderror" id="publish_date" name="publish_date" value="{{ old('publish_date', $announcement->publish_date ? ($announcement->publish_date instanceof \Carbon\Carbon ? $announcement->publish_date->format('Y-m-d') : $announcement->publish_date) : '') }}" required>
+                                    </div>
+                                    @error('publish_date') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                                 </div>
                             </div>
 
@@ -110,10 +127,16 @@
             </div>
         </div>
     </div>
+
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script> (function($) { "use strict"; $('#sidebarCollapse').on('click', function () { $('#sidebar').toggleClass('active'); }); })(jQuery); </script>
+    <script>
+        (function($) {
+            "use strict";
+            $('#sidebarCollapse').on('click', function () { $('#sidebar').toggleClass('active'); });
+        })(jQuery);
+    </script>
   </body>
 </html>

@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserPageController;
 
 //guest
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
@@ -33,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     }
     //keg lain
     Route::get('/kegiatan', function () { return view('userBC.kegiatan'); })->name('kegiatan.index');
-    Route::get('/pengumuman', function () { return view('userBC.pengumuman'); })->name('pengumuman.index');
+     Route::get('/pengumuman', [UserPageController::class, 'showAnnouncements'])->name('pengumuman.index');
     Route::get('/partitur', function () { return view('userBC.partitur'); })->name('partitur.index');
 });
 
