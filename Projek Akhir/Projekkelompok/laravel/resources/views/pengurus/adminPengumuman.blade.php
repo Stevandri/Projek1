@@ -1,39 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Admin</title>
+  	<title>Pengumuman</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../../css/style.css">
   </head>
   <style>
-            body {
-            background-color: #f8f9fa; /* Warna latar belakang yang lebih lembut */
-        }
-        .card {
-            border-radius: 15px; /* Sudut yang lebih halus */
-        }
-        .btn-primary {
-            background-color: #007bff; /* Warna tombol yang lebih cerah */
-            border: none; /* Menghilangkan border default */
-        }
-        .btn-primary:hover {
-            background-color: #0056b3; /* Warna saat hover */
-        }
-        input[type="file"] {
-            display: none; /* Menyembunyikan input file default */
-        }
-        .custom-file-upload {
-            display: inline-block;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-        }
-
 	body{
 		background-color: #DFEAFC;
 	}
@@ -111,9 +86,11 @@
     .btn-close-custom:hover {
       color: #000;
     }
-	.zindexmedium{
-		z-index: 90;
-	}
+@media (max-width: 576px) {
+  .zindexmedium {
+    z-index: 90;
+  }
+}
 	.zindexatas{
 		z-index: 100;
 	}
@@ -124,7 +101,7 @@
 	
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar" class="min-vh-100s">
+			<nav id="sidebar" class="min-vh-100">
 				<div class="custom-menu zindexmedium">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -132,31 +109,30 @@
 	        </button>
         </div>
 				<div class="p-4 zindexatas">
-		  		<h1><a href="index.html" class="logo">Hallo Admin<span>> Pengumuman</span></a></h1>
+		  		<h1><a href="index.html" class="logo">Blue Choir <span>> Pengumuman</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
 	          <li>
-	            <a href="admin-beranda.html"><span class="fa fa-home mr-3"></span> Beranda</a>
+	            <a href="{{ route('userbcdashboard') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
 	          </li>
 	          <li class="active">
-	              <a href="admin-pengumuman.html"><span class="fa fa-info mr-3"></span> Buat Pengumuman</a>
+	              <a href="{{ route('pengumuman.index') }}"><span class="fa fa-info mr-3"></span> Pengumuman</a>
 	          </li>
 	          <li>
-              <a href="admin-kegiatan.html"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
+              <a href="{{ route('kegiatan.index') }}"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
 	          </li>
 	          <li>
-              <a href="admin-partitur.html"><span class="fa fa-file mr-3"></span> Partitur</a>
+              <a href="{{ route('partitur.index') }}"><span class="fa fa-file mr-3"></span> Partitur</a>
 	          </li>
 	          <li>
-              <a href="admin-pengguna.html"><span class="fa fa-user mr-3"></span> Pengguna</a>
+              <a href="{{ route('profil.show') }}"><span class="fa fa-user mr-3"></span> Akun</a>
 	          </li>
-
 	        </ul>
 
 
 	        <div class="footer ">
 				<ul class="list-unstyled components mb-5">
 					<li>
-						<a href="../../Database/keluar.php"><span class="fa fa-sticky-note mr-3"></span> Keluar</a>
+						<a href="#"><span class="fa fa-sticky-note mr-3"></span> Keluar</a>
 						</li>
 					</ul>
 
@@ -171,42 +147,46 @@
             <div class="col-lg-12">
 
 				<!--pengumuman-->
-        <div class="container-fluid">
-          <div class="row">
-              <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                      <h1 class="h2">Buat Pengumuman</h1>
-                  </div>
-                  <div class="container mt-5">
-                    <form method="post" action="proses_pengumuman.php">
-                        <div class="mb-3">
-                            <label for="subjek" class="form-label">Subjek</label>
-                            <input type="text" class="form-control" id="subjek" name="subjek" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="konten" class="form-label">Konten</label>
-                            <textarea class="form-control" id="konten" name="konten" rows="5" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="pengirim" class="form-label">Pengirim</label>
-                            <input type="text" class="form-control" id="pengirim" name="pengirim" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Kirim Pengumuman</button>
-                    </form>
-              </main>
-          </div>
+    <div class="container my-5">
+    <!-- Judul Halaman -->
+    <h2 class="text-dark">Pengumuman</h2>
+
+    <!-- Pengumuman1 -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <!-- Judul Pengumuman -->
+        <h5 class="card-title text-primary"><b>Persiapan Tim Lomba!</b></h5>
+        <!-- Waktu Pengumuman -->
+        <p class="text-muted small mb-2">Waktu: 20 Maret 2025, 10:00 WITA</p>
+        <!-- Isi Pengumuman -->
+        <p class="card-text">
+            Pendaftaran untuk Tim Lomba Blue Choir kini resmi dibuka! Jangan lewatkan kesempatan untuk menunjukkan bakat terbaikmu dalam kompetisi paduan suara yang penuh semangat dan kreativitas.
+        </p>
+        <!-- Tombol Baca Selengkapnya -->
+        <a href="#" class="btn btn-link">Baca Selengkapnya</a>
       </div>
+    </div>
+
+    <!-- Pengumuman2 -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title text-primary"><b>Selamat datang!</b></h5>
+        <p class="text-muted small mb-2">Waktu: 25 Maret 2025, 09:00 WITA</p>
+        <p class="card-text">
+            Selamat datang di website Blue Choir. Website ini dapat digunakan untuk mengakses berbagai informasi organisasi, kegiatan dan informasi lainnya.
+        </p>
+        <a href="#" class="btn btn-link">Baca Selengkapnya</a>
+      </div>
+    </div>
+</div>
+
+    
 	<!--pengumuman end-->
 	
 		</div>
-  
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/popper.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/main.js"></script>
   </body>
 </html>

@@ -47,4 +47,11 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(f
     Route::post('/pengguna', [AdminController::class, 'storeUser'])->name('pengguna.store');
     // Route::post('/pengumuman', [AdminController::class, 'simpanPengumuman'])->name('pengumuman.store');
     Route::delete('/pengguna/{user}', [AdminController::class, 'destroyUser'])->name('pengguna.destroy');
+
+    Route::get('/announcements', [AdminController::class, 'indexAnnouncements'])->name('announcement.index');
+    Route::get('/announcements/create', [AdminController::class, 'createAnnouncement'])->name('announcement.create');
+    Route::post('/announcements', [AdminController::class, 'storeAnnouncement'])->name('announcement.store');
+    Route::get('/announcements/{announcement}/edit', [AdminController::class, 'editAnnouncement'])->name('announcement.edit');
+    Route::put('/announcements/{announcement}', [AdminController::class, 'updateAnnouncement'])->name('announcement.update');
+    Route::delete('/announcements/{announcement}', [AdminController::class, 'destroyAnnouncement'])->name('announcement.destroy');
 });

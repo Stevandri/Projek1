@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Hash;
+use App\Models\Announcement;
 use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
@@ -78,5 +79,59 @@ class AdminController extends Controller
         }
         $user->delete();
         return redirect()->route('admin.pengguna.index')->with('success', 'Pengguna berhasil dihapus.');
+    }
+
+
+    public function indexAnnouncements() // Nama metode diubah
+    {
+        // Menggunakan model Announcement dan urutkan berdasarkan tanggal publish
+        $announcements = Announcement::orderBy('publish_date', 'desc')->orderBy('created_at', 'desc')->get();
+        return view('pengurus.announcement.indexAdmin', compact('announcements')); // View baru
+    }
+
+    public function createAnnouncement() // Nama metode diubah
+    {
+        // View untuk membuat announcement baru
+        return view('pengurus.announcement.createAdmin'); // View baru
+    }
+
+    public function storeAnnouncement(Request $request) // Nama metode diubah
+    {
+        $validatedData = $request->validate([
+            'subject'       => 'required|string|max:255',
+            'content'       => 'required|string',
+            'sender'        => 'required|string|max:255',
+            'publish_date'  => 'required|date',
+        ]);
+
+        Announcement::create($validatedData);
+
+        return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil dibuat.'); // Rute baru
+    }
+
+    public function editAnnouncement(Announcement $announcement) // Nama metode dan parameter diubah
+    {
+        // View untuk mengedit announcement, menggunakan $announcement dari Route Model Binding
+        return view('pengurus.announcement.editAdmin', compact('announcement')); // View baru
+    }
+
+    public function updateAnnouncement(Request $request, Announcement $announcement) // Nama metode dan parameter diubah
+    {
+        $validatedData = $request->validate([
+            'subject'       => 'required|string|max:255',
+            'content'       => 'required|string',
+            'sender'        => 'required|string|max:255',
+            'publish_date'  => 'required|date',
+        ]);
+
+        $announcement->update($validatedData);
+
+        return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil diperbarui.'); // Rute baru
+    }
+
+    public function destroyAnnouncement(Announcement $announcement) // Nama metode dan parameter diubah
+    {
+        $announcement->delete();
+        return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil dihapus.'); // Rute baru
     }
 }
