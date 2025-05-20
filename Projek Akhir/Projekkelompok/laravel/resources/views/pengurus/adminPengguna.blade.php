@@ -193,8 +193,13 @@
                 @endif
 
                 <div class="card shadow-sm">
-                    <div class="card-header">
+                    <div class="card-header ">
                         Daftar Anggota Blue Choir
+                    </div>
+                    <div class="mt-4 d-flex justify-content-end shadow-sm" style="margin-right: 40px;">
+                      <a href="" class="btn btn-primary mb-3 me-3 ">
+                          Tambah Pengguna Baru
+                      </a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -230,15 +235,36 @@
                                             </span>
                                         </td>
                                         <td class="btn-action-group">
-                                          <a href="#" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></a>
-                                            {{-- Tombol Hapus akan memicu modal --}}
-                                            <form action="{{ route('admin.pengguna.destroy', $user->id) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" title="Hapus">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
+                                          <button type="button" class="border-0">
+                                                <p class="btn btn-sm btn-warning" title="Hapus">Edit</p>
+                                          </button>
+                                          <button type="button" class="border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                <p class="btn btn-sm btn-danger" title="Hapus">Hapus</p>
+                                          </button>
+                                                <!-- Modal -->
+                                          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Hapus Pengguna</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Anda yakin akan menghapus secara permanen? 
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                    <form action="{{ route('admin.pengguna.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                                      @csrf
+                                                        @method('DELETE')
+                                                          <button type="submit" class="btn btn-primary" title="Hapus">
+                                                              Hapus Permanen
+                                                          </button>
+                                                     </form>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                             
                                         </td>
                                     </tr>
@@ -250,14 +276,16 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{-- Jika Anda menggunakan paginasi: {{ $users->links() }} --}}
-                    </div>
+                      </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-    
+
+
+
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>

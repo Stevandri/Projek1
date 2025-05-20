@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth; // <-- PASTIKAN IMPORT INI ADA
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -28,11 +30,10 @@ class AdminController extends Controller
     public function indexUsers()
     {
         $users = User::orderBy('namadepan')->get();
-        // Path view Anda 'pengurus.adminPengguna'
         return view('pengurus.adminPengguna', compact('users')); //
     }
 
-    public function destroyUser(User $user) // Route Model Binding
+    public function destroyUser(User $user) // Hapus untuk pengguna dan admin lain
     {
         if ($user->id === Auth::id()) {
             return redirect()->route('admin.pengguna.index')->with('error', 'Anda tidak dapat menghapus akun Anda sendiri.');
