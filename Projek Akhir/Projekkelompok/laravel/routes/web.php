@@ -4,55 +4,74 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserPageController;
+use App\Http\Controllers\UserPageController; // Pastikan ini ada
+use Illuminate\Support\Facades\Auth;
 
-//guest
+
+// Guest routes (for unauthenticated users)
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
-
-//auntentikasi
 Route::post('/login', [LoginController::class, 'postlogin'])->name('postlogin.attempt')->middleware('guest');
+
+// Logout route (for authenticated users)
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
-//Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 
 
-Route::get('/postlogin', function () {
-     return view('index');
-})->name('index');
-
-
-
+// User/Member routes (require authentication)
 Route::middleware(['auth'])->group(function () {
-    //das. user
-    Route::get('/beranda', function () {
-        return view('userBC.userbcdashboard'); 
-    })->name('userbcdashboard');
-    //prof user tampil dan edit
+    // Dashboard for regular users
+    Route::get('/beranda', [UserPageController::class, 'index'])->name('userbcdashboard'); // Ini yang penting untuk dashboard pengguna
+
+    // User profile display and edit
+    // Pastikan view 'userBC.profilBC' ada
     Route::get('/profil', function () { return view('userBC.profilBC'); })->name('profil.show');
     if (class_exists(ProfilController::class)) {
         Route::get('/profil/edit', [ProfilController::class, 'edit'])->name('profil.edit');
         Route::post('/profil', [ProfilController::class, 'update'])->name('profil.update');
     }
-    //keg lain
-    Route::get('/kegiatan', function () { return view('userBC.kegiatan'); })->name('kegiatan.index');
-     Route::get('/pengumuman', [UserPageController::class, 'showAnnouncements'])->name('pengumuman.index');
+    
+    // All announcements page
+    Route::get('/pengumuman', [UserPageController::class, 'showAnnouncements'])->name('pengumuman.index');
+    
+    // All activities page for users
+    Route::get('/kegiatan', [UserPageController::class, 'showUserKegiatan'])->name('kegiatan.index');
+
+    // Partitur page (assuming 'userBC.partitur' exists)
     Route::get('/partitur', function () { return view('userBC.partitur'); })->name('partitur.index');
 });
 
 
-//admin
+// Admin routes (require authentication and isAdmin middleware)
 Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(function () {
     // Dashboard Admin
     Route::get('/beranda', [AdminController::class, 'dashboard'])->name('beranda');
+
+    // User Management (Admin)
     Route::get('/pengguna', [AdminController::class, 'indexUsers'])->name('pengguna.index');
     Route::get('/pengguna/tambah', [AdminController::class, 'createUser'])->name('pengguna.create'); 
     Route::post('/pengguna', [AdminController::class, 'storeUser'])->name('pengguna.store');
-    // Route::post('/pengumuman', [AdminController::class, 'simpanPengumuman'])->name('pengumuman.store');
     Route::delete('/pengguna/{user}', [AdminController::class, 'destroyUser'])->name('pengguna.destroy');
 
+    // Announcements Management (Admin)
     Route::get('/announcements', [AdminController::class, 'indexAnnouncements'])->name('announcement.index');
     Route::get('/announcements/create', [AdminController::class, 'createAnnouncement'])->name('announcement.create');
     Route::post('/announcements', [AdminController::class, 'storeAnnouncement'])->name('announcement.store');
     Route::get('/announcements/{announcement}/edit', [AdminController::class, 'editAnnouncement'])->name('announcement.edit');
     Route::put('/announcements/{announcement}', [AdminController::class, 'updateAnnouncement'])->name('announcement.update');
     Route::delete('/announcements/{announcement}', [AdminController::class, 'destroyAnnouncement'])->name('announcement.destroy');
+
+    // Kegiatan Management (Admin)
+    Route::get('/kegiatan', [AdminController::class, 'indexKegiatan'])->name('kegiatan.index');
+    Route::get('/kegiatan/tambah', [AdminController::class, 'createKegiatan'])->name('kegiatan.create');
+    Route::post('/kegiatan', [AdminController::class, 'storeKegiatan'])->name('kegiatan.store');
+    Route::get('/kegiatan/{kegiatan}/edit', [AdminController::class, 'editKegiatan'])->name('kegiatan.edit');
+    Route::put('/kegiatan/{kegiatan}', [AdminController::class, 'updateKegiatan'])->name('kegiatan.update');
+    Route::delete('/kegiatan/{kegiatan}', [AdminController::class, 'destroyKegiatan'])->name('kegiatan.destroy');
 });
+
+// Route ini saya hilangkan karena sudah tercakup di middleware 'auth' untuk user dashboard
+// Route::get('/postlogin', function () {
+//      return view('index');
+// })->name('index');
+
+// Route ini saya hilangkan karena rute login utama sudah ada di '/'
+// Route::get('/', [LoginController::class, 'index'])->name('index');

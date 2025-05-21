@@ -1,295 +1,353 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <title>Admin - Manajemen Pengguna</title>
+  	<title>Admin - Manajemen Pengguna</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-     <style>
-                   body {
-            background-color: #f8f9fa; /* Warna latar belakang yang lebih lembut */
-        }
-        .card {
-            border-radius: 15px; /* Sudut yang lebih halus */
-        }
-        .btn-primary {
-            background-color: #007bff; /* Warna tombol yang lebih cerah */
-            border: none; /* Menghilangkan border default */
-        }
-        .btn-primary:hover {
-            background-color: #0056b3; /* Warna saat hover */
-        }
-        input[type="file"] {
-            display: none; /* Menyembunyikan input file default */
-        }
-        .custom-file-upload {
-            display: inline-block;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-        }
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  </head>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      color: #495057;
+    }
+    .admin-card {
+      border-radius: 10px; 
+      border: none; 
+      transition: all 0.3s ease-in-out;
+      background-clip: border-box; 
+    }
+    .admin-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
+    }
+    .admin-card .card-body { padding: 1.25rem; }
+    .admin-card .card-title {
+      font-size: 0.85rem; 
+      font-weight: 600; 
+      text-transform: uppercase;
+      margin-bottom: 0.5rem; 
+    }
+    .admin-card .card-text-value { font-size: 2rem; font-weight: 700; }
+    .admin-card .icon-bg { font-size: 2.5rem; opacity: 0.5; }
+    
+    .table-container { 
+        border-radius: 8px; 
+        overflow: hidden; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    }
+    .table thead th { 
+        background-color: #343a40; 
+        color: #ffffff; 
+        font-weight: 600;
+        border-bottom-width: 0; 
+        font-size: 0.9rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        vertical-align: middle;
+    }
+    .table tbody td {
+        font-size: 0.85rem; 
+        vertical-align: middle; 
+    }
+    .table tbody tr:hover {
+        background-color: #f1f1f1; 
+    }
+    .table .badge {
+        font-size: 0.75em; 
+        padding: 0.5em 0.75em;
+    }
+    .btn-action-group .btn, .btn-action-group form { 
+        display: inline-block; 
+        margin-right: 5px; 
+        margin-bottom: 5px;
+    }
+    .btn-action-group .btn:last-child, .btn-action-group form:last-child {
+        margin-right: 0;
+    }
 
-	body{
-		background-color: #DFEAFC;
-	}
-	.profile-img {
-		width: 100px;
-		height: 100px;
-		border-radius: 50%;
-		object-fit: cover;
-	}
-	.card-status {
-		font-size: 14px;
-		font-weight: bold;
-		padding: 5px 10px;
-		border-radius: 10px;
-	}
-
-	.custom-alert {
-      border-left: 1px solid;
+    .custom-alert {
+      border-left-width: 4px;
       border-radius: 5px;
-      padding: 0.1rem 0.1rem;
+      padding: 1rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
-    /* Warna khusus untuk alert */
-    .custom-alert-info {
-      border-color: #0dcaf0; /* Warna border kiri sesuai info */
-      background-color: #e8f8fd; /* Warna latar alert info */
-      color: #0c5460; /* Warna teks info */
+    .custom-alert-info { border-left-color: #0dcaf0; background-color: #e8f8fd; color: #0c5460; }
+    .custom-alert-success { border-left-color: #198754; background-color: #e8fce8; color: #155724; }
+    .custom-alert-danger { border-left-color: #dc3545; background-color: #fde8e8; color: #842029; }
+    .custom-alert-warning { border-left-color: #ffc107; background-color: #fff8e5; color: #856404; }
+    
+    .alert-icon { margin-right: 1rem; font-size: 1.5rem; }
+    .alert-content { flex: 1; }
+    .alert-title { font-weight: 600; margin-top: 0; margin-bottom: 0.25rem; font-size: 1.1rem; }
+    .alert-message { font-size: 0.95rem; margin-bottom: 0; }
+    
+    .custom-alert .close {
+        float: right;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: .5;
+        padding: 0;
+        background-color: transparent;
+        border: 0;
     }
-    .custom-alert-success {
-      border-color: #198754;
-      background-color: #e8fce8;
-      color: #155724;
+    .custom-alert .close:hover {
+        color: #000;
+        text-decoration: none;
+        opacity: .75;
     }
-    .custom-alert-danger {
-      border-color: #dc3545;
-      background-color: #fde8e8;
-      color: #842029;
-    }
-    .custom-alert-warning {
-      border-color: #ffc107;
-      background-color: #fff8e5;
-      color: #856404;
-    }
-    /* Icon di sisi kiri */
-    .alert-icon {
-      display: inline-flex;
-      align-items: center;
-      margin-right: 0.5rem;
-      font-size: 1.25rem;
-    }
-    /* Title dan Message */
-    .alert-content {
-      flex: 1;
-      margin-left: 0.5rem;
-    }
-    .alert-title {
-      font-weight: 600;
-      margin: 0;
-    }
-    .alert-message {
-      top:0;
-      font-size: 0.95rem;
-    }
-    /* Tombol close */
-    .btn-close-custom {
-      border: none;
-      background: transparent;
-      font-size: 1.25rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-    .btn-close-custom:hover {
-      color: #000;
-    }
-	@media (max-width: 576px) {
-  .zindexmedium {
-    z-index: 90;
-  }
-}
+    .btn-close-custom { /* Dikosongkan karena .close sudah menangani */ }
 
-	}
-	.zindexatas{
-		z-index: 100;
-	}
-	.completed { background-color: #d4edda; color: #155724; }
-	.in-progress { background-color: #f8d7da; color: #721c24; }
-    </style>
-  </head>
+    .zindexatas{ z-index: 100; }
+
+    .main-content-title {
+        color: #343a40;
+        font-weight: 600;
+    }
+    .border-bottom-custom {
+        border-bottom: 1px solid #dee2e6 !important;
+    }
+
+    @media (max-width: 767.98px) { 
+        .main-content-title.h2 { font-size: 1.5rem; }
+        .main-content-title.h4 { font-size: 1.1rem; }
+        #content { padding: 1rem !important; }
+        .table thead th, .table tbody td { font-size: 0.8rem; padding: 0.5rem; }
+        #sidebar .logo span { display: block; font-size: 12px;} 
+        .btn-action-group .btn { margin-bottom: 5px; display: inline-block; } 
+    }
+    @media (max-width: 575.98px) { 
+        .alert-icon { font-size: 1.25rem; margin-right: 0.75rem;}
+        .alert-title { font-size: 1rem; }
+        .alert-message { font-size: 0.9rem; }
+        .d-flex.justify-content-between.align-items-center { flex-direction: column; align-items: flex-start !important;}
+        .d-flex.justify-content-between.align-items-center .btn { margin-top: 10px; width:100%;}
+    }
+  </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" class="min-vh-100">
-				<div class="custom-menu zindexmedium">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
-	          <i class="fa fa-bars"></i>
-	          <span class="sr-only">Toggle Menu</span>
-	        </button>
+      <nav id="sidebar" class="min-vh-100"> 
+        <div class="custom-menu zindexmedium"> 
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+          </button>
         </div>
-				<div class="p-4 zindexatas">
-		  		<h1><a href="index.html" class="logo">Hallo Admin<span>> Pengguna</span></a></h1>
-	        <ul class="list-unstyled components mb-5">
-	          <li>
-	            <a href="admin-beranda.html"><span class="fa fa-home mr-3"></span> Beranda</a>
-	          </li>
-	          <li>
-	              <a href="admin-pengumuman.html"><span class="fa fa-info mr-3"></span> Buat Pengumuman</a>
-	          </li>
-	          <li>
-              <a href="admin-kegiatan.html"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
-	          </li>
-	          <li>
-              <a href="admin-partitur.html"><span class="fa fa-file mr-3"></span> Partitur</a>
-	          </li>
-	          <li  class="active">
-              <a href="admin-pengguna.html"><span class="fa fa-user mr-3"></span> Pengguna</a>
-	          </li>
+  			<div class="p-4 zindexatas"> 
+          <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Pengguna</span></a></h1> 
+          <ul class="list-unstyled components mb-5">
+            <li class="{{ request()->routeIs('admin.beranda') ? 'active' : '' }}"> 
+              <a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
+            </li>
+            
+            @php
+                $isAnnouncementActive = request()->routeIs('admin.announcement.index') || request()->routeIs('admin.announcement.create') || request()->routeIs('admin.announcement.edit');
+            @endphp
+            <li class="{{ $isAnnouncementActive ? 'active' : '' }}">
+              <a href="#announcementSubmenu" data-toggle="collapse" aria-expanded="{{ $isAnnouncementActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-bullhorn mr-3"></span> Pengumuman</a>
+              <ul class="collapse list-unstyled {{ $isAnnouncementActive ? 'show' : '' }}" id="announcementSubmenu">
+                <li>
+                    <a href="{{ route('admin.announcement.index') }}">Lihat Pengumuman</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.announcement.create') }}">Buat Pengumuman</a>
+                </li>
+              </ul>
+            </li>
 
-	        </ul>
+            @php
+                $isKegiatanActive = request()->routeIs('admin.kegiatan.index') || request()->routeIs('admin.kegiatan.create') || request()->routeIs('admin.kegiatan.edit');
+            @endphp
+            <li class="{{ $isKegiatanActive ? 'active' : '' }}">
+              <a href="#kegiatanSubmenu" data-toggle="collapse" aria-expanded="{{ $isKegiatanActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
+              <ul class="collapse list-unstyled {{ $isKegiatanActive ? 'show' : '' }}" id="kegiatanSubmenu">
+                <li>
+                    <a href="{{ route('admin.kegiatan.index') }}">Lihat Kegiatan</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.kegiatan.create') }}">Tambah Kegiatan</a>
+                </li>
+              </ul>
+            </li>
 
+            <li>
+              <a href="#"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
+            </li>
 
-	        <div class="footer ">
-				<ul class="list-unstyled components mb-5">
-					<li>
-						<a href="../../Database/keluar.php"><span class="fa fa-sticky-note mr-3"></span> Keluar</a>
-						</li>
-					</ul>
+            @php
+                $isPenggunaActive = request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create');
+            @endphp
+            <li class="{{ $isPenggunaActive ? 'active' : '' }}">
+                <a href="#userSubmenu" data-toggle="collapse" aria-expanded="{{ $isPenggunaActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-users mr-3"></span> Pengguna</a>
+                <ul class="collapse list-unstyled {{ $isPenggunaActive ? 'show' : '' }}" id="userSubmenu">
+                    <li class="{{ request()->routeIs('admin.pengguna.index') ? 'active-sub' : '' }}">
+                        <a href="{{ route('admin.pengguna.index') }}">Lihat Pengguna</a>
+                    </li>
+                    <li class="{{ request()->routeIs('admin.pengguna.create') ? 'active-sub' : '' }}">
+                        <a href="{{ route('admin.pengguna.create') }}">Tambah Pengguna</a>
+                    </li>
+                </ul>
+            </li>
+          </ul>
 
-	      </div>
-		  <div class="footer ">
-			<p>@bluechoir</p>
+          <div class="footer">
+  					<ul class="list-unstyled components mb-5">
+  						<li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                   <span class="fa fa-sign-out mr-3"></span> Keluar
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+  						</li>
+  					</ul>
+          </div>
 
-	  </div>
+  	      <div class="footer">
+  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p> 
+          </div>
+  	    </div>
     	</nav>
 
+      <div id="content" class="p-3 p-md-4 p-lg-5" style="width: 100%; overflow-y: auto;">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom-custom">
+                <h1 class="h2 main-content-title">Manajemen Pengguna</h1>
+                <a href="{{ route('admin.pengguna.create') }}" class="btn btn-success">
+                    <i class="fa fa-plus"></i> Tambah Pengguna Baru
+                </a>
+            </div>
 
-        <div id="content" class="p-4 p-md-5 pt-5">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Manajemen Pengguna</h1>
-                    {{-- <a href="#" class="btn btn-success">Tambah Pengguna</a> --}}
-                    {{-- Aktifkan jika rute admin.pengguna.create sudah ada --}}
-                    {{-- <a href="{{ route('admin.pengguna.create') }}" class="btn btn-success">Tambah Pengguna</a> --}}
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show custom-alert custom-alert-success" role="alert">
+                    <div class="alert-icon"><i class="fa fa-check-circle"></i></div>
+                    <div class="alert-content">
+                        <strong class="alert-title">Berhasil!</strong>
+                        <span class="alert-message">{{ session('success') }}</span>
+                    </div>
+                    <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show custom-alert custom-alert-danger" role="alert">
+                    <div class="alert-icon"><i class="fa fa-times-circle"></i></div>
+                    <div class="alert-content">
+                        <strong class="alert-title">Gagal!</strong>
+                        <span class="alert-message">{{ session('error') }}</span>
+                    </div>
+                     <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
 
-                @if (session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{ session('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
+            <div class="card shadow-sm table-container">
+                <div class="card-header">Daftar Anggota Blue Choir</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered align-middle">
+                            <thead class="table-dark"> 
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nama Lengkap</th>
+                                    <th scope="col">NIM</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Telepon</th>
+                                    <th scope="col">Posisi</th>
+                                    <th scope="col">Posisi Suara</th>
+                                    <th scope="col" class="text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($users as $user)
+                                <tr>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->namadepan }} {{ $user->namabelakang }}</td>
+                                    <td>{{ $user->nim ?? '-' }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->telepon ?? '-' }}</td>
+                                    <td>
+                                        <span class="badge {{ $user->posisi === 'NonBidang' ? 'bg-danger text-white' : 'bg-primary text-white' }}">
+                                            {{ $user->posisi === 'NonBidang' ? 'Admin (NonBidang)' : ucfirst($user->posisi ?? 'Belum diatur') }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge {{ ($user->status ?? '') === 'aktif' ? 'bg-success' : 'bg-warning text-dark' }}">
+                                            {{ ucfirst($user->posisi_suara ?? 'Tidak diketahui') }}
+                                        </span>
+                                    </td>
+                                    <td class="btn-action-group text-center">
+                                        {{-- Tombol Edit (Placeholder jika tidak ada rute edit pengguna) --}}
+                                        <a href="#" class="btn btn-sm btn-warning" title="Edit Pengguna (Belum ada fungsi)">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-danger" title="Hapus Pengguna" data-toggle="modal" data-target="#deleteUserModal{{ $user->id }}">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
 
-                <div class="card shadow-sm">
-                    <div class="card-header ">
-                        Daftar Anggota Blue Choir
-                    </div>
-                    <div class="mt-4 d-flex justify-content-end shadow-sm" style="margin-right: 40px;">
-                      <a href="" class="btn btn-primary mb-3 me-3 ">
-                          Tambah Pengguna Baru
-                      </a>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-bordered align-middle">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>NIM</th>
-                                        <th>Email</th>
-                                        <th>Telepon</th>
-                                        <th>Posisi</th>
-                                        <th>Posisi Suara</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($users as $user)
-                                    <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->namadepan }} {{ $user->namabelakang }}</td>
-                                        <td>{{ $user->nim ?? '-' }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->telepon ?? '-' }}</td>
-                                        <td>
-                                            <span class="badge text-light {{ $user->posisi === 'NonBidang' ? 'bg-danger' : 'bg-primary' }}">
-                                                {{ $user->posisi === 'NonBidang' ? 'Admin (NonBidang)' : ucfirst($user->posisi ?? 'Belum diatur') }}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="badge {{ $user->status === 'aktif' ? 'bg-success' : 'bg-warning text-dark' }}">
-                                                {{ ucfirst($user->posisi_suara ?? 'Tidak diketahui') }}
-                                            </span>
-                                        </td>
-                                        <td class="btn-action-group">
-                                          <button type="button" class="border-0">
-                                                <p class="btn btn-sm btn-warning" title="Hapus">Edit</p>
-                                          </button>
-                                          <button type="button" class="border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                <p class="btn btn-sm btn-danger" title="Hapus">Hapus</p>
-                                          </button>
-                                                <!-- Modal -->
-                                          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Hapus Pengguna</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <div class="modal fade" id="deleteUserModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel{{ $user->id }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteUserModalLabel{{ $user->id }}">Hapus Pengguna</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Anda yakin akan menghapus pengguna <strong>{{ $user->namadepan }} {{ $user->namabelakang }}</strong> secara permanen?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                        <form action="{{ route('admin.pengguna.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Hapus Permanen</button>
+                                                        </form>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-body">
-                                                    Anda yakin akan menghapus secara permanen? 
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                    <form action="{{ route('admin.pengguna.destroy', $user->id) }}" method="POST" style="display:inline;">
-                                                      @csrf
-                                                        @method('DELETE')
-                                                          <button type="submit" class="btn btn-primary" title="Hapus">
-                                                              Hapus Permanen
-                                                          </button>
-                                                     </form>
-                                                </div>
-                                              </div>
                                             </div>
-                                          </div>
-                                            
-                                        </td>
-                                    </tr>
-                                    @empty
-                                    <tr>
-                                        <td colspan="8" class="text-center">Tidak ada data pengguna.</td>
-                                    </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="8" class="text-center py-4">Tidak ada data pengguna.</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                    @if ($users instanceof \Illuminate\Pagination\LengthAwarePaginator && $users->hasPages())
+                        <div class="mt-3 d-flex justify-content-center">
+                            {{ $users->links() }}
                         </div>
-                      </div>
+                    @elseif ($users instanceof \Illuminate\Contracts\Pagination\Paginator && $users->hasPages())
+                        <div class="mt-3 d-flex justify-content-center">
+                            {{ $users->links() }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
-
-    </div>
-
-
-
-
+      </div> 
+    </div> 
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script> 
+    <script src="{{ asset('js/main.js') }}"></script> 
   </body>
 </html>

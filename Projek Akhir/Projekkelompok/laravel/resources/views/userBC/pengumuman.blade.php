@@ -6,157 +6,229 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    {{-- Path CSS Anda ../../css/style.css, berarti dari public root, pathnya css/style.css --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
-        body{ background-color: #DFEAFC; font-family: 'Poppins', sans-serif; }
-        .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
-        .card-status { font-size: 14px; font-weight: bold; padding: 5px 10px; border-radius: 10px; }
+      body {
+        background-color: #DFEAFC;
+        font-family: 'Poppins', sans-serif;
+      }
+      .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .card-status {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 10px;
+      }
 
-        /* Gaya custom alert Anda sudah ada di file */
-        .custom-alert { border-left: 1px solid; border-radius: 5px; padding: 0.1rem 0.1rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-        .custom-alert-info { border-color: #0dcaf0; background-color: #e8f8fd; color: #0c5460; }
-        .custom-alert-success { border-color: #198754; background-color: #e8fce8; color: #155724; }
-        .custom-alert-danger { border-color: #dc3545; background-color: #fde8e8; color: #842029; }
-        .custom-alert-warning { border-color: #ffc107; background-color: #fff8e5; color: #856404; }
-        .alert-icon { display: inline-flex; align-items: center; margin-right: 0.5rem; font-size: 1.25rem; }
-        .alert-content { flex: 1; margin-left: 0.5rem; }
-        .alert-title { font-weight: 600; margin: 0; }
-        .alert-message { top:0; font-size: 0.95rem; }
-        .btn-close-custom { border: none; background: transparent; font-size: 1.25rem; cursor: pointer; line-height: 1; }
-        .btn-close-custom:hover { color: #000; }
+      .custom-alert {
+        border-left-width: 4px;
+        border-radius: 8px;
+        padding: 0.6rem 0.8rem; /* Reduced padding */
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 0.4rem; /* Reduced margin */
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      }
+      .custom-alert-info { border-left-color: #0dcaf0; background-color: #e8f8fd; color: #0c5460; }
+      .custom-alert-success { border-left-color: #198754; background-color: #e8fce8; color: #155724; }
+      .custom-alert-danger { border-left-color: #dc3545; background-color: #fde8e8; color: #842029; }
+      .custom-alert-warning { border-left-color: #ffc107; background-color: #fff8e5; color: #856404; }
 
-        /* z-index dan status dari file Anda */
-        @media (max-width: 576px) { .zindexmedium { z-index: 90; } }
-        .zindexatas{ z-index: 100; }
-        .completed { background-color: #d4edda; color: #155724; }
-        .in-progress { background-color: #f8d7da; color: #721c24; }
+      .alert-icon {
+        margin-right: 0.3rem; /* Further reduced */
+        font-size: 0.9rem; /* Further reduced */
+        margin-top: 0; /* Align to top */
+      }
+      .alert-content {
+        flex: 1;
+        margin-left: 0.1rem; /* Further reduced */
+      }
+      .alert-title {
+        font-weight: 600;
+        margin-bottom: 0.05rem;
+        font-size: 0.85rem; /* Further reduced */
+      }
+      .alert-message {
+        font-size: 0.75rem; /* Further reduced */
+        line-height: 1.1; /* Further reduced */
+        margin-bottom: 0;
+      }
+      .btn-close-custom {
+        border: none;
+        background: transparent;
+        font-size: 1.25rem;
+        cursor: pointer;
+        line-height: 1;
+        color: #777;
+        opacity: 0.7;
+      }
+      .btn-close-custom:hover {
+        color: #000;
+        opacity: 1;
+      }
 
-        /* Tambahan CSS untuk tampilan pengumuman (dari file Anda) */
-        .announcement-card { background-color: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .announcement-card .card-title { color: #0056b3; /* Warna biru yang lebih gelap untuk judul */ }
-        .announcement-card .card-meta { font-size: 0.85rem; color: #6c757d; /* Abu-abu untuk meta data */ }
-        .announcement-card .card-text-content { /* Tambahkan class ini untuk konten */
-            color: #343a40; /* Abu-abu gelap untuk isi konten */
-            line-height: 1.6;
-            white-space: pre-wrap; /* Agar baris baru dari textarea ditampilkan */
-        }
-        .announcement-card .btn-link { color: #007bff; text-decoration: none; }
-        .announcement-card .btn-link:hover { text-decoration: underline; }
-        .announcement-sender { font-style: italic; font-size: 0.9rem; color: #555; margin-top: 10px; }
+      @media (max-width: 576px) { .zindexmedium { z-index: 90; } }
+      .zindexatas{ z-index: 100; }
+
+      .completed { background-color: #d4edda; color: #155724; }
+      .in-progress { background-color: #f8d7da; color: #721c24; }
+
+      .announcement-card {
+        background-color: #fff;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* Softer shadow */
+        margin-bottom: 0.6rem; /* Reduced margin between cards */
+      }
+      .announcement-card .card-body {
+        padding: 0.7rem; /* Reduced padding */
+      }
+      .announcement-card .card-title {
+        color: #0056b3;
+        font-weight: 600;
+        margin-bottom: 0.2rem; /* Reduced margin */
+        font-size: 1.1rem; /* Adjusted font size for title */
+      }
+      .announcement-card .card-meta {
+        font-size: 0.7rem; /* Further reduced font size */
+        color: #6c757d;
+        margin-bottom: 0.4rem; /* Reduced margin */
+      }
+      .announcement-card .card-text-content {
+        color: #343a40;
+        line-height: 1.3; /* Further reduced line height */
+        white-space: pre-wrap;
+        font-size: 0.8rem; /* Further reduced font size */
+        margin-bottom: 0.3rem; /* Reduced margin */
+      }
+      .announcement-card .btn-link {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0;
+      }
+      .announcement-card .btn-link:hover { text-decoration: underline; }
+      .announcement-sender {
+        font-style: italic;
+        font-size: 0.75rem; /* Further reduced font size */
+        color: #555;
+        margin-top: 0.3rem; /* Reduced margin */
+        text-align: left; /* Aligned left as per image */
+      }
+
+      #content {
+        padding: 10px 15px; /* Reduced overall padding */
+        width: 100%;
+        overflow-y: auto;
+      }
+      #content h2.text-dark.mb-4 {
+        color: #343a40;
+        font-weight: 600;
+        margin-bottom: 0.8rem; /* Reduced margin */
+      }
+      #content .container.my-4 {
+        margin-top: 0.5rem !important; /* Reduced margin */
+        margin-bottom: 0.5rem !important; /* Reduced margin */
+        padding: 0;
+      }
     </style>
   </head>
   <body>
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" class="min-vh-100">
-            <div class="custom-menu zindexmedium"> {{-- --}}
-                <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                  <i class="fa fa-bars"></i>
-                  <span class="sr-only">Toggle Menu</span>
-                </button>
-            </div>
-            <div class="p-4 zindexatas"> {{-- --}}
-                {{-- Tautan logo di file Anda: <a href="index.html" ...> --}}
-                <h1><a href="{{ route('userbcdashboard') }}" class="logo">Blue Choir <span>&gt; Pengumuman</span></a></h1>
-                <ul class="list-unstyled components mb-5">
-                    <li><a href="{{ route('userbcdashboard') }}"><span class="fa fa-home mr-3"></span> Beranda</a></li>
-                    {{-- Nama rute di file Anda 'pengumuman.index'. Sesuaikan jika nama rute di web.php berbeda --}}
-                    <li class="{{ Route::is('pengumuman.index') ? 'active' : '' }}"> {{-- Atau Route::is('pengumuman.index') --}}
-                        <a href="{{ route('pengumuman.index') }}"><span class="fa fa-info mr-3"></span> Pengumuman</a>
-                    </li>
-                    <li><a href="{{ route('kegiatan.index') }}"><span class="fa fa-rocket mr-3"></span> Kegiatan</a></li>
-                    <li><a href="{{ route('partitur.index') }}"><span class="fa fa-file mr-3"></span> Partitur</a></li>
-                    <li><a href="{{ route('profil.show') }}"><span class="fa fa-user mr-3"></span> Akun</a></li>
-                </ul>
-                <div class="footer ">
-                    <ul class="list-unstyled components mb-5">
-                        <li>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();">
-                                <span class="fa fa-sticky-note mr-3"></span> Keluar
-                            </a>
-                            <form id="user-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer "><p>&copy; {{ date('Y') }} Blue Choir</p></div> {{-- (copyright diperbarui) --}}
-            </div>
-        </nav>
-
-        {{-- ID #content dari file Anda sebelumnya tidak ada, saya tambahkan agar konsisten dengan template lain --}}
-        <div id="content" class="p-4 p-md-5 pt-5">
-            <div class="container-fluid"> {{-- Menggunakan container-fluid untuk lebar penuh --}}
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="container my-5">
-                            <h2 class="text-dark mb-4">Pengumuman Terbaru</h2>
-
-                            {{-- Loop untuk menampilkan pengumuman dinamis --}}
-                            @if(isset($announcements) && $announcements->count() > 0)
-                                @foreach($announcements as $announcement)
-                                <div class="card announcement-card mb-4 shadow-sm">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>{{ $announcement->subject }}</b></h5>
-                                        <p class="card-meta mb-2">
-                                            Dipublikasikan: {{ $announcement->publish_date->translatedFormat('l, d F Y') }}
-                                            {{-- Jika publish_date juga menyimpan waktu: --}}
-                                            {{-- {{ $announcement->publish_date->translatedFormat('l, d F Y H:i') }} WITA --}}
-                                        </p>
-                                        <div class="card-text-content">
-                                            {{-- nl2br(e(...)) untuk menjaga format baris baru dan escape HTML --}}
-                                            {!! nl2br(e($announcement->content)) !!}
-                                        </div>
-                                        <p class="announcement-sender mt-3">Dikirim oleh: <em>{{ $announcement->sender }}</em></p>
-                                        {{-- Anda bisa menambahkan link "Baca Selengkapnya" jika kontennya panjang
-                                             dan Anda punya halaman detail pengumuman --}}
-                                        {{-- <a href="#" class="btn btn-link p-0 mt-2">Baca Selengkapnya</a> --}}
-                                    </div>
-                                </div>
-                                @endforeach
-                            @else
-                                <div class="alert alert-info custom-alert-info" role="alert"> {{-- (alert style) --}}
-                                    <div class="alert-icon"><i class="fa fa-info-circle"></i></div>
-                                    <div class="alert-content">
-                                        <h6 class="alert-title">Informasi</h6>
-                                        <p class="alert-message mb-0">Belum ada pengumuman saat ini.</p>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <nav id="sidebar" class="min-vh-100">
+        <div class="custom-menu zindexmedium">
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+          </button>
         </div>
+        <div class="p-4 zindexatas">
+          <h1><a href="{{ route('userbcdashboard') }}" class="logo">Blue Choir <span>&gt; Pengumuman</span></a></h1>
+          <ul class="list-unstyled components mb-5">
+            <li><a href="{{ route('userbcdashboard') }}"><span class="fa fa-home mr-3"></span> Beranda</a></li>
+            <li class="{{ Route::is('pengumuman.index') ? 'active' : '' }}">
+              <a href="{{ route('pengumuman.index') }}"><span class="fa fa-info-circle mr-3"></span> Pengumuman</a>
+            </li>
+            <li><a href="{{ route('kegiatan.index') }}"><span class="fa fa-calendar mr-3"></span> Kegiatan</a></li>
+            <li><a href="{{ route('partitur.index') }}"><span class="fa fa-music mr-3"></span> Partitur</a></li>
+            <li><a href="{{ route('profil.show') }}"><span class="fa fa-user mr-3"></span> Akun</a></li>
+          </ul>
+          <div class="footer">
+            <ul class="list-unstyled components mb-5">
+              <li>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();">
+                  <span class="fa fa-sticky-note mr-3"></span> Keluar
+                </a>
+                <form id="user-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+              </li>
+            </ul>
+          </div>
+          <div class="footer "><p><small>&copy; {{ date('Y') }} Blue Choir</small></p></div>
+        </div>
+      </nav>
+
+      <div id="content" class="p-3 p-md-4" style="width:100%; overflow-y:auto;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="container my-4">
+                <h2 class="text-dark mb-4">Pengumuman Terbaru</h2>
+
+                @if(isset($announcements) && $announcements->count() > 0)
+                  @foreach($announcements as $announcement)
+                  <div class="card announcement-card mb-4">
+  <div class="card-body px-3 py-3" style="background-color: #ffffff; border-left: 4px solid #0d6efd;">
+    <h5 class="card-title text-primary mb-1" style="font-size: 1.15rem; font-weight: 600;">
+      {{ $announcement->subject }}
+    </h5>
+    <p class="card-meta text-muted mb-3" style="font-size: 0.75rem;">
+      Dipublikasikan: {{ \Carbon\Carbon::parse($announcement->publish_date)->translatedFormat('l, d F Y') }}
+    </p>
+
+    <div class="card-text-content" style="font-size: 0.875rem; line-height: 1.35; color: #333; margin-bottom: 0.5rem;">
+      {!! nl2br(preg_replace('/(https?:\/\/[^\s]+)/', '<a href="$1" target="_blank" style="color:#0d6efd;">$1</a>', e($announcement->content))) !!}
     </div>
 
-    {{-- Path JS Anda ../../js/... berarti dari public root, pathnya js/... --}}
+    <p class="announcement-sender text-end mt-2" style="font-style: italic; font-size: 0.75rem; color: #6c757d;">
+      Dikirim oleh: {{ $announcement->sender }}
+    </p>
+  </div>
+</div>
+
+                  @endforeach
+                @else
+                  <div class="alert custom-alert custom-alert-info" role="alert">
+                    <div class="alert-icon"><i class="fa fa-info-circle"></i></div>
+                    <div class="alert-content">
+                      <p class="alert-title mb-0">Belum ada pengumuman saat ini.</p>
+                    </div>
+                  </div>
+                @endif
+
+                @if(isset($announcements) && $announcements instanceof \Illuminate\Pagination\LengthAwarePaginator && $announcements->hasPages())
+                  <div class="mt-4 d-flex justify-content-center">
+                    {{ $announcements->links() }}
+                  </div>
+                @endif
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script>
-        (function($) { // Skrip dari template Anda untuk sidebar
-            "use strict";
-            var fullHeight = function() {
-                $('.js-fullheight').css('height', $(window).height());
-                $(window).resize(function(){
-                    $('.js-fullheight').css('height', $(window).height());
-                });
-            };
-            // fullHeight(); // Aktifkan jika Anda menggunakan class .js-fullheight
-
-            $('#sidebarCollapse').on('click', function () {
-              $('#sidebar').toggleClass('active');
-            });
-        })(jQuery);
-
-        // Script untuk menutup custom alert jika ada tombol close
-        document.querySelectorAll('.btn-close-custom').forEach(button => {
-            button.addEventListener('click', function() {
-                this.closest('.custom-alert').style.display = 'none';
-            });
-        });
-    </script>
   </body>
 </html>

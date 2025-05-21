@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Announcement;
 use Illuminate\Validation\Rule;
-
+use App\Models\Kegiatan;
 class AdminController extends Controller
 {
     public function dashboard()
@@ -134,4 +134,68 @@ class AdminController extends Controller
         $announcement->delete();
         return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil dihapus.'); // Rute baru
     }
+
+
+    // --- MANAJEMEN KEGIATAN ---
+    public function indexKegiatan()
+    {
+        $kegiatans = Kegiatan::where('waktu_mulai', '>=', Carbon::today())
+                             ->orderBy('waktu_mulai', 'asc')
+                             ->get(); 
+        $allKegiatans = Kegiatan::orderBy('waktu_mulai', 'desc')->get(); 
+
+        return view('pengurus.adminKegiatan', [ 
+            'upcomingEvents' => $kegiatans, 
+            'allKegiatansForTable' => $allKegiatans 
+        ]);
+    }
+
+    public function createKegiatan()
+    {
+        return view('pengurus.kegiatan.createAdmin');
+    }
+
+    public function storeKegiatan(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_kegiatan' => 'required|string|max:255',
+            'deskripsi_kegiatan' => 'nullable|string',
+            'waktu_mulai' => 'required|date', 
+            'waktu_selesai' => 'nullable|date|after_or_equal:waktu_mulai',
+            'lokasi' => 'nullable|string|max:255',
+            'status' => 'required|in:akan datang,selesai,berlangsung,dibatalkan',
+        ]);
+
+        Kegiatan::create($validatedData);
+        return redirect()->route('admin.kegiatan.index')->with('success', 'Kegiatan berhasil ditambahkan.');
+    }
+
+    public function editKegiatan(Kegiatan $kegiatan) 
+    {
+        return view('pengurus.kegiatan.editAdmin', compact('kegiatan'));
+    }
+
+    public function updateKegiatan(Request $request, Kegiatan $kegiatan)
+    {
+        $validatedData = $request->validate([
+            'nama_kegiatan' => 'required|string|max:255',
+            'deskripsi_kegiatan' => 'nullable|string',
+            'waktu_mulai' => 'required|date',
+            'waktu_selesai' => 'nullable|date|after_or_equal:waktu_mulai',
+            'lokasi' => 'nullable|string|max:255',
+            'status' => 'required|in:akan datang,selesai,berlangsung,dibatalkan',
+        ]);
+
+        $kegiatan->update($validatedData);
+        return redirect()->route('admin.kegiatan.index')->with('success', 'Kegiatan berhasil diperbarui.');
+    }
+
+    public function destroyKegiatan(Kegiatan $kegiatan)
+    {
+        $kegiatan->delete();
+        return redirect()->route('admin.kegiatan.index')->with('success', 'Kegiatan berhasil dihapus.');
+    }
+
+
+    
 }

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="id">
   <head>
-  	<title>Admin - Manajemen Pengumuman</title>
+  	<title>Admin - Edit Kegiatan</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -86,7 +86,6 @@
     .alert-title { font-weight: 600; margin-top: 0; margin-bottom: 0.25rem; font-size: 1.1rem; }
     .alert-message { font-size: 0.95rem; margin-bottom: 0; }
     
-    /* Penyesuaian untuk tombol close alert agar mirip Bootstrap 4 */
     .custom-alert .close {
         float: right;
         font-size: 1.5rem;
@@ -104,14 +103,8 @@
         text-decoration: none;
         opacity: .75;
     }
-    /* Jika Anda memiliki .btn-close-custom untuk styling tambahan, bisa diterapkan di sini */
-    .btn-close-custom { 
-      /* Gaya kustom Anda bisa tetap di sini jika diperlukan, */
-      /* namun pastikan tidak konflik dengan .close di atas */
-      /* Contoh: */
-      /* padding: 0.5rem; */
-      /* margin-left: 1rem; */
-    }
+    .btn-close-custom { /* Dikosongkan karena .close sudah menangani */ }
+
 
     .zindexatas{ z-index: 100; }
 
@@ -122,6 +115,37 @@
     .border-bottom-custom {
         border-bottom: 1px solid #dee2e6 !important;
     }
+
+    .form-label .text-danger {
+        font-size: 0.8em;
+    }
+    textarea.form-control {
+        min-height: 100px; 
+        resize: vertical; 
+    }
+    
+    .form-control, .form-select {
+        border: 1px solid #ced4da; 
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: #86b7fe; 
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); 
+    }
+
+    .input-group-text { 
+        background-color: #e9ecef;
+        border: 1px solid #ced4da; 
+        border-right: 0; 
+        padding: 0.375rem 0.75rem;
+    }
+    .input-group .form-control {
+        border-left: 0; 
+    }
+    .input-group > .form-control:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+    .input-group > .form-control:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+    .input-group > .input-group-text:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+    .input-group > .input-group-text:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0;}
+
 
     @media (max-width: 767.98px) { 
         .main-content-title.h2 { font-size: 1.5rem; }
@@ -137,6 +161,7 @@
         .alert-message { font-size: 0.9rem; }
         .d-flex.justify-content-between.align-items-center { flex-direction: column; align-items: flex-start !important;}
         .d-flex.justify-content-between.align-items-center .btn { margin-top: 10px; width:100%;}
+        .d-flex.justify-content-end .btn { width:100%;} 
     }
   </style>
   <body>
@@ -149,7 +174,7 @@
           </button>
         </div>
   			<div class="p-4 zindexatas"> 
-          <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Pengumuman</span></a></h1> 
+          <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Edit Kegiatan</span></a></h1> 
           <ul class="list-unstyled components mb-5">
             <li class="{{ request()->routeIs('admin.beranda') ? 'active' : '' }}"> 
               <a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
@@ -176,10 +201,10 @@
             <li class="{{ $isKegiatanActive ? 'active' : '' }}">
               <a href="#kegiatanSubmenu" data-toggle="collapse" aria-expanded="{{ $isKegiatanActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
               <ul class="collapse list-unstyled {{ $isKegiatanActive ? 'show' : '' }}" id="kegiatanSubmenu">
-                <li>
+                <li class="{{ request()->routeIs('admin.kegiatan.index') ? 'active-sub' : '' }}">
                     <a href="{{ route('admin.kegiatan.index') }}">Lihat Kegiatan</a>
                 </li>
-                <li>
+                <li class="{{ request()->routeIs('admin.kegiatan.create') ? 'active-sub' : '' }}">
                     <a href="{{ route('admin.kegiatan.create') }}">Tambah Kegiatan</a>
                 </li>
               </ul>
@@ -228,90 +253,96 @@
       <div id="content" class="p-3 p-md-4 p-lg-5" style="width: 100%; overflow-y: auto;">
         <div class="container-fluid">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom-custom">
-                <h1 class="h2 main-content-title">Manajemen Pengumuman</h1>
-                <a href="{{ route('admin.announcement.create') }}" class="btn btn-success">
-                    <i class="fa fa-plus"></i> Buat Pengumuman Baru
+                <h1 class="h2 main-content-title">Edit Kegiatan</h1>
+                <a href="{{ route('admin.kegiatan.index') }}" class="btn btn-outline-secondary">
+                   <i class="fa fa-arrow-left"></i> Kembali ke Daftar
                 </a>
             </div>
 
-            @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show custom-alert custom-alert-success" role="alert">
-                    <div class="alert-icon"><i class="fa fa-check-circle"></i></div>
-                    <div class="alert-content">
-                        <strong class="alert-title">Berhasil!</strong>
-                        <span class="alert-message">{{ session('success') }}</span>
-                    </div>
-                    <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-            @if (session('error'))
-                <div class="alert alert-danger alert-dismissible fade show custom-alert custom-alert-danger" role="alert">
-                    <div class="alert-icon"><i class="fa fa-times-circle"></i></div>
-                    <div class="alert-content">
-                        <strong class="alert-title">Gagal!</strong>
-                        <span class="alert-message">{{ session('error') }}</span>
-                    </div>
-                     <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-
             <div class="card shadow-sm table-container">
-                <div class="card-header">Daftar Pengumuman</div>
+                <div class="card-header">Formulir Edit Kegiatan</div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-bordered align-middle">
-                            <thead class="table-dark"> 
-                                <tr>
-                                    <th scope="col" style="width: 5%;">ID</th>
-                                    <th scope="col">Subjek</th>
-                                    <th scope="col" style="width: 15%;">Pengirim</th>
-                                    <th scope="col" style="width: 15%;">Tgl Publish</th>
-                                    <th scope="col" style="width: 15%;">Dibuat</th>
-                                    <th scope="col" style="width: 10%;" class="text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($announcements as $announcement)
-                                <tr>
-                                    <td>{{ $announcement->id }}</td>
-                                    <td>{{ Str::limit($announcement->subject, 45) }}</td>
-                                    <td>{{ $announcement->sender }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($announcement->publish_date)->translatedFormat('d M Y') }}</td>
-                                    <td>{{ $announcement->created_at->translatedFormat('d M Y, H:i') }}</td>
-                                    <td class="btn-action-group text-center">
-                                        <a href="{{ route('admin.announcement.edit', $announcement->id) }}" class="btn btn-sm btn-warning" title="Edit">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <form action="{{ route('admin.announcement.destroy', $announcement->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengumuman ini?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" title="Hapus">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @empty
-                                <tr>
-                                    <td colspan="6" class="text-center py-4">Belum ada pengumuman.</td>
-                                </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                     @if ($announcements instanceof \Illuminate\Pagination\LengthAwarePaginator && $announcements->hasPages())
-                        <div class="mt-3 d-flex justify-content-center">
-                            {{ $announcements->links() }}
-                        </div>
-                    @elseif ($announcements instanceof \Illuminate\Contracts\Pagination\Paginator && $announcements->hasPages())
-                        <div class="mt-3 d-flex justify-content-center">
-                            {{ $announcements->links() }}
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show custom-alert custom-alert-danger" role="alert">
+                            <div class="alert-icon"><i class="fa fa-exclamation-triangle"></i></div>
+                            <div class="alert-content">
+                                <strong class="alert-title">Validasi Gagal!</strong>
+                                <ul class="mb-0 ps-3 alert-message" style="list-style-type: disc;">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     @endif
+
+                    <form action="{{ route('admin.kegiatan.update', $kegiatan->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label for="nama_kegiatan" class="form-label">Nama Kegiatan <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-bookmark"></i></span>
+                                <input type="text" class="form-control @error('nama_kegiatan') is-invalid @enderror" id="nama_kegiatan" name="nama_kegiatan" value="{{ old('nama_kegiatan', $kegiatan->nama_kegiatan) }}" required>
+                            </div>
+                            @error('nama_kegiatan') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="deskripsi_kegiatan" class="form-label">Deskripsi</label>
+                            <textarea class="form-control @error('deskripsi_kegiatan') is-invalid @enderror" id="deskripsi_kegiatan" name="deskripsi_kegiatan" rows="4">{{ old('deskripsi_kegiatan', $kegiatan->deskripsi_kegiatan) }}</textarea>
+                            @error('deskripsi_kegiatan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="waktu_mulai" class="form-label">Waktu Mulai <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-calendar-check-o"></i></span>
+                                    <input type="datetime-local" class="form-control @error('waktu_mulai') is-invalid @enderror" id="waktu_mulai" name="waktu_mulai" value="{{ old('waktu_mulai', $kegiatan->waktu_mulai ? \Carbon\Carbon::parse($kegiatan->waktu_mulai)->format('Y-m-d\TH:i') : '') }}" required>
+                                </div>
+                                @error('waktu_mulai') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="waktu_selesai" class="form-label">Waktu Selesai (Opsional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-calendar-times-o"></i></span>
+                                    <input type="datetime-local" class="form-control @error('waktu_selesai') is-invalid @enderror" id="waktu_selesai" name="waktu_selesai" value="{{ old('waktu_selesai', $kegiatan->waktu_selesai ? \Carbon\Carbon::parse($kegiatan->waktu_selesai)->format('Y-m-d\TH:i') : '') }}">
+                                </div>
+                                @error('waktu_selesai') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lokasi" class="form-label">Lokasi</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                                <input type="text" class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" name="lokasi" value="{{ old('lokasi', $kegiatan->lokasi) }}">
+                            </div>
+                            @error('lokasi') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status Kegiatan <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-check-square-o"></i></span>
+                                <select class="form-select @error('status') is-invalid @enderror" id="status" name="status" required>
+                                    <option value="akan datang" {{ old('status', $kegiatan->status) == 'akan datang' ? 'selected' : '' }}>Akan Datang</option>
+                                    <option value="berlangsung" {{ old('status', $kegiatan->status) == 'berlangsung' ? 'selected' : '' }}>Sedang Berlangsung</option>
+                                    <option value="selesai" {{ old('status', $kegiatan->status) == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                    <option value="dibatalkan" {{ old('status', $kegiatan->status) == 'dibatalkan' ? 'selected' : '' }}>Dibatalkan</option>
+                                </select>
+                            </div>
+                            @error('status') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Perubahan</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
