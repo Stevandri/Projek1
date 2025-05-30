@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="id">
   <head>
-  	<title>Admin - Tambah Pengguna Baru</title>
+  	<title>Admin - Edit Pengguna</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -37,61 +37,6 @@
     .input-group > .form-control:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
     .input-group > .input-group-text:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
     .input-group > .input-group-text:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0;}
-
-    .admin-card {
-      border-radius: 10px;
-      border: none;
-      transition: all 0.3s ease-in-out;
-      background-clip: border-box;
-    }
-    .admin-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
-    }
-    .admin-card .card-body { padding: 1.25rem; }
-    .admin-card .card-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .admin-card .card-text-value { font-size: 2rem; font-weight: 700; }
-    .admin-card .icon-bg { font-size: 2.5rem; opacity: 0.5; }
-
-    .table-container {
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
-    .table thead th {
-        background-color: #343a40;
-        color: #ffffff;
-        font-weight: 600;
-        border-bottom-width: 0;
-        font-size: 0.9rem;
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
-        vertical-align: middle;
-    }
-    .table tbody td {
-        font-size: 0.85rem;
-        vertical-align: middle;
-    }
-    .table tbody tr:hover {
-        background-color: #f1f1f1;
-    }
-    .table .badge {
-        font-size: 0.75em;
-        padding: 0.5em 0.75em;
-    }
-    .btn-action-group .btn, .btn-action-group form {
-        display: inline-block;
-        margin-right: 5px;
-        margin-bottom: 5px;
-    }
-    .btn-action-group .btn:last-child, .btn-action-group form:last-child {
-        margin-right: 0;
-    }
 
     .custom-alert {
       border-left-width: 4px;
@@ -139,6 +84,13 @@
     .border-bottom-custom {
         border-bottom: 1px solid #dee2e6 !important;
     }
+    .form-label .text-danger {
+        font-size: 0.8em;
+    }
+    .card.form-container {
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
 
     #content {
       margin-left: 270px;
@@ -169,11 +121,8 @@
 
     @media (max-width: 767.98px) {
         .main-content-title.h2 { font-size: 1.5rem; }
-        .main-content-title.h4 { font-size: 1.1rem; }
         #content { padding: 1rem !important; }
-        .table thead th, .table tbody td { font-size: 0.8rem; padding: 0.5rem; }
         #sidebar .logo span { display: block; font-size: 12px;}
-        .btn-action-group .btn { margin-bottom: 5px; display: inline-block; }
     }
     @media (max-width: 575.98px) {
         .zindexmedium { z-index: 90; }
@@ -182,6 +131,9 @@
         .alert-message { font-size: 0.9rem; }
         .d-flex.justify-content-between.align-items-center { flex-direction: column; align-items: flex-start !important;}
         .d-flex.justify-content-between.align-items-center .btn { margin-top: 10px; width:100%;}
+        .d-flex.justify-content-end .btn, .d-flex.justify-content-end a.btn { width:100%; margin-bottom: 0.5rem;}
+        .d-flex.justify-content-end a.btn:last-child { margin-bottom: 0;}
+
     }
   </style>
   <body>
@@ -194,7 +146,7 @@
           </button>
         </div>
   			<div class="p-4 zindexatas">
-          <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Pengguna</span></a></h1>
+          <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Edit Pengguna</span></a></h1>
           <ul class="list-unstyled components mb-5">
             <li class="{{ request()->routeIs('admin.beranda') ? 'active' : '' }}">
               <a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
@@ -235,7 +187,7 @@
             </li>
 
             @php
-                $isPenggunaActive = request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create');
+                $isPenggunaActive = request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create') || request()->routeIs('admin.pengguna.edit');
             @endphp
             <li class="{{ $isPenggunaActive ? 'active' : '' }}">
                 <a href="#userSubmenu" data-toggle="collapse" aria-expanded="{{ $isPenggunaActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-users mr-3"></span> Pengguna</a>
@@ -273,15 +225,27 @@
       <div id="content" class="p-3 p-md-4 p-lg-5">
         <div class="container-fluid">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom-custom">
-                <h1 class="h2 main-content-title">Tambah Pengguna Baru</h1>
+                <h1 class="h2 main-content-title">Edit Pengguna: {{ $user->namadepan }} {{ $user->namabelakang }}</h1>
                 <a href="{{ route('admin.pengguna.index') }}" class="btn btn-outline-secondary">
                    <i class="fa fa-arrow-left"></i> Kembali ke Daftar Pengguna
                 </a>
             </div>
 
-            <div class="card shadow-sm form-container table-container">
-                <div class="card-header">Formulir Tambah Pengguna</div>
+            <div class="card shadow-sm form-container">
+                <div class="card-header">Formulir Edit Pengguna</div>
                 <div class="card-body">
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show custom-alert custom-alert-success" role="alert">
+                            <div class="alert-icon"><i class="fa fa-check-circle"></i></div>
+                            <div class="alert-content">
+                                <strong class="alert-title">Berhasil!</strong>
+                                <span class="alert-message">{{ session('success') }}</span>
+                            </div>
+                            <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible fade show custom-alert custom-alert-danger" role="alert">
                             <div class="alert-icon"><i class="fa fa-exclamation-triangle"></i></div>
@@ -299,41 +263,39 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('admin.pengguna.store') }}" method="POST">
+                    <form action="{{ route('admin.pengguna.update', $user->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="nama_depan" class="form-label">Nama Depan <span class="text-danger">*</span></label>
+                                <label for="namadepan" class="form-label">Nama Depan <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control @error('nama_depan') is-invalid @enderror" id="nama_depan" name="nama_depan" value="{{ old('nama_depan') }}" required>
+                                    <input type="text" class="form-control @error('namadepan') is-invalid @enderror" id="namadepan" name="namadepan" value="{{ old('namadepan', $user->namadepan) }}" required>
                                 </div>
-                                @error('nama_depan') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                                @error('namadepan') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="nama_belakang" class="form-label">Nama Belakang</label>
+                                <label for="namabelakang" class="form-label">Nama Belakang</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fa fa-user-o"></i></span>
-                                    <input type="text" class="form-control @error('nama_belakang') is-invalid @enderror" id="nama_belakang" name="nama_belakang" value="{{ old('nama_belakang') }}">
+                                    <input type="text" class="form-control @error('namabelakang') is-invalid @enderror" id="namabelakang" name="namabelakang" value="{{ old('namabelakang', $user->namabelakang) }}">
                                 </div>
-                                @error('nama_belakang') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                                @error('namabelakang') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="nim" class="form-label">NIM <span class="text-danger">*</span></label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fa fa-id-card-o"></i></span>
-                                <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" value="{{ old('nim') }}" required>
-                            </div>
-                            @error('nim') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                            <label for="nim_display" class="form-label">NIM</label>
+                            <input type="text" class="form-control" id="nim_display" value="{{ $user->nim }}" readonly disabled>
+                            <small class="form-text text-muted">NIM tidak dapat diubah.</small>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}" required>
                             </div>
                             @error('email') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                         </div>
@@ -342,7 +304,7 @@
                             <label for="telepon" class="form-label">Nomor Telepon</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa fa-phone"></i></span>
-                                <input type="tel" class="form-control @error('telepon') is-invalid @enderror" id="telepon" name="telepon" value="{{ old('telepon') }}">
+                                <input type="tel" class="form-control @error('telepon') is-invalid @enderror" id="telepon" name="telepon" value="{{ old('telepon', $user->telepon) }}">
                             </div>
                             @error('telepon') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                         </div>
@@ -353,47 +315,50 @@
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fa fa-music"></i></span>
                                     <select class="form-select @error('posisi_suara') is-invalid @enderror" id="posisi_suara" name="posisi_suara">
-                                        <option value="" selected>-- Pilih Posisi Suara --</option>
-                                        <option value="Sopran 1" {{ old('posisi_suara') == 'Sopran 1' ? 'selected' : '' }}>Sopran 1</option>
-                                        <option value="Sopran 2" {{ old('posisi_suara') == 'Sopran 2' ? 'selected' : '' }}>Sopran 2</option>
-                                        <option value="Alto 1" {{ old('posisi_suara') == 'Alto 1' ? 'selected' : '' }}>Alto 1</option>
-                                        <option value="Alto 2" {{ old('posisi_suara') == 'Alto 2' ? 'selected' : '' }}>Alto 2</option>
-                                        <option value="Tenor 1" {{ old('posisi_suara') == 'Tenor 1' ? 'selected' : '' }}>Tenor 1</option>
-                                        <option value="Tenor 2" {{ old('posisi_suara') == 'Tenor 2' ? 'selected' : '' }}>Tenor 2</option>
-                                        <option value="Bass 1" {{ old('posisi_suara') == 'Bass 1' ? 'selected' : '' }}>Bass 1</option>
-                                        <option value="Bass 2" {{ old('posisi_suara') == 'Bass 2' ? 'selected' : '' }}>Bass 2</option>
-                                        <option value="Baritone" {{ old('posisi_suara') == 'Baritone' ? 'selected' : '' }}>Baritone</option>
+                                        <option value="" {{ old('posisi_suara', $user->posisi_suara) == '' ? 'selected' : '' }}>-- Tidak Ditentukan --</option>
+                                        <option value="Sopran 1" {{ old('posisi_suara', $user->posisi_suara) == 'Sopran 1' ? 'selected' : '' }}>Sopran 1</option>
+                                        <option value="Sopran 2" {{ old('posisi_suara', $user->posisi_suara) == 'Sopran 2' ? 'selected' : '' }}>Sopran 2</option>
+                                        <option value="Alto 1" {{ old('posisi_suara', $user->posisi_suara) == 'Alto 1' ? 'selected' : '' }}>Alto 1</option>
+                                        <option value="Alto 2" {{ old('posisi_suara', $user->posisi_suara) == 'Alto 2' ? 'selected' : '' }}>Alto 2</option>
+                                        <option value="Tenor 1" {{ old('posisi_suara', $user->posisi_suara) == 'Tenor 1' ? 'selected' : '' }}>Tenor 1</option>
+                                        <option value="Tenor 2" {{ old('posisi_suara', $user->posisi_suara) == 'Tenor 2' ? 'selected' : '' }}>Tenor 2</option>
+                                        <option value="Bass 1" {{ old('posisi_suara', $user->posisi_suara) == 'Bass 1' ? 'selected' : '' }}>Bass 1</option>
+                                        <option value="Bass 2" {{ old('posisi_suara', $user->posisi_suara) == 'Bass 2' ? 'selected' : '' }}>Bass 2</option>
+                                        <option value="Baritone" {{ old('posisi_suara', $user->posisi_suara) == 'Baritone' ? 'selected' : '' }}>Baritone</option>
                                     </select>
                                 </div>
                                 @error('posisi_suara') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="posisi" class="form-label">Posisi (Peran) <span class="text-danger">*</span></label>
+                                <label for="status" class="form-label">Status Keanggotaan <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fa fa-briefcase"></i></span>
-                                    <select class="form-select @error('posisi') is-invalid @enderror" id="posisi" name="posisi" required>
-                                        <option value="" selected>-- Pilih Posisi/Peran --</option>
-                                        <option value="Anggota" {{ old('posisi') == 'Anggota' ? 'selected' : '' }}>Anggota</option>
-                                        <option value="Tim Aset & Perlengkapan" {{ old('posisi') == 'Tim Aset & Perlengkapan' ? 'selected' : '' }}>Tim Aset & Perlengkapan</option>
-                                        <option value="NonBidang" {{ old('posisi') == 'NonBidang' ? 'selected' : '' }}>Admin (NonBidang)</option>
+                                    <span class="input-group-text"><i class="fa fa-info-circle"></i></span>
+                                    <select class="form-select @error('status') is-invalid @enderror" id="status" name="status" required>
+                                        <option value="Aktif" {{ old('status', $user->status) == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                                        <option value="Pasif" {{ old('status', $user->status) == 'Pasif' ? 'selected' : '' }}>Pasif</option>
+                                        <option value="Alumni" {{ old('status', $user->status) == 'Alumni' ? 'selected' : '' }}>Alumni</option>
                                     </select>
                                 </div>
-                                @error('posisi') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                                @error('status') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="password" class="form-label">Kata Sandi <span class="text-danger">*</span></label>
+                            <label for="posisi" class="form-label">Posisi (Peran) <span class="text-danger">*</span></label>
                             <div class="input-group">
-                                <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
+                                <span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+                                <select class="form-select @error('posisi') is-invalid @enderror" id="posisi" name="posisi" required>
+                                    <option value="Anggota" {{ old('posisi', $user->posisi) == 'Anggota' ? 'selected' : '' }}>Anggota</option>
+                                    <option value="NonBidang" {{ old('posisi', $user->posisi) == 'NonBidang' ? 'selected' : '' }}>Admin (NonBidang)</option>
+                                </select>
                             </div>
-                            @error('password') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                            @error('posisi') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                         </div>
 
-                        <div class="d-flex justify-content-end mt-3">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Pengguna</button>
+                        <div class="d-flex justify-content-end mt-4">
+                            <a href="{{ route('admin.pengguna.index') }}" class="btn btn-outline-secondary me-2">Batal</a>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Perubahan</button>
                         </div>
                     </form>
                 </div>

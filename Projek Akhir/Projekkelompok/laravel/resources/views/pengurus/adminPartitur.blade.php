@@ -7,22 +7,64 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    {{-- Tambahkan CSS spesifik halaman jika ada --}}
     <style>
-        /* Tambahkan CSS dari file adminKegiatan.blade.php jika relevan dan belum ada di style.css global */
-        body { background-color: #f8f9fa; font-family: 'Poppins', sans-serif; color: #495057; }
-        .table-container { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .table thead th { background-color: #343a40; color: #ffffff; font-weight: 600; border-bottom-width: 0; font-size: 0.9rem; padding-top: 0.75rem; padding-bottom: 0.75rem; vertical-align: middle;}
-        .table tbody td { font-size: 0.85rem; vertical-align: middle; }
-        .table tbody tr:hover { background-color: #f1f1f1; }
-        .table .badge { font-size: 0.75em; padding: 0.5em 0.75em;}
-        .btn-action-group .btn, .btn-action-group form { display: inline-block; margin-right: 5px; margin-bottom: 5px; }
-        .btn-action-group .btn:last-child, .btn-action-group form:last-child { margin-right: 0; }
-        .main-content-title { color: #343a40; font-weight: 600; }
-        .border-bottom-custom { border-bottom: 1px solid #dee2e6 !important; }
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+            color: #495057;
+            overflow-x: hidden;
+        }
+        .table-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .table thead th {
+            background-color: #343a40;
+            color: #ffffff;
+            font-weight: 600;
+            border-bottom-width: 0;
+            font-size: 0.9rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            vertical-align: middle;
+        }
+        .table tbody td {
+            font-size: 0.85rem;
+            vertical-align: middle;
+        }
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .table .badge {
+            font-size: 0.75em;
+            padding: 0.5em 0.75em;
+        }
+        .btn-action-group .btn, .btn-action-group form {
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .btn-action-group .btn:last-child, .btn-action-group form:last-child {
+            margin-right: 0;
+        }
+        .main-content-title {
+            color: #343a40;
+            font-weight: 600;
+        }
+        .border-bottom-custom {
+            border-bottom: 1px solid #dee2e6 !important;
+        }
 
-        /* Alert Styles (jika belum ada di style.css global) */
-        .custom-alert { border-left-width: 4px; border-radius: 5px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+        .custom-alert {
+            border-left-width: 4px;
+            border-radius: 5px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
         .custom-alert-info { border-left-color: #0dcaf0; background-color: #e8f8fd; color: #0c5460; }
         .custom-alert-success { border-left-color: #198754; background-color: #e8fce8; color: #155724; }
         .custom-alert-danger { border-left-color: #dc3545; background-color: #fde8e8; color: #842029; }
@@ -31,19 +73,75 @@
         .alert-content { flex: 1; }
         .alert-title { font-weight: 600; margin-top: 0; margin-bottom: 0.25rem; font-size: 1.1rem; }
         .alert-message { font-size: 0.95rem; margin-bottom: 0; }
-        .custom-alert .close { float: right; font-size: 1.5rem; font-weight: 700; line-height: 1; color: #000; text-shadow: 0 1px 0 #fff; opacity: .5; padding: 0; background-color: transparent; border: 0; }
-        .custom-alert .close:hover { color: #000; text-decoration: none; opacity: .75; }
-        .btn-close-custom {} /* Jika ada styling khusus untuk tombol close alert */
+        .custom-alert .close {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            opacity: .5;
+            padding: 0;
+            background-color: transparent;
+            border: 0;
+        }
+        .custom-alert .close:hover {
+            color: #000;
+            text-decoration: none;
+            opacity: .75;
+        }
 
-        #sidebar .logo span { display: block; font-size: 12px;} /* Untuk breadcrumb di sidebar */
+        #sidebar .logo span { display: block; font-size: 12px;}
         .zindexatas{ z-index: 100; }
-        #sidebar ul.collapse li.active-sub > a { color: #28a745; font-weight: bold; background: rgba(0,0,0,0.05); } /* Styling submenu aktif */
-        #sidebar ul li a[aria-expanded="true"] { color: #4e73df; } /* Styling dropdown terbuka */
+        #sidebar ul.collapse li.active-sub > a { color: #28a745; font-weight: bold; background: rgba(0,0,0,0.05); }
+        #sidebar ul li a[aria-expanded="true"] { color: #4e73df; }
+
+        #content {
+          margin-left: 270px;
+          width: calc(100% - 270px);
+          min-height: 100vh;
+          transition: all 0.3s;
+          overflow-y: auto;
+        }
+
+        #sidebar.active {
+          margin-left: -270px;
+        }
+
+        #sidebar.active ~ #content {
+          margin-left: 0;
+          width: 100%;
+        }
+
+        @media (max-width: 991.98px) {
+          #content {
+            margin-left: 0;
+            width: 100%;
+          }
+          #sidebar.active {
+            margin-left: 0;
+          }
+        }
+
+        @media (max-width: 767.98px) {
+            .main-content-title.h2 { font-size: 1.5rem; }
+            #content { padding: 1rem !important; }
+            .table thead th, .table tbody td { font-size: 0.8rem; padding: 0.5rem; }
+            .btn-action-group .btn { margin-bottom: 5px; display: inline-block; }
+        }
+        @media (max-width: 575.98px) {
+            .zindexmedium { z-index: 90; }
+            .alert-icon { font-size: 1.25rem; margin-right: 0.75rem;}
+            .alert-title { font-size: 1rem; }
+            .alert-message { font-size: 0.9rem; }
+            .d-flex.justify-content-between.align-items-center { flex-direction: column; align-items: flex-start !important;}
+            .d-flex.justify-content-between.align-items-center .btn { margin-top: 10px; width:100%;}
+        }
     </style>
   </head>
   <body>
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar">
+        <nav id="sidebar" class="min-vh-100">
             <div class="custom-menu zindexmedium">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                   <i class="fa fa-bars"></i>
@@ -132,13 +230,12 @@
             </div>
         </nav>
 
-        <div id="content" class="p-3 p-md-4 p-lg-5" style="width:100%; overflow-y:auto;">
+        <div id="content" class="p-3 p-md-4 p-lg-5">
             <div class="container-fluid">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom-custom">
                     <h1 class="h2 main-content-title">Manajemen Partitur</h1>
                 </div>
 
-                {{-- Tampilkan Pesan Sukses/Error --}}
                 @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show custom-alert custom-alert-success" role="alert">
                         <div class="alert-icon"><i class="fa fa-check-circle"></i></div>
@@ -164,9 +261,8 @@
                     </div>
                 @endif
 
-                {{-- Tampilkan Error Validasi --}}
                 @if ($errors->any())
-                    <div class="alert alert-danger custom-alert custom-alert-danger" role="alert">
+                    <div class="alert alert-danger custom-alert custom-alert-danger alert-dismissible fade show" role="alert">
                         <div class="alert-icon"><i class="fa fa-exclamation-triangle"></i></div>
                         <div class="alert-content">
                             <strong class="alert-title">Validasi Gagal!</strong>
@@ -306,7 +402,6 @@
                 judulFileDisplay.textContent = "";
             }
         }
-
     </script>
   </body>
 </html>

@@ -9,6 +9,7 @@
   <style>
     body {
       background-color: #DFEAFC; /* Match profilBC */
+      overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
     }
     .card {
       border-radius: 15px;
@@ -53,7 +54,7 @@
     .custom-alert {
       border-left: 1px solid;
       border-radius: 5px;
-      padding: 0.1rem 0.1rem; /* Disesuaikan */
+      padding: 0.1rem 0.1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -66,24 +67,54 @@
     .alert-icon { display: inline-flex; align-items: center; margin-right: 0.5rem; font-size: 1.25rem; }
     .alert-content { flex: 1; margin-left: 0.5rem; }
     .alert-title { font-weight: 600; margin: 0; }
-    .alert-message { top: 0; font-size: 0.95rem; margin:0; padding: 0; list-style: none;} /* Disesuaikan */
+    .alert-message { top: 0; font-size: 0.95rem; margin:0; padding: 0; list-style: none;}
     .btn-close-custom { border: none; background: transparent; font-size: 1.25rem; cursor: pointer; line-height: 1; }
     .btn-close-custom:hover { color: #000; }
 
-    /* Responsive adjustments from profilBC */
+    /* --- CSS BARU UNTUK LAYOUT RESPONSIF SIDEBAR --- */
+    #content {
+      margin-left: 270px; /* Lebar sidebar */
+      width: calc(100% - 270px); /* Sisa lebar */
+      min-height: 100vh;
+      transition: all 0.3s;
+      overflow-y: auto; /* Dari style inline sebelumnya */
+      /* Padding diatur oleh kelas p-3 p-md-4 pada elemen HTML */
+    }
+
+    #sidebar.active {
+      margin-left: -270px; /* Sembunyikan sidebar */
+    }
+
+    #sidebar.active ~ #content {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 991.98px) { /* Tablet dan di bawahnya */
+      #content {
+        margin-left: 0;
+        width: 100%;
+      }
+      #sidebar.active {
+        margin-left: 0; /* Sidebar muncul sebagai overlay */
+      }
+    }
+    /* --- AKHIR CSS BARU --- */
+
+    /* Responsive adjustments from profilBC (dipertahankan) */
     @media (max-width: 767.98px) {
-      .containerku {
+      .containerku { /* Kelas ini digunakan di div pembungkus form */
         padding-left: 15px;
         padding-right: 15px;
       }
-      .card-body {
+      .card-body { /* Menargetkan card-body di dalam form edit */
         padding: 1.5rem !important;
       }
-      .profile-img {
+      .profile-img { /* Penyesuaian untuk gambar profil di form edit */
         width: 80px;
         height: 80px;
       }
-      .custom-file-upload {
+      .custom-file-upload { /* Penyesuaian untuk tombol upload */
         width: 100%;
         text-align: center;
         margin-top: 1rem !important;
@@ -95,8 +126,11 @@
         margin-bottom: 0.75rem;
       }
     }
-    .zindexmedium { z-index: 1030; }
-    .zindexatas { z-index: 100; }
+
+    /* z-index yang ada di file ini dipertahankan */
+    .zindexmedium { z-index: 1030; } /* Untuk custom-menu (tombol sidebar) */
+    .zindexatas { z-index: 100; }  /* Untuk konten di dalam sidebar */
+
   </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
@@ -145,7 +179,14 @@
         </div>
       </nav>
 
-      <div id="content" class="p-3 p-md-4" style="width:100%; overflow-y:auto;"> <div class="container containerku"> <div class="row justify-content-center"> <div class="col-lg-8 col-md-10"> <div class="card shadow"> <div class="card-body p-4"> <h2 class="card-title text-center mb-4">Edit Profil Saya</h2>
+      {{-- Menghapus style inline dari #content --}}
+      <div id="content" class="p-3 p-md-4">
+        <div class="container containerku">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+              <div class="card shadow">
+                <div class="card-body p-4">
+                  <h2 class="card-title text-center mb-4">Edit Profil Saya</h2>
 
                   @if(session('success'))
                     <div class="custom-alert custom-alert-success alert-dismissible fade show" role="alert">

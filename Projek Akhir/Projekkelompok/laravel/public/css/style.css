@@ -8190,6 +8190,8 @@ h1, h2, h3, h4, h5,
 .wrapper {
   width: 100%; }
 
+
+
 #sidebar {
   min-width: 270px;
   max-width: 270px;
@@ -8199,7 +8201,11 @@ h1, h2, h3, h4, h5,
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  position: relative; }
+  position: fixed; 
+  z-index: 1000;
+  
+  }
+
   #sidebar .h6 {
     color: #fff; }
   #sidebar.active {
@@ -8247,7 +8253,8 @@ h1, h2, h3, h4, h5,
     margin-right: -20px;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
-    transition: 0.3s; }
+    transition: 0.3s;
+   }
     @media (prefers-reduced-motion: reduce) {
       #sidebar .custom-menu {
         -webkit-transition: none;
@@ -8275,7 +8282,8 @@ h1, h2, h3, h4, h5,
           -webkit-transform: rotate(45deg);
           -ms-transform: rotate(45deg);
           transform: rotate(45deg);
-          background-color: #225179;
+          
+          background: linear-gradient(180deg, #0F315C 0%, #143B65 100%);
           border-radius: 10px; }
         #sidebar .custom-menu .btn.btn-primary:hover, #sidebar .custom-menu .btn.btn-primary:focus {
           background: transparent !important;

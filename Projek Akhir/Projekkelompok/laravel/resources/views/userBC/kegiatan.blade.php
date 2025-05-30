@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
-        body{ background-color: #DFEAFC; font-family: 'Poppins', sans-serif; }
+        body{
+            background-color: #DFEAFC;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
+        }
+        /* Gaya yang sudah ada dan spesifik untuk halaman ini dipertahankan */
         .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
         .card-status { font-size: 14px; font-weight: bold; padding: 5px 10px; border-radius: 10px; }
         .custom-alert { border-left: 1px solid; border-radius: 5px; padding: 0.1rem 0.1rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
@@ -22,13 +27,54 @@
         .alert-message { top:0; font-size: 0.95rem; }
         .btn-close-custom { border: none; background: transparent; font-size: 1.25rem; cursor: pointer; line-height: 1; }
         .btn-close-custom:hover { color: #000; }
-        @media (max-width: 576px) { .zindexmedium { z-index: 90; } }
+
+        /* --- CSS BARU UNTUK LAYOUT RESPONSIF SIDEBAR --- */
+        #content {
+          margin-left: 270px; /* Lebar sidebar */
+          width: calc(100% - 270px); /* Sisa lebar */
+          min-height: 100vh;
+          transition: all 0.3s;
+          /* Padding diatur oleh kelas p-4 p-md-5 pt-5 pada elemen HTML */
+        }
+
+        #sidebar.active {
+          margin-left: -270px; /* Sembunyikan sidebar */
+        }
+
+        #sidebar.active ~ #content {
+          margin-left: 0;
+          width: 100%;
+        }
+
+        @media (max-width: 991.98px) { /* Tablet dan di bawahnya */
+          #content {
+            margin-left: 0;
+            width: 100%;
+          }
+          #sidebar.active {
+            margin-left: 0; /* Sidebar muncul sebagai overlay */
+          }
+        }
+
+        @media (max-width: 575.98px) { /* Smartphone (xs) */
+          .zindexmedium { z-index: 90; }
+          /* Padding #content (p-4 = 1.5rem horizontal) dari kelas HTML.
+             pt-5 memberikan padding-top 3rem.
+             Jika padding horizontal 1.5rem terlalu besar untuk smartphone, bisa disesuaikan:
+          */
+          #content {
+             padding-left: 1rem !important;  /* contoh: 16px */
+             padding-right: 1rem !important; /* contoh: 16px */
+          }
+        }
+        .zindexatas{ z-index: 100; } /* Sudah ada, dipastikan termuat */
+        /* --- AKHIR CSS BARU --- */
 
     </style>
   </head>
   <body>
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" class="min-vh-100"> {{-- --}}
+        <nav id="sidebar" class="min-vh-100">
             <div class="custom-menu zindexmedium">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                   <i class="fa fa-bars"></i>
@@ -40,7 +86,7 @@
                 <ul class="list-unstyled components mb-5">
                     <li><a href="{{ route('userbcdashboard') }}"><span class="fa fa-home mr-3"></span> Beranda</a></li>
                     <li><a href="{{ route('pengumuman.index') }}"><span class="fa fa-info-circle mr-3"></span> Pengumuman</a></li>
-                    <li class="{{ Route::is('kegiatan.index') ? 'active' : '' }}"> {{-- --}}
+                    <li class="{{ Route::is('kegiatan.index') ? 'active' : '' }}">
                         <a href="{{ route('kegiatan.index') }}"><span class="fa fa-calendar mr-3"></span> Kegiatan</a>
                     </li>
                     <li><a href="{{ route('partitur.index') }}"><span class="fa fa-music mr-3"></span> Partitur</a></li>
@@ -60,7 +106,7 @@
   					</ul>
           </div>
   	      <div class="footer">
-  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p> 
+  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p>
           </div>
   	    </div>
         </nav>
@@ -110,7 +156,7 @@
                                     <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FMakassar&hl=id&showPrint=0&src=c3RldmFuZHJpcGF0dHkwMjZAc3R1ZGVudC51bnNyYXQuYWMuaWQ&color=%23039BE5"
                                             style="border:none"
                                             width="100%"
-                                            height="500" 
+                                            height="500"
                                             frameborder="0"
                                             scrolling="yes">
                                     </iframe>

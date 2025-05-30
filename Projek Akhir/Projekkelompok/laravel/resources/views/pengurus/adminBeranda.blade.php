@@ -9,17 +9,16 @@
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
   <style>
-    
     body {
-      background-color: #f8f9fa; 
-      font-family: 'Poppins', sans-serif; 
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
       color: #495057;
+      overflow-x: hidden;
     }
 
-
     .admin-card {
-      border-radius: 10px; 
-      border: none; 
+      border-radius: 10px;
+      border: none;
       transition: all 0.3s ease-in-out;
       background-clip: border-box;
     }
@@ -27,52 +26,47 @@
         transform: translateY(-5px);
         box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
     }
-
     .admin-card .card-body {
-        padding: 1.25rem; 
+        padding: 1.25rem;
     }
-
     .admin-card .card-title {
-      font-size: 0.85rem; 
+      font-size: 0.85rem;
       font-weight: 600;
       text-transform: uppercase;
-      margin-bottom: 0.5rem; 
+      margin-bottom: 0.5rem;
     }
-
     .admin-card .card-text-value {
-      font-size: 2rem; 
+      font-size: 2rem;
       font-weight: 700;
     }
-
     .admin-card .icon-bg {
-      font-size: 2.5rem; 
+      font-size: 2.5rem;
       opacity: 0.5;
     }
-    
-  
-    .table-users-container { 
-        border-radius: 8px; 
-        overflow: hidden; 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+
+    .table-users-container {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
     .table-users thead th {
-        background-color: #343a40; 
-        color: #ffffff; 
+        background-color: #343a40;
+        color: #ffffff;
         font-weight: 600;
-        border-bottom-width: 0; 
+        border-bottom-width: 0;
         font-size: 0.9rem;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
     }
     .table-users tbody td {
-        font-size: 0.85rem; 
-        vertical-align: middle; 
+        font-size: 0.85rem;
+        vertical-align: middle;
     }
     .table-users tbody tr:hover {
-        background-color: #f1f1f1; 
+        background-color: #f1f1f1;
     }
     .table-users .badge {
-        font-size: 0.75em; 
+        font-size: 0.75em;
         padding: 0.5em 0.75em;
     }
 
@@ -105,7 +99,7 @@
     .custom-alert-success { border-left-color: #198754; background-color: #e8fce8; color: #155724; }
     .custom-alert-danger { border-left-color: #dc3545; background-color: #fde8e8; color: #842029; }
     .custom-alert-warning { border-left-color: #ffc107; background-color: #fff8e5; color: #856404; }
-    
+
     .alert-icon { margin-right: 1rem; font-size: 1.5rem; }
     .alert-content { flex: 1; }
     .alert-title { font-weight: 600; margin-top: 0; margin-bottom: 0.25rem; font-size: 1.1rem; }
@@ -123,8 +117,34 @@
         border-bottom: 1px solid #dee2e6 !important;
     }
 
-    /* Responsive Adjustments */
-    @media (max-width: 767.98px) { 
+    #content {
+      margin-left: 270px;
+      width: calc(100% - 270px);
+      min-height: 100vh;
+      transition: all 0.3s;
+      overflow-y: auto;
+    }
+
+    #sidebar.active {
+      margin-left: -270px;
+    }
+
+    #sidebar.active ~ #content {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 991.98px) {
+      #content {
+        margin-left: 0;
+        width: 100%;
+      }
+      #sidebar.active {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 767.98px) {
         .admin-card .card-body { padding: 1rem; }
         .admin-card .card-text-value { font-size: 1.8rem; }
         .admin-card .icon-bg { font-size: 2.2rem; }
@@ -134,7 +154,9 @@
         .table-users thead th, .table-users tbody td { font-size: 0.8rem; padding: 0.5rem; }
         #sidebar .logo span { display: block; font-size: 12px;}
     }
-    @media (max-width: 575.98px) { 
+
+    @media (max-width: 575.98px) {
+        .zindexmedium { z-index: 90; }
         .admin-card .card-title { font-size: 0.8rem; }
         .admin-card .card-text-value { font-size: 1.6rem; }
         .admin-card .icon-bg { font-size: 2rem; }
@@ -145,15 +167,18 @@
   </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
-      <nav id="sidebar" class="min-vh-100"> <div class="custom-menu zindexmedium"> <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      <nav id="sidebar" class="min-vh-100">
+        <div class="custom-menu zindexmedium">
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
             <i class="fa fa-bars"></i>
             <span class="sr-only">Toggle Menu</span>
           </button>
         </div>
-  			<div class="p-4 zindexatas"> <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Beranda</span></a></h1> <ul class="list-unstyled components mb-5">
+  			<div class="p-4 zindexatas">
+          <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Beranda</span></a></h1>
+          <ul class="list-unstyled components mb-5">
             <li class="active"> <a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
             </li>
-            
             <li class="{{ (request()->routeIs('admin.announcement.index') || request()->routeIs('admin.announcement.create') || request()->routeIs('admin.announcement.edit')) && !request()->routeIs('admin.beranda') ? 'active' : '' }}">
               <a href="#announcementSubmenu" data-toggle="collapse" aria-expanded="{{ (request()->routeIs('admin.announcement.index') || request()->routeIs('admin.announcement.create') || request()->routeIs('admin.announcement.edit')) && !request()->routeIs('admin.beranda') ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-bullhorn mr-3"></span> Pengumuman</a>
               <ul class="collapse list-unstyled {{ (request()->routeIs('admin.announcement.index') || request()->routeIs('admin.announcement.create') || request()->routeIs('admin.announcement.edit')) && !request()->routeIs('admin.beranda') ? 'show' : '' }}" id="announcementSubmenu">
@@ -165,7 +190,6 @@
                 </li>
               </ul>
             </li>
-
             <li class="{{ (request()->routeIs('admin.kegiatan.index') || request()->routeIs('admin.kegiatan.create') || request()->routeIs('admin.kegiatan.edit')) && !request()->routeIs('admin.beranda') ? 'active' : '' }}">
               <a href="#kegiatanSubmenu" data-toggle="collapse" aria-expanded="{{ (request()->routeIs('admin.kegiatan.index') || request()->routeIs('admin.kegiatan.create') || request()->routeIs('admin.kegiatan.edit')) && !request()->routeIs('admin.beranda') ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
               <ul class="collapse list-unstyled {{ (request()->routeIs('admin.kegiatan.index') || request()->routeIs('admin.kegiatan.create') || request()->routeIs('admin.kegiatan.edit')) && !request()->routeIs('admin.beranda') ? 'show' : '' }}" id="kegiatanSubmenu">
@@ -177,11 +201,9 @@
                 </li>
               </ul>
             </li>
-
             <li>
               <a href="{{ route('admin.partitur.index') }}"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
             </li>
-
             <li class="{{ (request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create')) && !request()->routeIs('admin.beranda') ? 'active' : '' }}">
                 <a href="#userSubmenu" data-toggle="collapse" aria-expanded="{{ (request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create')) && !request()->routeIs('admin.beranda') ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-users mr-3"></span> Pengguna</a>
                 <ul class="collapse list-unstyled {{ (request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create')) && !request()->routeIs('admin.beranda') ? 'show' : '' }}" id="userSubmenu">
@@ -194,7 +216,6 @@
                 </ul>
             </li>
           </ul>
-
           <div class="footer">
   					<ul class="list-unstyled components mb-5">
   						<li>
@@ -208,18 +229,17 @@
   						</li>
   					</ul>
           </div>
-
   	      <div class="footer">
-  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p> </div>
+  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p>
+          </div>
   	    </div>
     	</nav>
 
-      <div id="content" class="p-3 p-md-4 p-lg-5" style="width: 100%; overflow-y: auto;">
+      <div id="content" class="p-3 p-md-4 p-lg-5">
         <main role="main">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom-custom">
             <h1 class="h2 main-content-title">Beranda Admin</h1>
           </div>
-
           <div class="row">
             <div class="col-12 col-md-6 col-xl-4 mb-4">
               <div class="card admin-card bg-primary text-white shadow-sm h-100">
@@ -236,7 +256,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-12 col-md-6 col-xl-4 mb-4">
               <div class="card admin-card bg-success text-white shadow-sm h-100">
                 <div class="card-body">
@@ -254,7 +273,6 @@
               </div>
             </div>
           </div>
-
           <div class="mt-4">
              <h2 class="h4 mb-3 main-content-title">Pengguna Online Saat Ini</h2>
             <div class="table-users-container">
@@ -291,9 +309,11 @@
             </div>
           </div>
         </main>
-      </div> </div> <script src="{{ asset('js/jquery.min.js') }}"></script>
+      </div>
+    </div>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script> 
+    <script src="{{ asset('js/main.js') }}"></script>
   </body>
 </html>

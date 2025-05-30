@@ -10,47 +10,45 @@
   <style>
     body {
       background-color: #DFEAFC;
+      overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
     }
-    .profile-img { /* Ini sudah ada di file Anda, hanya untuk referensi */
+    .profile-img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
     }
-    /* ... (sisa style Anda yang sudah ada) ... */
+    /* ... (sisa style Anda yang sudah ada untuk custom-alert, dll.) ... */
     .custom-alert {
-      border-left: 1px solid; /* Disesuaikan dari 4px */
+      border-left: 1px solid;
       border-radius: 5px;
-      padding: 0.1rem 0.1rem; /* Disesuaikan */
+      padding: 0.1rem 0.1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1rem;
     }
-  
+
     .custom-alert-info { border-color: #0dcaf0; background-color: #e8f8fd; color: #0c5460; }
     .custom-alert-success { border-color: #198754; background-color: #e8fce8; color: #155724; }
     .custom-alert-danger { border-color: #dc3545; background-color: #fde8e8; color: #842029; }
     .custom-alert-warning { border-color: #ffc107; background-color: #fff8e5; color: #856404; }
-   
+
     .alert-icon { display: inline-flex; align-items: center; margin-right: 0.5rem; font-size: 1.25rem; }
     .alert-content { flex: 1; margin-left: 0.5rem;}
     .alert-title { font-weight: 600; margin: 0; }
-    .alert-message { top: 0; font-size: 0.95rem; margin: 0; } /* Disesuaikan */
+    .alert-message { top: 0; font-size: 0.95rem; margin: 0; }
 
     .btn-close-custom { border: none; background: transparent; font-size: 1.25rem; cursor: pointer; line-height: 1; }
     .btn-close-custom:hover { color: #000; }
-
-    @media (max-width: 576px) { .zindexmedium { z-index: 90; } }
-    .zindexatas { z-index: 100; }
 
     .profile-card {
       background-color: #fff;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 20px;
-      margin-top: 30px; 
-      text-align: center; 
+      margin-top: 30px;
+      text-align: center;
     }
     .profile-avatar {
       width: 100px;
@@ -58,8 +56,8 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 15px;
-      border: 2px solid #eee; 
-      display: block; 
+      border: 2px solid #eee;
+      display: block;
       margin-left: auto;
       margin-right: auto;
     }
@@ -71,6 +69,36 @@
     .profile-text-link { color: #1DA1F2; text-decoration: none; }
     .profile-text-link:hover { text-decoration: underline; }
 
+    /* --- CSS BARU UNTUK LAYOUT RESPONSIF SIDEBAR --- */
+    #content {
+      margin-left: 270px; /* Lebar sidebar */
+      width: calc(100% - 270px); /* Sisa lebar */
+      min-height: 100vh;
+      transition: all 0.3s;
+      overflow-y: auto; /* Dari style inline sebelumnya */
+      /* Padding diatur oleh kelas p-3 p-md-4 pada elemen HTML */
+    }
+
+    #sidebar.active {
+      margin-left: -270px; /* Sembunyikan sidebar */
+    }
+
+    #sidebar.active ~ #content {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 991.98px) { /* Tablet dan di bawahnya */
+      #content {
+        margin-left: 0;
+        width: 100%;
+      }
+      #sidebar.active {
+        margin-left: 0; /* Sidebar muncul sebagai overlay */
+      }
+    }
+
+    /* Media query yang sudah ada untuk profile-card */
     @media (max-width: 767.98px) {
       .profile-card { padding: 15px; margin-top: 20px; }
       .profile-avatar { width: 80px; height: 80px; }
@@ -78,6 +106,20 @@
       .profile-username, .profile-bio, .profile-info-item { font-size: 14px; }
       .profile-info-item { justify-content: flex-start; padding: 0;}
     }
+
+    @media (max-width: 575.98px) { /* Smartphone (xs) */
+      .zindexmedium { z-index: 90; }
+      /* Padding #content (p-3 = 1rem) dari kelas HTML dianggap cukup untuk smartphone.
+         Jika ingin padding horizontal lebih kecil/besar, bisa ditambahkan di sini. Contoh:
+         #content {
+           padding-left: 0.75rem !important;
+           padding-right: 0.75rem !important;
+         }
+      */
+    }
+    .zindexatas { z-index: 100; }
+    /* --- AKHIR CSS BARU --- */
+
   </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
@@ -125,8 +167,9 @@
           </div>
         </div>
       </nav>
-        
-      <div id="content" class="p-3 p-md-4" style="width:100%; overflow-y:auto;">
+
+      {{-- Menghapus style inline dari #content karena sudah diatur di CSS internal --}}
+      <div id="content" class="p-3 p-md-4">
         <div class="container-fluid">
           @if(session('success'))
             <div class="custom-alert custom-alert-success alert-dismissible fade show" role="alert">

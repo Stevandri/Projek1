@@ -10,15 +10,16 @@
   </head>
   <style>
     body {
-      background-color: #f8f9fa; 
+      background-color: #f8f9fa;
       font-family: 'Poppins', sans-serif;
       color: #495057;
+      overflow-x: hidden;
     }
     .admin-card {
-      border-radius: 10px; 
-      border: none; 
+      border-radius: 10px;
+      border: none;
       transition: all 0.3s ease-in-out;
-      background-clip: border-box; 
+      background-clip: border-box;
     }
     .admin-card:hover {
         transform: translateY(-5px);
@@ -26,49 +27,49 @@
     }
     .admin-card .card-body { padding: 1.25rem; }
     .admin-card .card-title {
-      font-size: 0.85rem; 
-      font-weight: 600; 
+      font-size: 0.85rem;
+      font-weight: 600;
       text-transform: uppercase;
-      margin-bottom: 0.5rem; 
+      margin-bottom: 0.5rem;
     }
     .admin-card .card-text-value { font-size: 2rem; font-weight: 700; }
     .admin-card .icon-bg { font-size: 2.5rem; opacity: 0.5; }
-    
-    .table-container { 
-        border-radius: 8px; 
-        overflow: hidden; 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+
+    .table-container {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
-    .table thead th { 
-        background-color: #343a40; 
-        color: #ffffff; 
+    .table thead th {
+        background-color: #343a40;
+        color: #ffffff;
         font-weight: 600;
-        border-bottom-width: 0; 
+        border-bottom-width: 0;
         font-size: 0.9rem;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
         vertical-align: middle;
     }
     .table tbody td {
-        font-size: 0.85rem; 
-        vertical-align: middle; 
+        font-size: 0.85rem;
+        vertical-align: middle;
     }
     .table tbody tr:hover {
-        background-color: #f1f1f1; 
+        background-color: #f1f1f1;
     }
     .table .badge {
-        font-size: 0.75em; 
+        font-size: 0.75em;
         padding: 0.5em 0.75em;
     }
-    .btn-action-group .btn, .btn-action-group form { 
-        display: inline-block; 
-        margin-right: 5px; 
-        margin-bottom: 5px; 
+    .btn-action-group .btn, .btn-action-group form {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 5px;
     }
     .btn-action-group .btn:last-child, .btn-action-group form:last-child {
         margin-right: 0;
     }
-     
+
     .card-status { font-size: 0.85em; font-weight: bold; padding: 0.375rem 0.75rem; border-radius: 0.25rem; }
     .status-akan-datang { background-color: #cfe2ff; color: #052c65; border: 1px solid #b6d4fe; }
     .status-selesai { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc;}
@@ -89,12 +90,12 @@
     .custom-alert-success { border-left-color: #198754; background-color: #e8fce8; color: #155724; }
     .custom-alert-danger { border-left-color: #dc3545; background-color: #fde8e8; color: #842029; }
     .custom-alert-warning { border-left-color: #ffc107; background-color: #fff8e5; color: #856404; }
-    
+
     .alert-icon { margin-right: 1rem; font-size: 1.5rem; }
     .alert-content { flex: 1; }
     .alert-title { font-weight: 600; margin-top: 0; margin-bottom: 0.25rem; font-size: 1.1rem; }
     .alert-message { font-size: 0.95rem; margin-bottom: 0; }
-    
+
     .custom-alert .close {
         float: right;
         font-size: 1.5rem;
@@ -112,9 +113,7 @@
         text-decoration: none;
         opacity: .75;
     }
-    .btn-close-custom { }
 
- 
     .zindexatas{ z-index: 100; }
 
     .main-content-title {
@@ -125,18 +124,46 @@
         border-bottom: 1px solid #dee2e6 !important;
     }
 
-    @media (max-width: 767.98px) { 
+    #content {
+      margin-left: 270px;
+      width: calc(100% - 270px);
+      min-height: 100vh;
+      transition: all 0.3s;
+      overflow-y: auto;
+    }
+
+    #sidebar.active {
+      margin-left: -270px;
+    }
+
+    #sidebar.active ~ #content {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 991.98px) {
+      #content {
+        margin-left: 0;
+        width: 100%;
+      }
+      #sidebar.active {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 767.98px) {
         .main-content-title.h2 { font-size: 1.5rem; }
         .main-content-title.h4 { font-size: 1.1rem; }
         #content { padding: 1rem !important; }
         .table thead th, .table tbody td { font-size: 0.8rem; padding: 0.5rem; }
-        #sidebar .logo span { display: block; font-size: 12px;} 
-        .btn-action-group .btn { margin-bottom: 5px; display: inline-block; } 
+        #sidebar .logo span { display: block; font-size: 12px;}
+        .btn-action-group .btn { margin-bottom: 5px; display: inline-block; }
         .list-group-item { flex-direction: column; align-items: flex-start !important; }
         .list-group-item .card-status { margin-top: 0.5rem; margin-bottom: 0.5rem; }
         .list-group-item .btn-action-group { text-align: left !important; width: 100%; }
     }
-    @media (max-width: 575.98px) { 
+    @media (max-width: 575.98px) {
+        .zindexmedium { z-index: 90; }
         .alert-icon { font-size: 1.25rem; margin-right: 0.75rem;}
         .alert-title { font-size: 1rem; }
         .alert-message { font-size: 0.9rem; }
@@ -146,20 +173,20 @@
   </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
-      <nav id="sidebar" class="min-vh-100"> 
-        <div class="custom-menu zindexmedium"> 
+      <nav id="sidebar" class="min-vh-100">
+        <div class="custom-menu zindexmedium">
           <button type="button" id="sidebarCollapse" class="btn btn-primary">
             <i class="fa fa-bars"></i>
             <span class="sr-only">Toggle Menu</span>
           </button>
         </div>
-  			<div class="p-4 zindexatas"> 
-          <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Kegiatan</span></a></h1> 
+  			<div class="p-4 zindexatas">
+          <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Kegiatan</span></a></h1>
           <ul class="list-unstyled components mb-5">
-            <li class="{{ request()->routeIs('admin.beranda') ? 'active' : '' }}"> 
+            <li class="{{ request()->routeIs('admin.beranda') ? 'active' : '' }}">
               <a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
             </li>
-            
+
             @php
                 $isAnnouncementActive = request()->routeIs('admin.announcement.index') || request()->routeIs('admin.announcement.create') || request()->routeIs('admin.announcement.edit');
             @endphp
@@ -225,12 +252,12 @@
           </div>
 
   	      <div class="footer">
-  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p> 
+  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p>
           </div>
   	    </div>
     	</nav>
 
-      <div id="content" class="p-3 p-md-4 p-lg-5" style="width: 100%; overflow-y: auto;">
+      <div id="content" class="p-3 p-md-4 p-lg-5">
         <div class="container-fluid">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom-custom">
                 <h1 class="h2 main-content-title">Kalender dan Daftar Kegiatan</h1>
@@ -373,12 +400,12 @@
             </div>
             @endif
         </div>
-      </div> 
-    </div> 
+      </div>
+    </div>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script> 
-    <script src="{{ asset('js/main.js') }}"></script> 
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
   </body>
 </html>

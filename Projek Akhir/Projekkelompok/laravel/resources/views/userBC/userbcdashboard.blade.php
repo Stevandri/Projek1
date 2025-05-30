@@ -10,69 +10,70 @@
   </head>
   <style>
     body {
-      background-color: #DFEAFC; 
+      background-color: #DFEAFC;
       font-family: 'Poppins', sans-serif;
-      color: #333; 
+      color: #333;
+      overflow-x: hidden; 
     }
     .card {
-      border-radius: 10px; 
+      border-radius: 10px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,.075); 
-      border: none; 
+      box-shadow: 0 2px 10px rgba(0,0,0,.075);
+      border: none;
     }
     .profile-img {
-        width: 70px; /* Ukuran sesuai file Anda */
-        height: 70px; /* Ukuran sesuai file Anda */
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         object-fit: cover;
         border: 2px solid #e9ecef;
     }
     .card-status {
-        font-size: 0.85em; 
-        font-weight: 500; 
-        padding: 6px 12px; 
-        border-radius: 20px; 
-        white-space: nowrap; 
+        font-size: 0.85em;
+        font-weight: 500;
+        padding: 6px 12px;
+        border-radius: 20px;
+        white-space: nowrap;
     }
 
     .custom-alert {
       border-left-width: 4px;
-      border-radius: 8px; 
-      padding: 0.75rem 1rem; 
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
       display: flex;
-      align-items: flex-start; 
+      align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 0.75rem; 
-      background-color: #fff; 
+      margin-bottom: 0.75rem;
+      background-color: #fff;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     .custom-alert-info { border-left-color: #0dcaf0; color: #0c5460; }
     .custom-alert-success { border-left-color: #198754; color: #155724; }
     .custom-alert-danger { border-left-color: #dc3545; color: #842029; }
     .custom-alert-warning { border-left-color: #ffc107; color: #856404; }
-    
-    .alert-icon { margin-right: 0.75rem; font-size: 1.1rem; margin-top: 0.15rem;} 
+
+    .alert-icon { margin-right: 0.75rem; font-size: 1.1rem; margin-top: 0.15rem;}
     .alert-content { flex: 1; }
-    .alert-title { font-weight: 600; margin-bottom: 0.15rem; font-size: 0.95rem;} 
-    .alert-message { 
-        font-size: 0.85rem; 
-        max-height: 2.6em; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-        white-space: normal; 
-        line-height: 1.3; 
+    .alert-title { font-weight: 600; margin-bottom: 0.15rem; font-size: 0.95rem;}
+    .alert-message {
+        font-size: 0.85rem;
+        max-height: 2.6em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        line-height: 1.3;
         margin-bottom:0;
         color: #555;
     }
-    
+
     .custom-alert .close {
-        font-size: 1.25rem; 
+        font-size: 1.25rem;
         font-weight: 700;
         line-height: 1;
-        color: #777; 
+        color: #777;
         text-shadow: none;
         opacity: .7;
-        padding: 0.5rem; 
+        padding: 0.5rem;
         background-color: transparent;
         border: 0;
         margin-left: 0.5rem;
@@ -82,42 +83,40 @@
         opacity: 1;
     }
 
-    .zindexatas{ z-index: 100; } /* zindexmedium Anda sudah ada, ini hanya referensi */
 
-    .main-content-title { 
+    .main-content-title {
         color: #343a40;
         font-weight: 600;
     }
-        
-    .custom-menu { position: absolute; top: 15px; right: -50px; } /* Pastikan ini tidak tertimpa atau sesuai kebutuhan*/
+
+    .custom-menu { position: absolute; top: 15px; right: -50px; }
     .custom-menu button { color: #fff; background-color: #007bff; border: none; }
 
-    /* Status styles, as they were in your file */
     .status-akan-datang, .upcoming { background-color: #cfe2ff; color: #052c65; border: 1px solid #b6d4fe;}
     .status-selesai, .completed { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc;}
     .status-berlangsung, .in-progress { background-color: #fff3cd; color: #664d03; border: 1px solid #ffecb5;}
     .status-dibatalkan { background-color: #f8d7da; color: #58151c; border: 1px solid #f1b0b7;}
 
-    .welcome-card { 
-        background-color: #ffffff; 
-        color: #343a40; 
+    .welcome-card {
+        background-color: #ffffff;
+        color: #343a40;
     }
-    .welcome-card h3 { 
-        font-size: 1.4rem; 
+    .welcome-card h3 {
+        font-size: 1.4rem;
         margin-bottom: 0.3rem;
-        color: #343a40; 
+        color: #343a40;
     }
     .welcome-card h3 strong {
-        color: #007bff; 
+        color: #007bff;
     }
-    .welcome-card p { 
-        font-size: 0.95rem; 
-        color: #495057; 
+    .welcome-card p {
+        font-size: 0.95rem;
+        color: #495057;
     }
 
-    .announcements-panel { 
-        background-color: #007bff; 
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+    .announcements-panel {
+        background-color: #007bff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .announcements-panel .card-body { display: flex; flex-direction: column; height: 100%;}
     .announcements-panel .list-announcements { flex-grow: 1; overflow-y: auto; max-height: calc(100vh - 200px); padding-right: 10px; }
@@ -126,29 +125,63 @@
     .announcements-panel .list-announcements::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius:3px; }
     .announcements-panel .list-announcements::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.5); }
 
-
-    @media (max-width: 991.98px) { 
-        .announcements-panel { margin-top: 1.5rem; }
-        .announcements-panel .list-announcements { max-height: 300px; } 
+    #content {
+      margin-left: 270px; 
+      width: calc(100% - 270px); 
+      transition: all 0.3s;
+      padding: 20px; 
+      min-height: 100vh;
+      position: relative; 
     }
 
-    @media (max-width: 767.98px) { 
-        #content { padding: 1rem !important; } 
-        #sidebar .logo span { display: block; font-size: 12px;} 
+
+    #sidebar.active {
+      margin-left: -270px; /
+    }
+
+
+
+    #sidebar.active ~ #content {
+      margin-left: 0;
+      width: 100%;
+    }
+
+
+    @media (max-width: 991.98px) {
+        .announcements-panel { margin-top: 1.5rem; }
+        .announcements-panel .list-announcements { max-height: 300px; }
+
+      
+        #content {
+            margin-left: 0;
+            width: 100%;
+            padding: 1rem !important;
+        }
+       
+        #sidebar.active {
+             margin-left: 0; 
+        }
+      
+    }
+
+    @media (max-width: 767.98px) {
+        #sidebar .logo span { display: block; font-size: 12px;}
         .card-status { margin-top: 0.5rem; }
         .list-group-item { flex-direction: column; align-items: flex-start !important; }
     }
-    @media (max-width: 575.98px) { 
+    @media (max-width: 575.98px) {
         .alert-icon { font-size: 1.25rem; margin-right: 0.75rem;}
         .alert-title { font-size: 1rem; }
         .alert-message { font-size: 0.9rem; }
-        .welcome-card { flex-direction: column !important; text-align: center;} 
-        .welcome-card img { margin-top: 1rem; } /* Ini akan membuat gambar di bawah teks pada mobile */
+        .welcome-card { flex-direction: column !important; text-align: center;}
+        .welcome-card img { margin-top: 1rem; }
     }
+
+
   </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
-      <nav id="sidebar" class="min-vh-100">
+      <nav id="sidebar" class="min-vh-100"> 
         <div class="custom-menu zindexmedium"> <button type="button" id="sidebarCollapse" class="btn btn-primary">
             <i class="fa fa-bars"></i>
             <span class="sr-only">Toggle Menu</span>
@@ -188,7 +221,7 @@
   					</ul>
           </div>
   	      <div class="footer">
-  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p> 
+  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p>
           </div>
   	    </div>
     	</nav>
@@ -200,13 +233,13 @@
                             <p class="mb-0">Selamat datang di <strong>WEBSITE BLUE CHOIR</strong> Fakultas Teknik Universitas Sam Ratulangi.</p>
                         </div>
                         <div class="ms-md-3 mt-3 mt-md-0 text-center">
-                            <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('item/profildefault.png') }}" 
-                                 alt="Foto Profil {{ Auth::user()->namadepan ?? '' }}" 
-                                 class="profile-img" 
+                            <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('item/profildefault.png') }}"
+                                 alt="Foto Profil {{ Auth::user()->namadepan ?? '' }}"
+                                 class="profile-img"
                                  onerror="this.onerror=null;this.src='{{ asset('item/profildefault.png') }}'; this.alt='Gambar default';">
                         </div>
                     </div>
-        
+
                     <div class="card mt-4 p-3 p-md-4 rounded-lg shadow-sm">
                         <h5 class="mb-3"><b>Kegiatan yang akan datang</b></h5>
                         @if(isset($upcomingKegiatans) && $upcomingKegiatans->count() > 0)
@@ -255,7 +288,7 @@
                 </div>
             </div>
         </div>
-      </div> 
+      </div>
 		</div>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>

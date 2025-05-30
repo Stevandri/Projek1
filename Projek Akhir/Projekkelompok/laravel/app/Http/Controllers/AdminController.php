@@ -74,6 +74,38 @@ class AdminController extends Controller
         return redirect()->route('admin.pengguna.index')->with('success', 'Pengguna baru berhasil ditambahkan.');
     }
 
+    //edit user
+    public function editUser(User $user)
+    {
+    return view('pengurus.adminEditPengguna', compact('user'));
+    }
+
+    //update user stlh edit
+    public function updateUser(Request $request, User $user)
+{
+    $validatedData = $request->validate([
+        'namadepan'    => 'required|string|max:255',
+        'namabelakang' => 'nullable|string|max:255',
+        'email'        => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+        'telepon'      => 'nullable|string|max:20',
+        'posisi_suara' => 'nullable|string|max:100', 
+        'status'       => 'required|string|in:Aktif,Pasif,Alumni', 
+        'posisi'       => 'required|string|max:100',
+    ]);
+
+    $user->update([
+        'namadepan'     => $validatedData['namadepan'],
+        'namabelakang'  => $validatedData['namabelakang'],
+        'email'         => $validatedData['email'],
+        'telepon'       => $validatedData['telepon'],
+        'posisi_suara'  => $validatedData['posisi_suara'],
+        'status'        => $validatedData['status'],
+        'posisi'        => $validatedData['posisi'],
+    ]);
+
+    return redirect()->route('admin.pengguna.index')->with('success', 'Data pengguna berhasil diperbarui.');
+}
+
     public function destroyUser(User $user) // Hapus untuk pengguna dan admin lain
     {
         if ($user->id === Auth::id()) {

@@ -11,9 +11,9 @@
   <style>
 	body{
 		background-color: #DFEAFC;
+        overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
 	}
-	/* ... (CSS Anda yang lain tetap sama) ... */
-
+	/* CSS untuk card partitur */
     .card {
         height: 100%;
         display: flex;
@@ -34,12 +34,56 @@
         margin-top: auto;
     }
 
-	@media (max-width: 576px) {
-	  .zindexmedium {
+    /* Kondisi default untuk #content ketika sidebar terlihat (layar besar) */
+    #content {
+      margin-left: 270px; /* Sesuaikan dengan lebar sidebar Anda (misal: 270px) */
+      width: calc(100% - 270px); /* Lebar sisa setelah sidebar */
+      transition: all 0.3s; /* Transisi yang mulus */
+      min-height: 100vh; /* Minimal setinggi viewport */
+      /* Padding sudah diatur oleh kelas bootstrap p-4 p-md-5 pt-5 pada elemen HTML */
+      /* Jika ingin padding default di sini: padding: 20px; */
+    }
+
+    /* Aturan untuk #sidebar ketika 'active' (terlipat/tertutup) */
+    /* Pastikan js/main.js menambahkan kelas 'active' ke #sidebar saat di-collapse */
+    /* dan #sidebar di style.css memiliki transition: all 0.3s; dan position:fixed */
+    #sidebar.active {
+      margin-left: -270px; /* Menggeser sidebar ke luar layar (sesuai lebarnya) */
+    }
+
+    /* Aturan untuk #content ketika sidebar 'active' (terlipat/tertutup) */
+    #sidebar.active ~ #content {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    /* Media query untuk layar tablet dan di bawahnya */
+    @media (max-width: 991.98px) {
+        #content {
+            margin-left: 0; /* Konten mengambil lebar penuh */
+            width: 100%;
+        }
+        /* Perilaku #sidebar.active di layar kecil (misalnya, sidebar muncul sebagai overlay) */
+        #sidebar.active {
+             margin-left: 0; /* Sidebar muncul kembali dari kiri */
+             /* Anda mungkin perlu z-index yang lebih tinggi jika sidebar menjadi overlay dan menutupi .custom-menu */
+        }
+    }
+
+    /* Media query untuk smartphone (layar ekstra kecil) */
+    @media (max-width: 575.98px) { /* Bootstrap xs breakpoint */
+      .zindexmedium { /* z-index untuk .custom-menu (tombol toggle sidebar) */
 	    z-index: 90;
 	  }
+      #content {
+        /* Mengurangi padding horizontal pada layar smartphone yang sangat kecil */
+        /* Kelas p-4 pada elemen HTML memberikan padding 1.5rem. Ini akan menggantinya. */
+        /* Kelas pt-5 pada elemen HTML memberikan padding-top 3rem, ini akan tetap. */
+        padding-left: 1rem !important;  /* sekitar 16px */
+        padding-right: 1rem !important; /* sekitar 16px */
+      }
 	}
-	.zindexatas{
+	.zindexatas{ /* z-index untuk konten di dalam sidebar agar di atas latar sidebar jika ada elemen bertumpuk */
 		z-index: 100;
 	}
 </style>
@@ -64,7 +108,7 @@
 	          <li>
               <a href="{{ route('kegiatan.index') }}"><span class="fa fa-calendar mr-3"></span> Kegiatan</a>
 	          </li>
-	          <li class="active"> {{-- Penanda aktif untuk halaman Partitur --}}
+	          <li class="active">
               <a href="{{ route('partitur.index') }}"><span class="fa fa-music mr-3"></span> Partitur</a>
 	          </li>
 	          <li>
@@ -111,7 +155,7 @@
             {{-- AKHIR FORM PENCARIAN --}}
 
 
-            <div class="container-fluid px-0"> {{-- Menggunakan container-fluid dan menghapus margin atas default dari .container --}}
+            <div class="container-fluid px-0">
                 <div class="row">
                     @forelse ($partiturs as $partitur)
                     <div class="col-md-4 col-lg-3 mb-4">
@@ -156,8 +200,8 @@
                 @endif
                 {{-- AKHIR Link Paginasi --}}
 
-            </div> 
-        </div> 
+            </div>
+        </div>
     </div>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
