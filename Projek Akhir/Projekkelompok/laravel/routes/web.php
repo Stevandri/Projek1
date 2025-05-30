@@ -16,6 +16,7 @@ Route::get('/Sejarah', function () {return view('Allaccess.sejarah');}); //Sejar
 Route::get('/Visi&Misi', function () {return view('Allaccess.visimisi');}); //Sejarah BC
 Route::get('/OpenRecruitment', function () {return view('Allaccess.openrecruitment');}); //oprec
 Route::get('/OpenRecruitmentForm', function () {return view('Allaccess.formopenrecruitment');}); //oprecForm
+Route::get('/Prestasi', function () {return view('Allaccess.prestasi');});
 //beritaBC
     Route::get('/PICF2024', function () {return view('Allaccess.beritacontent.Blue_Choir_Fakultas_Teknik_Unsrat_Raih_Dua_Emas_di_PICF_2024');});
     Route::get('/Bc_In_Tahiland', function () {return view('Allaccess.beritacontent.thailand');});

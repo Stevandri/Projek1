@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="item/Logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -20,7 +21,7 @@
       border-radius: 8px;
     }
     .backgroundopenrec{
-        background-image: url("allacces/openrecruitment/latar.png");
+        background-image: url("../allacces/openrecruitment/latar.png");
         background-size: cover;
         background-repeat: no-repeat;
          background-position: center;
@@ -48,7 +49,7 @@
     <nav class="bg-white navbar navbar-expand-lg navbar-light pg-lib-item py-lg-1" data-navbar-id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
       <div class="container">
         <img src="../../../item/Logo.png" alt="Bootstrap" width="50" height="36">
-        <a class="fw-bold navbar-brand fs-4" href="../../index.html">
+        <a class="fw-bold navbar-brand fs-4" href="{{ url('/') }}">
           <span><SPan class="warnaputih">.</SPan>    BLUE CHOIR</span>
         </a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-controls="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,24 +58,24 @@
         <div class="navbar-collapse collapse" id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
           <ul class="mb-2 mb-lg-0 me-lg-auto navbar-nav">
             <li class="nav-item">
-              <a class="nav-link px-lg-3 py-lg-4" aria-current="page" href="../../Artikel/Artikel/Page1/berita.html">Berita</a>
+              <a class="nav-link px-lg-3 py-lg-4" aria-current="page" href="{{ url('/BCNews') }}">Berita</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-lg-3 py-lg-4" href="../../index.html#tentang">Tentang</a>
+              <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}">Tentang</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-lg-3 py-lg-4" href="../../index.html#kami">Kami</a>
+              <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}">Kami</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle px-lg-3 py-lg-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Lainnya
               </a>
               <ul class="dropdown-menu z-3">
-                <li><a class="dropdown-item" href="../../Artikel/Sejarah/sejarah.html">Sejarah</a></li>
-                <li><a class="dropdown-item" href="../Prestasi/prestasi.html">Prestasi</a></li>
-                <li><a class="dropdown-item" href="../Kepengurusan2025/kepengurusan2025.html">Kepengurusan 2025</a></li>
-                <li><a class="dropdown-item" href="../VisiMisi/visimisi.html">Visi Misi</a></li>
-                <li><a class="dropdown-item" href="#">open recruitment</a></li>
+                <li><a class="dropdown-item" href="{{ url('/Sejarah') }}">Sejarah</a></li>
+                <li><a class="dropdown-item" href="{{ url('/Prestasi') }}">Prestasi</a></li>
+                <li><a class="dropdown-item" href="{{ url('/kepengurusan') }}">Kepengurusan 2025</a></li>
+                <li><a class="dropdown-item" href="{{ url('/Visi&Misi') }}">Visi Misi</a></li>
+                <li><a class="dropdown-item" href="{{ url('/OpenRecruitment') }}">open recruitment</a></li>
                 <li><hr class="dropdown-divider"></li>
               </ul>
             </li>

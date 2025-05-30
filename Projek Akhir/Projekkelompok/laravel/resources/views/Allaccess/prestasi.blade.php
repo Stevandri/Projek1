@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="item/Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../color.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+</head>
+
+<body>
+    <!--Ini navbar ke2-->
+    <section>
+        <nav class="bg-white navbar navbar-expand-lg navbar-light pg-lib-item py-lg-1" data-navbar-id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
+          <div class="container">
+            <img src="../../item/Logo.png" alt="Bootstrap" width="50" height="36">
+            <a class="fw-bold navbar-brand fs-4" href="{{ url('/') }}">
+              <span><SPan class="warnaputih">.</SPan>    BLUE CHOIR</span>
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-controls="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
+              <ul class="mb-2 mb-lg-0 me-lg-auto navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link px-lg-3 py-lg-4" aria-current="page" href="{{ url('/BCNews') }}">Berita</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}">Tentang</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}">Kami</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle px-lg-3 py-lg-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Lainnya
+                  </a>
+                  <ul class="dropdown-menu z-3">
+                    <li><a class="dropdown-item" href="{{ url('/Sejarah') }}">Sejarah</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/Prestasi') }}">Prestasi</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/kepengurusan') }}">Kepengurusan 2025</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/Visi&Misi') }}">Visi Misi</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/OpenRecruitment') }}">open recruitment</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                  </ul>
+                </li>
+              </ul>
+              
+              <div class="d-flex flex-wrap gap-2 py-1">
+                <a href="#" class="btn btn-dark pb-2 pe-4 ps-4 pt-2 " data-bs-toggle="modal" data-bs-target="#loginModal">Masuk</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </section>
+    <!--Navbar 2 end-->
+
+    <!--Judul-->
+    <section class="text-center text-dark" >
+        <div class="container">
+          <div class="row py-3">
+            <div class="col-lg-9 col-xl-8 ms-auto me-auto pt-5">
+              <h1 class="display-2 fw-bold mb-3  ">Prestasi Kami</h1>
+              <h5 class="">Regional, nasional & internasional</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Judul end-->
+
+      <!--galeri prestasi-->     
+      <section >
+        <div class="container py-xl-3 py-lg-2">
+          <div>
+            <div class="row mt-5 row-cols-1 row-cols-lg-6 row-cols-md-3 row-cols-sm-2 g-4">
+              <div class="col">
+                <div> <!--untuk foto gabungan uk kecil-->
+                    <img class="w-100 rounded-3 d-md-none" src="../allacces/Prestasi/img/md.png  " />
+                  </div>
+                <div>
+                  <img class="w-100 rounded-3 d-none d-md-block" src="../allacces/Prestasi/img/BICF.png" />
+                </div>
+              </div>
+              <div class="col">
+                <div>
+                  <img class="w-100 rounded-3 d-none d-md-block" src="../allacces/Prestasi/img/2.png" />
+                </div>
+              </div>
+              <div class="col">
+                <div> 
+                  <img class="w-100 rounded-3 d-none d-md-block" src="../allacces/Prestasi/img/3.png" />
+                </div>
+              </div>
+              <div class="col">
+                <div>
+                  <img class="w-100 rounded-3 d-none d-md-block" src="../allacces/Prestasi/img/4.png" />
+                </div>
+              </div>
+              <div class="col">
+                <div>
+                  <img class="w-100 rounded-3 d-none d-md-block" src="../allacces/Prestasi/img/5.png" />
+                </div>
+              </div>
+              <div class="col">
+                <div>
+                  <img class="w-100 rounded-3 d-none d-md-block" src="../allacces/Prestasi/img/6.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>      
+  <!--galeri prestasi end--> 
+  
+  <!--Prestasi list-->
+  <section>
+    <div class="container">
+      <div class="row ">
+        <div class="col-lg-10 offset-lg-1 col-md-12 col-12 ">
+          <div class="accordion " id="accordion-parent">
+            <div class="border mb-2 rounded-3 p-3 ">
+              <h4 class="mb-0 fs-5 ">
+                <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-01" aria-expanded="false" aria-controls="collapse-01" data-bs-toggle="collapse">2024 - 6th Penabur International Choir Festival - Jakarta, Indonesia.
+                  <span class="chevron-arrow" data-vs-inline-format="yes">
+                    <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                  </span>
+                </a>
+              </h4>
+              <div id="collapse-01" class="accordion-collapse collapse " data-bs-parent="#accordion-parent" data-aos="fade-up">
+                <div class="mt-3">
+                        <div class="container pb-lg-3 ">
+                            <div class="row align-items-center ">
+                                <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                    <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                        <figure>
+                                            <iframe 
+                                                width="300" 
+                                                height="300" 
+                                                src="https://www.youtube.com/embed/63fmrJrA5gA?si=vKbOOSbEcCFHM4bN" 
+                                                title="YouTube video player" 
+                                                frameborder="0" 
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                                allowfullscreen>
+                                            </iframe>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                    <div class="mt-md-1 mb-1 mb-md-0">
+                                        <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                            <li class="mb-2 d-flex ">
+                                                <i class="bi bi-trophy-fill text-primary"></i>
+                                                <span class="ms-2">1st place Mixed Youth Choir Lv. B</span>
+                                            </li>
+                                            <li class="mb-2 d-flex ">
+                                                <i class="bi bi-award-fill text-primary"></i>
+                                                <span class="ms-2">Gold Medal Folklore Category</span>
+                                            </li>
+                                        </ul>
+                                        <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                            <i class="bi bi-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                </div>
+              </div>
+            </div>
+            <div class="border mb-2 rounded-3 p-3 ">
+              <h4 class="mb-0 fs-5 ">
+                <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-02" aria-expanded="true" aria-controls="collapse-02" data-bs-toggle="collapse">2023 - Lembeh Strait - Bitung International Choir Festival - Bitung, Indonesia.
+                  <span class="chevron-arrow" data-vs-inline-format="yes">
+                    <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                  </span>
+                </a>
+              </h4>
+              <div id="collapse-02" class="accordion-collapse collapse " data-bs-parent="#accordion-parent">
+                <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                    <div class="row align-items-center ">
+                        <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                            <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                <figure>
+                                    <iframe 
+                                        width="300" 
+                                        height="300" 
+                                        src="https://www.youtube.com/embed/Ed2t6jrmbio?si=ShI-TH2JOwVwzLXu" 
+                                        title="YouTube video player" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                            <div class="mt-md-1 mb-1 mb-md-0">
+                                <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                    <li class="mb-2 d-flex ">
+                                        <i class="bi bi-trophy-fill text-primary"></i>
+                                        <span class="ms-2">1st Prize of Music Religion Category</span>
+                                    </li>
+                                    <li class="mb-2 d-flex ">
+                                        <i class="bi bi-trophy-fill text-primary"></i>
+                                        <span class="ms-2">2nd place of Mixed Choir Category</span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                    <span>Learn More</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            
+            </div>
+              </div>
+            </div>
+            <div class="border mb-2 rounded-3 p-3 ">
+              <h4 class="mb-0 fs-5 ">
+                <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-03" aria-expanded="false" aria-controls="collapse-03" data-bs-toggle="collapse">2022 - 11th Bali International Choir festival - Bali, Indonesia
+                  <span class="chevron-arrow" data-vs-inline-format="yes">
+                    <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                  </span>
+                </a>
+              </h4>
+              <div id="collapse-03" class="accordion-collapse collapse " data-bs-parent="#accordion-parent">
+                <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                    <figure>
+                                        <iframe 
+                                            width="300" 
+                                            height="300" 
+                                            src="https://www.youtube.com/embed/Dp-zYLd82QU?si=-cwgYDjFnQav8_FR" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-trophy-fill text-primary"></i>
+                                            <span class="ms-2">3rd Place Gold Medal Mixed Youth.</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                </div>
+              </div>
+            </div>
+            <div class="border mb-2 rounded-3 p-3 ">
+              <h4 class="mb-0 fs-5 ">
+                <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-04" aria-expanded="false" aria-controls="collapse-04" data-bs-toggle="collapse">2021 - Maranatha Virtual Choir Festival - Online.
+                  <span class="chevron-arrow" data-vs-inline-format="yes">
+                    <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                  </span>
+                </a>
+              </h4>
+              <div id="collapse-04" class="accordion-collapse collapse " data-bs-parent="#accordion-parent">
+                <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                    <figure>
+                                        <iframe 
+                                            width="300" 
+                                            height="300" 
+                                            src="https://www.youtube.com/embed/8b6ilkBiQLQ?si=6mhMLGM7HOs6x4ZT" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Silver Medal Mixed Choir.</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                </div>
+              </div>
+            </div>
+            <div class="border mb-2 rounded-3 p-3 ">
+              <h4 class="mb-0 fs-5 ">
+                <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-05" aria-expanded="false" aria-controls="collapse-05" data-bs-toggle="collapse">2021 - BNN Christmas Choir Festival Competition - Manado, Indonesia.
+                  <span class="chevron-arrow" data-vs-inline-format="yes">
+                    <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                  </span>
+                </a>
+              </h4>
+              <div id="collapse-05" class="accordion-collapse collapse " data-bs-parent="#accordion-parent">
+                <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                    <div class="row align-items-center ">
+                        <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                            <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                <figure>
+                                    <iframe 
+                                        width="300" 
+                                        height="300" 
+                                        src="https://www.youtube.com/embed/VIDEO_ID" 
+                                        title="YouTube video player" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                            <div class="mt-md-1 mb-1 mb-md-0">
+                                <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                    <li class="mb-2 d-flex ">
+                                        <i class="bi bi-award-fill text-primary"></i>
+                                        <span class="ms-2">Gold Medal Mixed Choir.</span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                    <span>Learn More</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
+            </div>
+              </div>
+            </div>
+            <div class="border mb-2 rounded-3 p-3 ">
+              <h4 class="mb-0 fs-5 ">
+                <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-06" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2019 - International Choir Competition Grand Prix Thailand - Pattaya, Thailand.
+                  <span class="chevron-arrow" data-vs-inline-format="yes">
+                    <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                  </span>
+                </a>
+              </h4>
+              <div id="collapse-06" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                    <figure>
+                                        <iframe 
+                                            width="300" 
+                                            height="300" 
+                                            src="https://www.youtube.com/embed/fWNxOMIBiZc?si=ZGgJmYr91TTrwj2L" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Silver Medal Folklore Category.</span>
+                                        </li>
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Gold Medal Mixed Choir Category.</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                </div>
+              </div>
+            </div>
+            <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-07" aria-expanded="false" aria-controls="collapse-07" data-bs-toggle="collapse">2018 - 7th Bali International Choir Festival - Bali, Indonesia.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-07" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                    <figure>
+                                        <iframe 
+                                            width="300" 
+                                            height="300" 
+                                            src="https://www.youtube.com/embed/2Z1ab4EM5jE?si=w0n3VK2H3ApUW4pL" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Gold Medal Mixed Youth Chategory.</span>
+                                        </li>
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Gold Medal Folklore Category.</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                  </div>
+                </div>
+              </div>
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-08" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2016 - The 1st Lanna International Choir Competition - Chiang Mai, Thailand.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-08" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                    <figure>
+                                        <iframe 
+                                            width="300" 
+                                            height="300" 
+                                            src="https://www.youtube.com/embed/gpYb1NVJewI?si=waIx2o8xhizwxk3c" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Silver Medal IX Folklore Category</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                  </div>
+                </div>
+              </div>
+              
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-09" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2013 - Asia Pacific Choir Games - Manado, Indonesia.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-09" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-trophy-fill text-primary"></i>
+                                            <span class="ms-2">Winner of Category Musica Contemporanea</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-10" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2012 - 23rd ITB Choir Festival - Bandung, Indonesia.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-10" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Silver Medal Folklore Category</span>
+                                        </li>
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Silver Medal Mix Choir Category</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-11" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2009 - 1st Parahyangan International Chamber Choir Competition - Bandung, Indonesia.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-11" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">6th prize Classic & Art Songs</span>
+                                        </li>
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">8th place winner Folklore Category</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-12" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2008 - Tomohon Choir Competition, Tomohon, Indonesia.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-12" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-trophy-fill text-primary"></i>
+                                            <span class="ms-2">3rd place Mix Choir Category</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-13" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2008 - Genezareth Bermazmur - Bitung, Indonesia.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-13" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-trophy-fill text-primary"></i>
+                                            <span class="ms-2">1st place Mix Choir Category</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-14" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2006 World Choir Games 4st - Xiamen, Republik Rakyat Tiongkok.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-14" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                        <div class="row align-items-center ">
+                            <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                <div class="mt-md-1 mb-1 mb-md-0">
+                                    <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Golden Diploma Musica Sacra Category</span>
+                                        </li>
+                                        <li class="mb-2 d-flex ">
+                                            <i class="bi bi-award-fill text-primary"></i>
+                                            <span class="ms-2">Silver Diploma Gospel Choir Category</span>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                        <span>Learn More</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-15" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2005 - Kompetisi Putra“ Yudea Bermazmur“ - Manado, Indonesia.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-15" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                    <div class="container pb-lg-3 ">
+                    <div class="row align-items-center ">
+                        <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                            <div class="position-relative rellax mb-5 mb-lg-0 ">
+                            </div>
+                        </div>
+                        <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                            <div class="mt-md-1 mb-1 mb-md-0">
+                                <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                    <li class="mb-2 d-flex ">
+                                        <i class="bi bi-trophy-fill text-primary"></i>
+                                        <span class="ms-2">Winner of Male Choir Category </span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                    <span>Learn More</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+                </div>
+              </div>
+              <div class="border mb-2 rounded-3 p-3 ">
+                <h4 class="mb-0 fs-5 ">
+                  <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-16" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2004 - 19th ITB Choir Festivals - Bandung, Indonesia.
+                    <span class="chevron-arrow" data-vs-inline-format="yes">
+                      <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                    </span>
+                  </a>
+                </h4>
+                <div id="collapse-16" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                  <div class="mt-3">
+                     <div id="collapse-15" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+                        <div class="mt-3">
+                            <div class="container pb-lg-3 ">
+                                <div class="row align-items-center ">
+                                    <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                                        <div class="position-relative rellax mb-5 mb-lg-0 ">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                                        <div class="mt-md-1 mb-1 mb-md-0">
+                                            <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                                <li class="mb-2 d-flex ">
+                                                    <i class="bi bi-trophy-fill text-primary"></i>
+                                                    <span class="ms-2">Winner of Male Choir Category </span>
+                                                </li>
+                                            </ul>
+                                            <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                                <span>Learn More</span>
+                                                <i class="bi bi-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        </div>
+        <div class="border mb-2 rounded-3 p-3 ">
+            <h4 class="mb-0 fs-5 ">
+              <a href="#" class="text-reset d-flex justify-content-between align-items-center text-decoration-none" data-bs-target="#collapse-17" aria-expanded="false" aria-controls="collapse-06" data-bs-toggle="collapse">2002 - 18th ITB Choir Festivals - Bandung, Indonesia.
+                <span class="chevron-arrow" data-vs-inline-format="yes">
+                  <i class="bi bi-chevron-down" data-vs-inline-format="yes"></i>
+                </span>
+              </a>
+            </h4>
+            <div id="collapse-17" class="accordion-collapse collapse" data-bs-parent="#accordion-parent">
+              <div class="mt-3">
+                <div class="container pb-lg-3 ">
+                    <div class="row align-items-center ">
+                        <div class="col-lg-3 col-md-6 col-6 order-lg-2 order-1 ">
+                            <div class="position-relative rellax mb-5 mb-lg-0 ">
+                            </div>
+                        </div>
+                        <div class="col-lg-5 offset-lg-1 col-md-6 col-12 order-lg-2 ">
+                            <div class="mt-md-1 mb-1 mb-md-0">
+                                <ul class="list-unstyled mb-1 " data-vs-ul-droppable="yes">
+                                    <li class="mb-2 d-flex ">
+                                        <i class="bi bi-award-fill text-primary"></i>
+                                        <span class="ms-2">Successful Participant </span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="icon-link icon-link-hover text-decoration-none">
+                                    <span>Learn More</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+<!--Prestasi list end-->  
+
+      <!--Footer-->
+      <section class="bg-dark text-white">
+        <footer class="pt-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-sm-6 ms-auto flex-grow-1">
+                <div class="mb-5 mb-lg-0">
+                  <div class="mb-4">
+                    <h3 class="fw-semibold">Blue Choir</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="mb-5 mb-lg-0">
+                  <h4 class="text-capitalize mb-4 fs-5 fw-medium">Organisasi</h4>
+                  <ul class="list-unstyled">
+                    <li class="mb-1">
+                      <a href="#" class="text-decoration-none text-reset fw-light">BCNews</a>
+                    </li>
+                    <li class="mb-1">
+                      <a href="#" class="text-decoration-none text-reset fw-light">Open Recruitment</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="mb-5 mb-lg-0">
+                  <h4 class="text-capitalize mb-4 fs-5 fw-medium">Sosial Media</h4>
+                  <ul class="list-unstyled">
+                    <li class="mb-1">
+                      <a href="https://www.instagram.com/bluechoir/" target="_blank" class="text-decoration-none text-reset fw-light">Instagram</a>
+                    </li>
+                    <li class="mb-1">
+                      <a href="https://www.facebook.com/share/16FAoCaZdh/" target="_blank" class="text-decoration-none text-reset fw-light">Facebook</a>
+                    </li>
+                    <li class="mb-1">
+                      <a href="https://www.youtube.com/@bluechoir1996" target="_blank" class="text-decoration-none text-reset fw-light">Youtube</a>
+                    </li>
+                    <li class="mb-1">
+                      <a href="https://www.tiktok.com/@blue.choir" target="_blank" class="text-decoration-none text-reset fw-light">Tiktok</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="mb-5 mb-lg-0">
+                  <h4 class="text-capitalize mb-4 fs-5 fw-medium">Kontak</h4>
+                  <h6>
+                    <a href="mailto:bluechoir16@gmail.com" target="_blank" class="text-decoration-none text-reset fw-light">
+                      <i class="bi bi-envelope me-3"></i>
+                      bluechoir16@gmail.com
+                    </a>
+                  </h6>
+                  <h6>
+                    <a href="https://wa.me/6281248798145" class="text-decoration-none text-reset fw-light">
+                      <i class="bi bi-headset me-3"></i>
+                      +6281248798145
+                    </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </section>
+      <!--Footer end-->
+
+
+                    <!-- Login Modal -->
+          <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Masuk</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show login-card-error" role="alert">
+                            <ul class="mb-0 ps-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('status')) 
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('status') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('error')) 
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                <form action="{{ route('postlogin.attempt') }}" class="form-login d-flex text-center flex-column" method="POST">
+                   @csrf
+                    <img src="../item/Logo.png" alt="Logo Blue Choir" height="70" width="90" class="mb-4 mx-auto">
+
+                    <h1 class="h3 mb-4">Masuk ke BlueChoir</h1>
+
+                    <label for="username" class="sr-only"></label>
+                    <input type="text" id="nim" name="nim" class="form-control mb-2 border border-dark" placeholder="Masukkan NIM" required autofocus>
+
+                    <label for="password" class="sr-only"></label>
+                    <input type="password" id="password" name="password" class="form-control mb-2 border border-dark" placeholder="Masukkan Kata Sandi" required autofocus>
+
+                    <button type="submit" class="btn btn-primary btn-block" name="login" value="Login">Masuk</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--Login Form end-->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

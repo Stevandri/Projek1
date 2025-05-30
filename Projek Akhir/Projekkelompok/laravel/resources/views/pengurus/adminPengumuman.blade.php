@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Pengumuman</title>
+  	<title>Admin - Pengumuman</title>
+     <link rel="icon" type="image/png" href="../item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -121,7 +122,7 @@
               <a href="{{ route('kegiatan.index') }}"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
 	          </li>
 	          <li>
-              <a href="{{ route('partitur.index') }}"><span class="fa fa-file mr-3"></span> Partitur</a>
+              <a href="{{ route('admin.partitur.index') }}"><span class="fa fa-file mr-3"></span> Partitur</a>
 	          </li>
 	          <li>
               <a href="{{ route('profil.show') }}"><span class="fa fa-user mr-3"></span> Akun</a>

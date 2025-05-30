@@ -2,6 +2,7 @@
 <html lang="id">
   <head>
     <title>Pengumuman - Blue Choir</title>
+     <link rel="icon" type="image/png" href="item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -9,11 +10,11 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
       body {
-        background-color: #DFEAFC;
+        background-color: #f4f7f9;
         font-family: 'Poppins', sans-serif;
-        overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
+        overflow-x: hidden;
+        color: #333;
       }
-      /* Gaya yang sudah ada dan spesifik untuk halaman ini dipertahankan */
       .profile-img {
         width: 100px;
         height: 100px;
@@ -29,122 +30,131 @@
 
       .custom-alert {
         border-left-width: 4px;
-        border-radius: 8px;
-        padding: 0.6rem 0.8rem;
+        border-radius: 12px;
+        padding: 1rem 1.25rem; 
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
-        margin-bottom: 0.4rem;
+        margin-bottom: 1rem; 
         background-color: #fff;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.07); 
       }
-      .custom-alert-info { border-left-color: #0dcaf0; background-color: #e8f8fd; color: #0c5460; }
-      .custom-alert-success { border-left-color: #198754; background-color: #e8fce8; color: #155724; }
-      .custom-alert-danger { border-left-color: #dc3545; background-color: #fde8e8; color: #842029; }
-      .custom-alert-warning { border-left-color: #ffc107; background-color: #fff8e5; color: #856404; }
+      .custom-alert-info { border-left-color: #3498db; background-color: #eaf5fc; color: #2980b9; }
+      .custom-alert-success { border-left-color: #2ecc71; background-color: #eafaf1; color: #27ae60; }
+      .custom-alert-danger { border-left-color: #e74c3c; background-color: #fdedec; color: #c0392b; }
+      .custom-alert-warning { border-left-color: #f39c12; background-color: #fef8e7; color: #d35400; }
 
       .alert-icon {
-        margin-right: 0.3rem;
-        font-size: 0.9rem;
+        margin-right: 1rem;
+        font-size: 1.25rem; 
       }
       .alert-content {
         flex: 1;
-        margin-left: 0.1rem;
       }
       .alert-title {
         font-weight: 600;
-        margin-bottom: 0.05rem;
-        font-size: 0.85rem;
+        margin-bottom: 0.2rem; 
+        font-size: 1rem; 
       }
       .alert-message {
-        font-size: 0.75rem;
-        line-height: 1.1;
+        font-size: 0.875rem; 
+        line-height: 1.4;
         margin-bottom: 0;
       }
       .btn-close-custom {
         border: none;
         background: transparent;
-        font-size: 1.25rem;
+        font-size: 1.5rem; 
         cursor: pointer;
         line-height: 1;
-        color: #777;
-        opacity: 0.7;
+        color: #7f8c8d; 
+        opacity: 0.8;
       }
       .btn-close-custom:hover {
-        color: #000;
+        color: #34495e; 
         opacity: 1;
       }
 
-      .completed { background-color: #d4edda; color: #155724; }
-      .in-progress { background-color: #f8d7da; color: #721c24; }
-
       .announcement-card {
-        background-color: #fff;
+        background-color: #ffffff;
         border: none;
-        border-radius: 10px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        margin-bottom: 0.6rem;
+        border-radius: 12px; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+      }
+      .announcement-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
       }
       .announcement-card .card-body {
-        padding: 0.7rem;
+        padding: 1.25rem;
+        border-left: 4px solid #3498db; 
+        border-top-left-radius: 0; 
+        border-bottom-left-radius: 0;
       }
       .announcement-card .card-title {
-        color: #0056b3;
+        color: #2c3e50; 
         font-weight: 600;
-        margin-bottom: 0.2rem;
-        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+        font-size: 1.2rem; 
       }
       .announcement-card .card-meta {
-        font-size: 0.7rem;
-        color: #6c757d;
-        margin-bottom: 0.4rem;
+        font-size: 0.8rem; 
+        color: #7f8c8d;
+        margin-bottom: 0.75rem; 
+      }
+      .announcement-card .card-meta i {
+        margin-right: 0.3rem;
       }
       .announcement-card .card-text-content {
-        color: #343a40;
-        line-height: 1.3;
+        color: #34495e; 
+        line-height: 1.6; 
         white-space: pre-wrap;
-        font-size: 0.8rem;
-        margin-bottom: 0.3rem;
-      }
-      .announcement-card .btn-link {
-        color: #007bff;
-        text-decoration: none;
         font-size: 0.9rem;
-        padding: 0.25rem 0;
+        margin-bottom: 0.75rem;
       }
-      .announcement-card .btn-link:hover { text-decoration: underline; }
+      .announcement-card .card-text-content a {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .announcement-card .card-text-content a:hover {
+        text-decoration: underline;
+      }
       .announcement-sender {
         font-style: italic;
-        font-size: 0.75rem;
-        color: #555;
-        margin-top: 0.3rem;
+        font-size: 0.8rem;
+        color: #95a5a6; 
+        margin-top: 1rem;
         text-align: left;
       }
-
-      /* Penyesuaian gaya #content yang sudah ada */
-      #content h2.text-dark.mb-4 { /* Sebelumnya #content h2.text-dark.mb-4 */
-        color: #343a40;
-        font-weight: 600;
-        margin-bottom: 0.8rem;
+      .announcement-sender i {
+        margin-right: 0.3rem;
       }
-      #content .container.my-4 { /* Sebelumnya #content .container.my-4 */
+
+      #content h2.main-title {
+        color: #2c3e50;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+      #content .container.my-4 {
         margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;
         padding: 0;
       }
+      .zindexatas{ z-index: 100; }
 
-      /* --- CSS BARU UNTUK LAYOUT RESPONSIF SIDEBAR --- */
       #content {
-        margin-left: 270px; /* Lebar sidebar */
-        width: calc(100% - 270px); /* Sisa lebar */
+        margin-left: 270px;
+        width: calc(100% - 270px);
         min-height: 100vh;
         transition: all 0.3s;
-        overflow-y: auto; /* Dipertahankan dari gaya inline sebelumnya */
-        /* Padding diatur oleh kelas p-3 p-md-4 pada elemen HTML */
+        overflow-y: auto;
       }
 
       #sidebar.active {
-        margin-left: -270px; /* Sembunyikan sidebar */
+        margin-left: -270px;
       }
 
       #sidebar.active ~ #content {
@@ -152,30 +162,28 @@
         width: 100%;
       }
 
-      @media (max-width: 991.98px) { /* Tablet dan di bawahnya */
+      @media (max-width: 991.98px) {
         #content {
           margin-left: 0;
           width: 100%;
         }
         #sidebar.active {
-          margin-left: 0; /* Sidebar muncul sebagai overlay */
+          margin-left: 0;
         }
       }
-
-      @media (max-width: 575.98px) { /* Smartphone (xs) */
-        .zindexmedium { z-index: 90; }
-        /* Padding #content (p-3 = 1rem) dari kelas HTML dianggap cukup untuk smartphone,
-           tidak perlu override spesifik di sini kecuali diinginkan lebih kecil/besar.
-           Contoh jika ingin padding horizontal 0.75rem:
-           #content {
-             padding-left: 0.75rem !important;
-             padding-right: 0.75rem !important;
-           }
-        */
+      @media (max-width: 767.98px) {
+         #content { padding: 1.5rem !important; } 
+         .announcement-card .card-body { padding: 1rem; }
+         .announcement-card .card-title { font-size: 1.1rem; }
+         .announcement-card .card-text-content { font-size: 0.85rem; }
       }
-      .zindexatas{ z-index: 100; }
-      /* --- AKHIR CSS BARU --- */
 
+      @media (max-width: 575.98px) {
+        .zindexmedium { z-index: 90; }
+        #content { padding: 1rem !important; } 
+         .announcement-card .card-meta { font-size: 0.75rem; }
+         .announcement-sender { font-size: 0.75rem; }
+      }
     </style>
   </head>
   <body>
@@ -217,31 +225,30 @@
   	    </div>
       </nav>
 
-      {{-- Menghapus style inline pada #content karena sudah diatur di CSS internal & Bootstrap --}}
       <div id="content" class="p-3 p-md-4">
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-12">
               <div class="container my-4">
-                <h2 class="text-dark mb-4">Pengumuman Terbaru</h2>
+                <h2 class="text-dark mb-4 main-title"> Pengumuman Terbaru</h2>
 
                 @if(isset($announcements) && $announcements->count() > 0)
                   @foreach($announcements as $announcement)
-                  <div class="card announcement-card mb-4">
-                    <div class="card-body px-3 py-3" style="background-color: #ffffff; border-left: 4px solid #0d6efd;">
-                      <h5 class="card-title text-primary mb-1" style="font-size: 1.15rem; font-weight: 600;">
+                  <div class="card announcement-card">
+                    <div class="card-body">
+                      <h5 class="card-title">
                         {{ $announcement->subject }}
                       </h5>
-                      <p class="card-meta text-muted mb-3" style="font-size: 0.75rem;">
-                        Dipublikasikan: {{ \Carbon\Carbon::parse($announcement->publish_date)->translatedFormat('l, d F Y') }}
+                      <p class="card-meta">
+                        <i class="fa fa-calendar-o"></i> Dipublikasikan: {{ \Carbon\Carbon::parse($announcement->publish_date)->translatedFormat('l, d F Y') }}
                       </p>
 
-                      <div class="card-text-content" style="font-size: 0.875rem; line-height: 1.35; color: #333; margin-bottom: 0.5rem;">
-                        {!! nl2br(preg_replace('/(https?:\/\/[^\s]+)/', '<a href="$1" target="_blank" style="color:#0d6efd;">$1</a>', e($announcement->content))) !!}
+                      <div class="card-text-content">
+                        {!! nl2br(preg_replace('/(https?:\/\/[^\s]+)/', '<a href="$1" target="_blank">$1</a>', e($announcement->content))) !!}
                       </div>
 
-                      <p class="announcement-sender text-end mt-2" style="font-style: italic; font-size: 0.75rem; color: #6c757d;">
-                        Dikirim oleh: {{ $announcement->sender }}
+                      <p class="announcement-sender">
+                        <i class="fa fa-user-circle-o"></i> Dikirim oleh: {{ $announcement->sender }}
                       </p>
                     </div>
                   </div>

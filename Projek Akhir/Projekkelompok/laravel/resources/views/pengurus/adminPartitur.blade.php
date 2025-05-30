@@ -2,6 +2,7 @@
 <html lang="id">
   <head>
   	<title>Admin - Manajemen Partitur</title>
+     <link rel="icon" type="image/png" href="../item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -14,7 +15,7 @@
             color: #495057;
             overflow-x: hidden;
         }
-        .table-container {
+        .table-container, .form-container {
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -95,6 +96,36 @@
         .zindexatas{ z-index: 100; }
         #sidebar ul.collapse li.active-sub > a { color: #28a745; font-weight: bold; background: rgba(0,0,0,0.05); }
         #sidebar ul li a[aria-expanded="true"] { color: #4e73df; }
+
+        .form-control,
+        .form-select {
+            border: 1px solid #ced4da;
+        }
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        .input-group-text {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-right: 0;
+            padding: 0.375rem 0.75rem;
+        }
+        .input-group .form-control {
+            border-left: 0;
+        }
+        .input-group > .form-control:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+        .input-group > .form-control:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+        .input-group > .input-group-text:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+        .input-group > .input-group-text:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0;}
+        input[type="file"].form-control {
+            border-left: 1px solid #ced4da;
+        }
+        input[type="file"].form-control:focus {
+            border-left: 1px solid #86b7fe;
+        }
+
 
         #content {
           margin-left: 270px;
@@ -195,7 +226,7 @@
                     </li>
 
                     @php
-                        $isPenggunaActive = request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create');
+                        $isPenggunaActive = request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create') || request()->routeIs('admin.pengguna.edit');
                     @endphp
                     <li class="{{ $isPenggunaActive ? 'active' : '' }}">
                         <a href="#userSubmenu" data-toggle="collapse" aria-expanded="{{ $isPenggunaActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-users mr-3"></span> Pengguna</a>
@@ -278,7 +309,7 @@
                     </div>
                 @endif
 
-                <div class="card shadow-sm mb-4">
+                <div class="card shadow-sm mb-4 form-container">
                     <div class="card-header">
                         <h5 class="mb-0">Unggah Partitur Baru</h5>
                     </div>
@@ -287,16 +318,22 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="judul" class="form-label">Judul Partitur</label>
-                                <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}" required>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-music"></i></span>
+                                    <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}" required>
+                                </div>
                                 @error('judul')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="pencipta" class="form-label">Pencipta</label>
-                                <input type="text" class="form-control @error('pencipta') is-invalid @enderror" id="pencipta" name="pencipta" value="{{ old('pencipta') }}" required>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control @error('pencipta') is-invalid @enderror" id="pencipta" name="pencipta" value="{{ old('pencipta') }}" required>
+                                </div>
                                 @error('pencipta')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-3">

@@ -2,6 +2,7 @@
 <html lang="id">
   <head>
   	<title>Admin - Tambah Pengguna Baru</title>
+     <link rel="icon" type="image/png" href="../../item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -231,7 +232,7 @@
             </li>
 
             <li>
-              <a href="#"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
+              <a href="{{ route('admin.partitur.index') }}"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
             </li>
 
             @php

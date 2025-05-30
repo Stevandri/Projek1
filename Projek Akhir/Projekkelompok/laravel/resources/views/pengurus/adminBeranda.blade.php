@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
   	<title>Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="../item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -246,7 +247,7 @@
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col">
-                      <h5 class="card-title">Total Pengguna</h5>
+                      <h5 class=" text-light h5"><b>Total Pengguna</b></h5>
                       <p class="card-text-value mb-0">{{ $totalPengguna ?? '0' }}</p>
                     </div>
                     <div class="col-auto">
@@ -261,7 +262,7 @@
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col">
-                      <h5 class="card-title">Pengguna Online</h5>
+                      <h5 class=" text-light h5"><b>Pengguna Online</b></h5>
                       <small class="d-block mb-1" style="font-size: 0.8em;">(Dalam 5 menit terakhir)</small>
                       <p class="card-text-value mb-0">{{ $jumlahPenggunaOnline ?? '0' }}</p>
                     </div>

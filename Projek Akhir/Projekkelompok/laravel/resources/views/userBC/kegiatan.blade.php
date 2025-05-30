@@ -2,6 +2,7 @@
 <html lang="id">
   <head>
     <title>Kegiatan - Blue Choir</title>
+     <link rel="icon" type="image/png" href="item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -11,9 +12,9 @@
         body{
             background-color: #DFEAFC;
             font-family: 'Poppins', sans-serif;
-            overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
+            overflow-x: hidden; 
         }
-        /* Gaya yang sudah ada dan spesifik untuk halaman ini dipertahankan */
+        
         .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
         .card-status { font-size: 14px; font-weight: bold; padding: 5px 10px; border-radius: 10px; }
         .custom-alert { border-left: 1px solid; border-radius: 5px; padding: 0.1rem 0.1rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
@@ -28,17 +29,17 @@
         .btn-close-custom { border: none; background: transparent; font-size: 1.25rem; cursor: pointer; line-height: 1; }
         .btn-close-custom:hover { color: #000; }
 
-        /* --- CSS BARU UNTUK LAYOUT RESPONSIF SIDEBAR --- */
+        
         #content {
-          margin-left: 270px; /* Lebar sidebar */
-          width: calc(100% - 270px); /* Sisa lebar */
+          margin-left: 270px; 
+          width: calc(100% - 270px);
           min-height: 100vh;
           transition: all 0.3s;
-          /* Padding diatur oleh kelas p-4 p-md-5 pt-5 pada elemen HTML */
+        
         }
 
         #sidebar.active {
-          margin-left: -270px; /* Sembunyikan sidebar */
+          margin-left: -270px; 
         }
 
         #sidebar.active ~ #content {
@@ -46,29 +47,26 @@
           width: 100%;
         }
 
-        @media (max-width: 991.98px) { /* Tablet dan di bawahnya */
+        @media (max-width: 991.98px) { 
           #content {
             margin-left: 0;
             width: 100%;
           }
           #sidebar.active {
-            margin-left: 0; /* Sidebar muncul sebagai overlay */
+            margin-left: 0;
           }
         }
 
-        @media (max-width: 575.98px) { /* Smartphone (xs) */
+        @media (max-width: 575.98px) { 
           .zindexmedium { z-index: 90; }
-          /* Padding #content (p-4 = 1.5rem horizontal) dari kelas HTML.
-             pt-5 memberikan padding-top 3rem.
-             Jika padding horizontal 1.5rem terlalu besar untuk smartphone, bisa disesuaikan:
-          */
+          
           #content {
-             padding-left: 1rem !important;  /* contoh: 16px */
-             padding-right: 1rem !important; /* contoh: 16px */
+             padding-left: 1rem !important;  
+             padding-right: 1rem !important;
           }
         }
-        .zindexatas{ z-index: 100; } /* Sudah ada, dipastikan termuat */
-        /* --- AKHIR CSS BARU --- */
+        .zindexatas{ z-index: 100; }
+       
 
     </style>
   </head>

@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Akun Saya</title> <meta charset="utf-8">
+     <link rel="icon" type="image/png" href="item/Logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,7 +11,7 @@
   <style>
     body {
       background-color: #DFEAFC;
-      overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
+      overflow-x: hidden;
     }
     .profile-img {
       width: 100px;
@@ -18,7 +19,6 @@
       border-radius: 50%;
       object-fit: cover;
     }
-    /* ... (sisa style Anda yang sudah ada untuk custom-alert, dll.) ... */
     .custom-alert {
       border-left: 1px solid;
       border-radius: 5px;
@@ -69,18 +69,18 @@
     .profile-text-link { color: #1DA1F2; text-decoration: none; }
     .profile-text-link:hover { text-decoration: underline; }
 
-    /* --- CSS BARU UNTUK LAYOUT RESPONSIF SIDEBAR --- */
+    .zindexatas { z-index: 100; }
+
     #content {
-      margin-left: 270px; /* Lebar sidebar */
-      width: calc(100% - 270px); /* Sisa lebar */
+      margin-left: 270px;
+      width: calc(100% - 270px);
       min-height: 100vh;
       transition: all 0.3s;
-      overflow-y: auto; /* Dari style inline sebelumnya */
-      /* Padding diatur oleh kelas p-3 p-md-4 pada elemen HTML */
+      overflow-y: auto;
     }
 
     #sidebar.active {
-      margin-left: -270px; /* Sembunyikan sidebar */
+      margin-left: -270px;
     }
 
     #sidebar.active ~ #content {
@@ -88,18 +88,18 @@
       width: 100%;
     }
 
-    @media (max-width: 991.98px) { /* Tablet dan di bawahnya */
+    @media (max-width: 991.98px) {
       #content {
         margin-left: 0;
         width: 100%;
       }
       #sidebar.active {
-        margin-left: 0; /* Sidebar muncul sebagai overlay */
+        margin-left: 0;
       }
     }
 
-    /* Media query yang sudah ada untuk profile-card */
     @media (max-width: 767.98px) {
+      #content { padding: 1rem !important; }
       .profile-card { padding: 15px; margin-top: 20px; }
       .profile-avatar { width: 80px; height: 80px; }
       .profile-name { font-size: 20px; }
@@ -107,19 +107,9 @@
       .profile-info-item { justify-content: flex-start; padding: 0;}
     }
 
-    @media (max-width: 575.98px) { /* Smartphone (xs) */
+    @media (max-width: 575.98px) {
       .zindexmedium { z-index: 90; }
-      /* Padding #content (p-3 = 1rem) dari kelas HTML dianggap cukup untuk smartphone.
-         Jika ingin padding horizontal lebih kecil/besar, bisa ditambahkan di sini. Contoh:
-         #content {
-           padding-left: 0.75rem !important;
-           padding-right: 0.75rem !important;
-         }
-      */
     }
-    .zindexatas { z-index: 100; }
-    /* --- AKHIR CSS BARU --- */
-
   </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
@@ -168,7 +158,6 @@
         </div>
       </nav>
 
-      {{-- Menghapus style inline dari #content karena sudah diatur di CSS internal --}}
       <div id="content" class="p-3 p-md-4">
         <div class="container-fluid">
           @if(session('success'))
@@ -221,7 +210,9 @@
                   </div>
                 </div>
 
-                <a href="{{ route('profil.edit') }}" class="btn btn-primary mt-4 w-75">Edit Profil</a>
+                <a href="{{ route('profil.edit') }}" class="btn btn-primary mt-4 w-75">
+                    <i class="fa fa-pencil"></i> Edit Profil
+                </a>
               </div>
             </div>
           </div>

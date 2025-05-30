@@ -2,6 +2,7 @@
 <html lang="id">
   <head>
   	<title>Admin - Edit Pengumuman</title>
+    <link rel="icon" type="image/png" href="../../../item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -35,7 +36,7 @@
     .admin-card .card-text-value { font-size: 2rem; font-weight: 700; }
     .admin-card .icon-bg { font-size: 2.5rem; opacity: 0.5; }
 
-    .table-container {
+    .table-container, .form-container {
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -118,21 +119,38 @@
     .form-label .text-danger {
         font-size: 0.8em;
     }
-    textarea.resizable-textarea {
+    textarea.resizable-textarea,
+    textarea.form-control {
         min-height: 120px;
         resize: vertical;
+        border-left: 1px solid #ced4da;
+    }
+    textarea.form-control:focus {
+        border-left: 1px solid #86b7fe;
+    }
+    .form-control,
+    .form-select {
+        border: 1px solid #ced4da;
+    }
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
     }
     .input-group-text {
         background-color: #e9ecef;
+        border: 1px solid #ced4da;
         border-right: 0;
+        padding: 0.375rem 0.75rem;
     }
     .input-group .form-control {
         border-left: 0;
     }
-    .input-group .form-control:focus {
-        box-shadow: none !important;
-        border-color: #86b7fe;
-    }
+    .input-group > .form-control:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+    .input-group > .form-control:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+    .input-group > .input-group-text:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+    .input-group > .input-group-text:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0;}
+
 
     #content {
       margin-left: 270px;
@@ -226,11 +244,11 @@
             </li>
 
             <li>
-              <a href="#"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
+              <a href="{{ route('admin.partitur.index') }}"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
             </li>
 
             @php
-                $isPenggunaActive = request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create');
+                $isPenggunaActive = request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create') || request()->routeIs('admin.pengguna.edit');
             @endphp
             <li class="{{ $isPenggunaActive ? 'active' : '' }}">
                 <a href="#userSubmenu" data-toggle="collapse" aria-expanded="{{ $isPenggunaActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-users mr-3"></span> Pengguna</a>
@@ -274,7 +292,7 @@
                 </a>
             </div>
 
-            <div class="card shadow-sm table-container">
+            <div class="card shadow-sm form-container">
                 <div class="card-header">Formulir Edit Pengumuman</div>
                 <div class="card-body">
                     @if ($errors->any())
@@ -300,8 +318,11 @@
 
                         <div class="mb-3">
                             <label for="subject" class="form-label">Subjek Pengumuman <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject" value="{{ old('subject', $announcement->subject) }}" required>
-                            @error('subject') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-tag"></i></span>
+                                <input type="text" class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject" value="{{ old('subject', $announcement->subject) }}" required>
+                            </div>
+                            @error('subject') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="mb-3">

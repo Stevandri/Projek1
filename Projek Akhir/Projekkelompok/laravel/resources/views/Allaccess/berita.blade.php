@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="item/Logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BCNews</title>
@@ -19,7 +20,7 @@
         <nav class="bg-white navbar navbar-expand-lg navbar-light pg-lib-item py-lg-1" data-navbar-id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
           <div class="container">
             <img src="../../../item/Logo.png" alt="Bootstrap" width="50" height="36">
-            <a class="fw-bold navbar-brand fs-4" href="../../../index.php">
+            <a class="fw-bold navbar-brand fs-4" href="{{ url('/') }}">
               <span><SPan class="warnaputih">.</SPan>    BLUE CHOIR</span>
             </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-controls="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,18 +35,18 @@
                   <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}">Tentang</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}#kami">Kami</a>
+                  <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}">Kami</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle px-lg-3 py-lg-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Lainnya
                   </a>
                   <ul class="dropdown-menu z-3">
-                    <li><a class="dropdown-item" href="../../Sejarah/sejarah.html">Sejarah</a></li>
-                    <li><a class="dropdown-item" href="../../../allacces/Prestasi/prestasi.html">Prestasi</a></li>
-                    <li><a class="dropdown-item" href="../../../allacces/Kepengurusan2025/kepengurusan2025.html">Kepengurusan 2025</a></li>
-                    <li><a class="dropdown-item" href="../../../allacces/VisiMisi/visimisi.html">Visi Misi</a></li>
-                    <li><a class="dropdown-item" href="../../../allacces/openrecruitment/openrecruitment.html">open recruitment</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/Sejarah') }}">Sejarah</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/Prestasi') }}">Prestasi</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/kepengurusan') }}">Kepengurusan 2025</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/Visi&Misi') }}">Visi Misi</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/OpenRecruitment') }}">open recruitment</a></li>
                     <li><hr class="dropdown-divider"></li>
                   </ul>
                 </li>
@@ -82,20 +83,20 @@
             <!---->
             <div class="col-lg-4 col-md-6"  data-aos="fade-up">
               <div class="bg-white shadow rounded" >
-                <a href="{{ url('/PICF2024') }}" class="d-block" >
-                  <img src="item/PICF.png" class="img-fluid w-100 rounded-top" alt="..." width="700" height="480"  >
+                <a href="https://bisnismanado.com/2024/09/17/blue-choir-fakultas-teknik-unsrat-raih-dua-emas-di-picf-2024/" target="_blank" class="d-block" >
+                  <img src="../item/PICF.png" class="img-fluid w-100 rounded-top" alt="..." width="700" height="480"  >
                 </a>
                 <div class="py-4 px-3" >
-                  <a href="{{ url('/PICF2024') }}" class="text-dark text-decoration-none" >
+                  <a href="https://bisnismanado.com/2024/09/17/blue-choir-fakultas-teknik-unsrat-raih-dua-emas-di-picf-2024/" target="_blank" class="text-dark text-decoration-none" >
                     <h4 class="mb-3 fs-5" >Blue Choir Fakultas Teknik Unsrat Raih Dua Emas di PICF 2024.</h4>
                   </a>
                   <div class="align-items-center d-flex justify-content-between small" >
-                    <a href="#" class="align-items-center d-flex text-dark text-decoration-none" >
+                    <a href="https://bisnismanado.com/2024/09/17/blue-choir-fakultas-teknik-unsrat-raih-dua-emas-di-picf-2024/" target="_blank" class="align-items-center d-flex text-dark text-decoration-none" >
                       <div >
-                        <p class="mb-0 text-secondary" >10 August 2024</p>
+                        <p class="mb-0 text-secondary" >17 September 2024</p>
                       </div>
                     </a>
-                    <a href="{{ url('/PICF2024') }}" class="align-items-center d-flex text-dark text-decoration-none" >
+                    <a href="https://bisnismanado.com/2024/09/17/blue-choir-fakultas-teknik-unsrat-raih-dua-emas-di-picf-2024/" target="_blank" class="align-items-center d-flex text-dark text-decoration-none" >
                       <span class="text-secondary" >Baca selengkapnya</span>
                       </a>
                   </div>
@@ -105,20 +106,20 @@
             <!---->
             <div class="col-lg-4 col-md-6"  data-aos="fade-up">
               <div class="bg-white shadow rounded" >
-                <a href="{{ url('/Bc_In_Tahiland') }}" class="d-block" >
-                  <img src="allacces/Artikel/Artikel/img/RYV2024.png" class="img-fluid w-100 rounded-top" alt="..." width="700" height="480"  >
+                <a href="https://fatek.unsrat.ac.id/blue-choir-raih-gold-medal-pada-11th-bali-international-choir-festival-2022/s" target="_blank" class="d-block" >
+                  <img src="../item/BICF.png" class="img-fluid w-100 rounded-top" alt="..." width="700" height="480"  >
                 </a>
                 <div class="py-4 px-3" >
-                  <a href="{{ url('/Bc_In_Tahiland') }}" class="text-dark text-decoration-none" >
-                    <h4 class="mb-3 fs-5" >Keseruan Raise Your Voise 2024 di Tompaso Baru.</h4>
+                  <a href="https://fatek.unsrat.ac.id/blue-choir-raih-gold-medal-pada-11th-bali-international-choir-festival-2022/" target="_blank" class="text-dark text-decoration-none" >
+                    <h4 class="mb-3 fs-5" >Blue Choir Raih Gold Medal pada 11th BICF 2022.</h4>
                   </a>
                   <div class="align-items-center d-flex justify-content-between small" >
-                    <a href="{{ url('/Bc_In_Tahiland') }}" class="align-items-center d-flex text-dark text-decoration-none" >
+                    <a href="https://fatek.unsrat.ac.id/blue-choir-raih-gold-medal-pada-11th-bali-international-choir-festival-2022/" target="_blank" class="align-items-center d-flex text-dark text-decoration-none" >
                       <div >
-                        <p class="mb-0 text-secondary" >10 August 2020</p>
+                        <p class="mb-0 text-secondary" >29 Juli 2022</p>
                       </div>
                     </a>
-                    <a href="{{ url('/Bc_In_Tahiland') }}" class="align-items-center d-flex text-dark text-decoration-none" >
+                    <a href="https://fatek.unsrat.ac.id/blue-choir-raih-gold-medal-pada-11th-bali-international-choir-festival-2022/" target="_blank" class="align-items-center d-flex text-dark text-decoration-none" >
                       <span class="text-secondary" >Baca selengkapnya</span>
                       </a>
                   </div>
@@ -221,13 +222,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    @if (session('status')) {{-- Pesan sukses, misal setelah logout --}}
+                    @if (session('status')) 
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('status') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    @if (session('error')) {{-- Pesan error dari redirect, misal IsAdmin --}}
+                    @if (session('error')) 
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ session('error') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -236,7 +237,7 @@
 
                 <form action="{{ route('postlogin.attempt') }}" class="form-login d-flex text-center flex-column" method="POST">
                    @csrf
-                    <img src="item/Logo.png" alt="Logo Blue Choir" height="70" width="90" class="mb-4 mx-auto">
+                    <img src="../item/Logo.png" alt="Logo Blue Choir" height="70" width="90" class="mb-4 mx-auto">
 
                     <h1 class="h3 mb-4">Masuk ke BlueChoir</h1>
 
@@ -245,10 +246,6 @@
 
                     <label for="password" class="sr-only"></label>
                     <input type="password" id="password" name="password" class="form-control mb-2 border border-dark" placeholder="Masukkan Kata Sandi" required autofocus>
-
-                    <div class=" mb-3">
-                        <p><a href="" class="text-black">Lupa kata sandi</a></p>
-                    </div>
 
                     <button type="submit" class="btn btn-primary btn-block" name="login" value="Login">Masuk</button>
                 </form>

@@ -2,6 +2,7 @@
 <html lang="id">
   <head>
   	<title>Admin - Manajemen Pengguna</title>
+     <link rel="icon" type="image/png" href="../item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -208,7 +209,7 @@
             </li>
 
             <li>
-              <a href="#"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
+              <a href="{{ route('admin.partitur.index') }}"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
             </li>
 
             @php
@@ -295,6 +296,7 @@
                                     <th scope="col">Telepon</th>
                                     <th scope="col">Posisi</th>
                                     <th scope="col">Posisi Suara</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -316,6 +318,7 @@
                                             {{ ucfirst($user->posisi_suara ?? 'Tidak diketahui') }}
                                         </span>
                                     </td>
+                                    <td>{{ $user->status }}</td>
                                     <td class="btn-action-group text-center">
                                         <a href="{{ route('admin.pengguna.edit', $user->id) }}" class="btn btn-sm btn-warning" title="Edit Pengguna">
                                             <i class="fa fa-pencil"></i>

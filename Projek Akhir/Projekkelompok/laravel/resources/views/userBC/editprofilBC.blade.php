@@ -2,19 +2,20 @@
 <html lang="en">
   <head>
     <title>Edit Profil</title> <meta charset="utf-8">
+     <link rel="icon" type="image/png" href="../item/Logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> <link rel="stylesheet" href="{{ asset('css/style.css') }}"> </head>
   <style>
     body {
-      background-color: #DFEAFC; /* Match profilBC */
-      overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
+      background-color: #DFEAFC;
+      overflow-x: hidden;
     }
     .card {
       border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Match profilBC */
-      margin-top: 30px; /* Match profilBC */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
     }
     .btn-primary {
       background-color: #007bff;
@@ -46,11 +47,10 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
-      border: 2px solid #eee; /* Match profilBC */
-      margin-bottom: 15px; /* Match profilBC */
+      border: 2px solid #eee;
+      margin-bottom: 15px;
     }
 
-    /* Custom Alert Styles from profilBC */
     .custom-alert {
       border-left: 1px solid;
       border-radius: 5px;
@@ -71,18 +71,40 @@
     .btn-close-custom { border: none; background: transparent; font-size: 1.25rem; cursor: pointer; line-height: 1; }
     .btn-close-custom:hover { color: #000; }
 
-    /* --- CSS BARU UNTUK LAYOUT RESPONSIF SIDEBAR --- */
+    .form-control,
+    .form-select {
+        border: 1px solid #ced4da;
+    }
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    .input-group-text {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        border-right: 0;
+        padding: 0.375rem 0.75rem;
+    }
+    .input-group .form-control {
+        border-left: 0;
+    }
+    .input-group > .form-control:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+    .input-group > .form-control:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+    .input-group > .input-group-text:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+    .input-group > .input-group-text:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0;}
+
+
     #content {
-      margin-left: 270px; /* Lebar sidebar */
-      width: calc(100% - 270px); /* Sisa lebar */
+      margin-left: 270px;
+      width: calc(100% - 270px);
       min-height: 100vh;
       transition: all 0.3s;
-      overflow-y: auto; /* Dari style inline sebelumnya */
-      /* Padding diatur oleh kelas p-3 p-md-4 pada elemen HTML */
+      overflow-y: auto;
     }
 
     #sidebar.active {
-      margin-left: -270px; /* Sembunyikan sidebar */
+      margin-left: -270px;
     }
 
     #sidebar.active ~ #content {
@@ -90,31 +112,29 @@
       width: 100%;
     }
 
-    @media (max-width: 991.98px) { /* Tablet dan di bawahnya */
+    @media (max-width: 991.98px) {
       #content {
         margin-left: 0;
         width: 100%;
       }
       #sidebar.active {
-        margin-left: 0; /* Sidebar muncul sebagai overlay */
+        margin-left: 0;
       }
     }
-    /* --- AKHIR CSS BARU --- */
 
-    /* Responsive adjustments from profilBC (dipertahankan) */
     @media (max-width: 767.98px) {
-      .containerku { /* Kelas ini digunakan di div pembungkus form */
+      .containerku {
         padding-left: 15px;
         padding-right: 15px;
       }
-      .card-body { /* Menargetkan card-body di dalam form edit */
+      .card-body {
         padding: 1.5rem !important;
       }
-      .profile-img { /* Penyesuaian untuk gambar profil di form edit */
+      .profile-img {
         width: 80px;
         height: 80px;
       }
-      .custom-file-upload { /* Penyesuaian untuk tombol upload */
+      .custom-file-upload {
         width: 100%;
         text-align: center;
         margin-top: 1rem !important;
@@ -126,10 +146,8 @@
         margin-bottom: 0.75rem;
       }
     }
-
-    /* z-index yang ada di file ini dipertahankan */
-    .zindexmedium { z-index: 1030; } /* Untuk custom-menu (tombol sidebar) */
-    .zindexatas { z-index: 100; }  /* Untuk konten di dalam sidebar */
+    .zindexmedium { z-index: 1030; }
+    .zindexatas { z-index: 100; }
 
   </style>
   <body>
@@ -179,7 +197,6 @@
         </div>
       </nav>
 
-      {{-- Menghapus style inline dari #content --}}
       <div id="content" class="p-3 p-md-4">
         <div class="container containerku">
           <div class="row justify-content-center">
@@ -218,7 +235,7 @@
                     @csrf <div class="text-center mb-4">
                       <img id="profile-picture" src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('item/profildefault.png') }}" alt="Foto Profil {{ $user->namadepan }}" class="profile-img">
                       <label for="photo-upload" class="custom-file-upload mt-2">
-                        Ubah Foto
+                        <i class="fa fa-camera"></i> Ubah Foto
                       </label>
                       <input type="file" id="photo-upload" name="profile_picture" accept="image/*">
                     </div>
@@ -226,45 +243,74 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="namadepan" class="form-label">Nama Depan</label>
-                            <input type="text" class="form-control" id="namadepan" name="namadepan" value="{{ old('namadepan', $user->namadepan) }}" style="border: 1px solid #ced4da;" required>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control @error('namadepan') is-invalid @enderror" id="namadepan" name="namadepan" value="{{ old('namadepan', $user->namadepan) }}" required>
+                            </div>
+                            @error('namadepan') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="namabelakang" class="form-label">Nama Belakang</label>
-                            <input type="text" class="form-control" id="namabelakang" name="namabelakang" value="{{ old('namabelakang', $user->namabelakang) }}" style="border: 1px solid #ced4da;" required>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-user-o"></i></span>
+                                <input type="text" class="form-control @error('namabelakang') is-invalid @enderror" id="namabelakang" name="namabelakang" value="{{ old('namabelakang', $user->namabelakang) }}" required>
+                            </div>
+                             @error('namabelakang') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                         </div>
                     </div>
 
                     <div class="mb-3">
                       <label for="posisi-suara" class="form-label">Posisi Suara</label>
-                      <select class="form-select form-control" id="posisi-suara" name="posisi_suara" style="border: 1px solid #ced4da;">
-                        <option value="" {{ old('posisi_suara', $user->posisi_suara ?? '') == '' ? 'selected' : '' }}>Pilih Posisi Suara (Opsional)</option>
-                        <option value="Sopran 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Sopran 1' ? 'selected' : '' }}>Sopran 1</option>
-                        <option value="Sopran 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Sopran 2' ? 'selected' : '' }}>Sopran 2</option>
-                        <option value="Alto 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Alto 1' ? 'selected' : '' }}>Alto 1</option>
-                        <option value="Alto 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Alto 2' ? 'selected' : '' }}>Alto 2</option>
-                        <option value="Tenor 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Tenor 1' ? 'selected' : '' }}>Tenor 1</option>
-                        <option value="Tenor 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Tenor 2' ? 'selected' : '' }}>Tenor 2</option>
-                        <option value="Bass 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Bass 1' ? 'selected' : '' }}>Bass 1</option>
-                        <option value="Bass 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Bass 2' ? 'selected' : '' }}>Bass 2</option>
-                      </select>
+                      <div class="input-group">
+                          <span class="input-group-text"><i class="fa fa-music"></i></span>
+                          <select class="form-select @error('posisi_suara') is-invalid @enderror" id="posisi-suara" name="posisi_suara">
+                            <option value="" {{ old('posisi_suara', $user->posisi_suara ?? '') == '' ? 'selected' : '' }}>Pilih Posisi Suara (Opsional)</option>
+                            <option value="Sopran 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Sopran 1' ? 'selected' : '' }}>Sopran 1</option>
+                            <option value="Sopran 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Sopran 2' ? 'selected' : '' }}>Sopran 2</option>
+                            <option value="Alto 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Alto 1' ? 'selected' : '' }}>Alto 1</option>
+                            <option value="Alto 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Alto 2' ? 'selected' : '' }}>Alto 2</option>
+                            <option value="Tenor 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Tenor 1' ? 'selected' : '' }}>Tenor 1</option>
+                            <option value="Tenor 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Tenor 2' ? 'selected' : '' }}>Tenor 2</option>
+                            <option value="Bass 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Bass 1' ? 'selected' : '' }}>Bass 1</option>
+                            <option value="Bass 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Bass 2' ? 'selected' : '' }}>Bass 2</option>
+                            <option value="Baritone" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Baritone' ? 'selected' : '' }}>Baritone</option>
+                          </select>
+                      </div>
+                      @error('posisi_suara') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="mb-3">
                       <label for="nim" class="form-label">NIM</label>
-                      <input type="text" class="form-control" id="nim" name="nim" value="{{ old('nim', $user->nim) }}" style="border: 1px solid #ced4da;" required>
+                       <div class="input-group">
+                          <span class="input-group-text"><i class="fa fa-id-card-o"></i></span>
+                          <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" value="{{ old('nim', $user->nim) }}" required>
+                      </div>
+                      @error('nim') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="mb-3">
                       <label for="email" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" style="border: 1px solid #ced4da;" required>
+                      <div class="input-group">
+                          <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
+                          <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}" required>
+                      </div>
+                      @error('email') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="mb-3">
                       <label for="telepon" class="form-label">Nomor Telepon</label>
-                      <input type="tel" class="form-control" id="telepon" name="telepon" value="{{ old('telepon', $user->telepon) }}" placeholder="Contoh: 08123456789 (Opsional)" style="border: 1px solid #ced4da;">
+                      <div class="input-group">
+                          <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                          <input type="tel" class="form-control @error('telepon') is-invalid @enderror" id="telepon" name="telepon" value="{{ old('telepon', $user->telepon) }}" placeholder="Contoh: 08123456789 (Opsional)">
+                      </div>
+                      @error('telepon') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                     </div>
 
-                    <div class="d-grid mt-4"> <button type="submit" class="btn btn-primary btn-lg">Simpan Perubahan</button> </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fa fa-save"></i> Simpan Perubahan
+                        </button>
+                    </div>
                   </form>
 
                 </div>
@@ -276,18 +322,16 @@
     </div>
     <script src="{{ asset('js/jquery.min.js') }}"></script> <script src="{{ asset('js/popper.js') }}"></script> <script src="{{ asset('js/bootstrap.min.js') }}"></script> <script src="{{ asset('js/main.js') }}"></script> <script>
       $(document).ready(function() {
-        // Script untuk preview gambar
         $('#photo-upload').on('change', function(event) {
           var reader = new FileReader();
           reader.onload = function() {
             $('#profile-picture').attr('src', reader.result);
           }
-          if (event.target.files.length > 0) { // Cek apakah file dipilih
+          if (event.target.files.length > 0) {
             reader.readAsDataURL(event.target.files[0]);
           }
         });
 
-        // Script untuk sidebar toggle (jika main.js belum menanganinya atau ingin memastikan)
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });

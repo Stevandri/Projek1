@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="item/Logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabung Bersama Kami</title>
     <!-- Bootstrap CSS -->
@@ -16,7 +17,7 @@
     <nav class="bg-white navbar navbar-expand-lg navbar-light pg-lib-item py-lg-1" data-navbar-id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
       <div class="container">
         <img src="../../item/Logo.png" alt="Bootstrap" width="50" height="36">
-        <a class="fw-bold navbar-brand fs-4" href="../../index.php">
+        <a class="fw-bold navbar-brand fs-4" href="{{ url('/') }}">
           <span><SPan class="warnaputih">.</SPan>    BLUE CHOIR</span>
         </a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-controls="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,24 +26,24 @@
         <div class="navbar-collapse collapse" id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
           <ul class="mb-2 mb-lg-0 me-lg-auto navbar-nav">
             <li class="nav-item">
-              <a class="nav-link px-lg-3 py-lg-4" aria-current="page" href="../../Artikel/Artikel/Page1/berita.html">Berita</a>
+              <a class="nav-link px-lg-3 py-lg-4" aria-current="page" href="{{ url('/BCNews') }}">Berita</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-lg-3 py-lg-4" href="../../index.php#tentang">Tentang</a>
+              <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}">Tentang</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-lg-3 py-lg-4" href="../../index.php#kami">Kami</a>
+              <a class="nav-link px-lg-3 py-lg-4" href="{{ url('/') }}">Kami</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle px-lg-3 py-lg-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Lainnya
               </a>
               <ul class="dropdown-menu z-3">
-                <li><a class="dropdown-item" href="../../Artikel/Sejarah/sejarah.html">Sejarah</a></li>
-                <li><a class="dropdown-item" href="../Prestasi/prestasi.html">Prestasi</a></li>
-                <li><a class="dropdown-item" href="../Kepengurusan2025/kepengurusan2025.html">Kepengurusan 2025</a></li>
-                <li><a class="dropdown-item" href="../VisiMisi/visimisi.html">Visi Misi</a></li>
-                <li><a class="dropdown-item" href="../openrecruitment/openrecruitment.html">open recruitment</a></li>
+                <li><a class="dropdown-item" href="{{ url('/Sejarah') }}">Sejarah</a></li>
+                <li><a class="dropdown-item" href="{{ url('/Prestasi') }}">Prestasi</a></li>
+                <li><a class="dropdown-item" href="{{ url('/kepengurusan') }}">Kepengurusan 2025</a></li>
+                <li><a class="dropdown-item" href="{{ url('/Visi&Misi') }}">Visi Misi</a></li>
+                <li><a class="dropdown-item" href="{{ url('/OpenRecruitment') }}">open recruitment</a></li>
                 <li><hr class="dropdown-divider"></li>
               </ul>
             </li>
@@ -65,13 +66,16 @@
               <h2 class="mb-3 fw-semibold text-light">Jadilah bagian dari kami</h2>
               <p class="lead text-light">Blue Choir memberikan peluang bagi kamu untuk mengasah bakat, menjalin kekeluargaan bersama kami.</p>
               <p class="mt-5 mt-sm-4">
-                <a class="btn btn-primary px-4 py-2 fw-medium" href="{{ url('/OpenRecruitmentForm') }}" data-type="external">Daftar Sekarang</a>
+                <!--Jika dalam masa penerimaan-->
+                <!--<a class="btn btn-primary px-4 py-2 fw-medium" href="{{ url('/OpenRecruitmentForm') }}" data-type="external" disabled>Daftar Sekarang</a>-->
+                <!--Jika Tidak-->
+                <button class="btn btn-primary" disabled>! Tidak dalam masa penerimaan anggota baru</button>
               </p>
             </div>
           </div>
           <div class="row pt-5 pb-3">
             <div class="col-12 text-center">
-              <p class="fw-semibold text-light"><i>Note:</i> Pendaftaran tersedia hingga 20 April 2025</p>
+              <p class="fw-semibold text-light"><i>Note:</i> Pendaftaran ditutup</p>
             </div>
           </div>
         </div>
@@ -144,53 +148,57 @@
       </section>
       <!--Footer end-->
 
-               <!-- Login Modal -->
+                             <!-- Login Modal -->
           <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="loginModalLabel">Masuk</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-login d-flex text-center flex-column">
-                            <!-- Bootstrap Logo -->
-                            <img src="../../item/Logo.png" alt="The company logo" height="70" width="90" class="mb-4 mx-auto ">
-    
-                            <!-- Heading -->
-                            <h1 class="h3 mb-4">Masuk ke BlueChoir</h1>
-                            
-                            <!-- Labels & input Email -->
-                            <input 
-                            type="email"
-                            id="inputEmail"
-                            placeholder="Masukkan email"
-                            class="form-control mb-2 border border-dark"
-                            required
-                            autofocus>
-    
-                            <!-- Labels & Input Password -->
-                            <input 
-                            type="password"
-                            id="inputPassword"
-                            placeholder="Masukkan Kata Sandi"
-                            class="form-control mb-2 border border-dark"
-                            required
-                            autofocus>
-    
-                            <!-- Checkbox -->
-                            <div class=" mb-3">
-                                <p><a href="" class="text-black">Lupa kata sandi</a></p>
-                            </div>
-    
-                            <!-- Login Button -->
-                            <button type="submit" class="btn btn-primary btn-block"><a href="../../user/index.html" class="text-decoration-none">Masuk</a></button>
-                        </form>
-                    </div>
-                </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Masuk</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        </div>    
-  <!--Login Form end-->
+            <div class="modal-body">
+            @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show login-card-error" role="alert">
+                            <ul class="mb-0 ps-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('status')) 
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('status') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('error')) 
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                <form action="{{ route('postlogin.attempt') }}" class="form-login d-flex text-center flex-column" method="POST">
+                   @csrf
+                    <img src="../item/Logo.png" alt="Logo Blue Choir" height="70" width="90" class="mb-4 mx-auto">
+
+                    <h1 class="h3 mb-4">Masuk ke BlueChoir</h1>
+
+                    <label for="username" class="sr-only"></label>
+                    <input type="text" id="nim" name="nim" class="form-control mb-2 border border-dark" placeholder="Masukkan NIM" required autofocus>
+
+                    <label for="password" class="sr-only"></label>
+                    <input type="password" id="password" name="password" class="form-control mb-2 border border-dark" placeholder="Masukkan Kata Sandi" required autofocus>
+
+                    <button type="submit" class="btn btn-primary btn-block" name="login" value="Login">Masuk</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--Login Form end-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

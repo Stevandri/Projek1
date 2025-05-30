@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Blue Choir</title>
+  <link rel="icon" type="image/png" href="item/Logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -40,7 +42,7 @@
                   </a>
                   <ul class="dropdown-menu z-3">
                     <li><a class="dropdown-item" href="{{ url('/Sejarah') }}">Sejarah</a></li>
-                    <li><a class="dropdown-item" href="allacces/Prestasi/prestasi.html">Prestasi</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/Prestasi') }}">Prestasi</a></li>
                     <li><a class="dropdown-item" href="{{ url('/kepengurusan') }}">Kepengurusan 2025</a></li>
                     <li><a class="dropdown-item" href="{{ url('/Visi&Misi') }}">Visi Misi</a></li>
                     <li><a class="dropdown-item" href="{{ url('/OpenRecruitment') }}">open recruitment</a></li>
@@ -206,13 +208,13 @@
                     <div class="col-12 col-sm-6"  >
                       <div class="card border-0 shadow-sm mb-4" >
                         <div class="card-body text-center p-4 p-xxl-5" >
-                          <h3 class="mb-2 display-6 fw-semibold" >60</h3>
+                          <h3 class="mb-2 display-6 fw-semibold" >>60</h3>
                           <p class="mb-0" >Penyanyi aktif</p>
                         </div>
                       </div>
                       <div class="card border-0 shadow-sm" >
                         <div class="card-body text-center p-4 p-xxl-5" >
-                          <h3 class="mb-2 display-6 fw-semibold" >18k+</h3>
+                          <h3 class="mb-2 display-6 fw-semibold" >>5</h3>
                           <p class="mb-0" >Prestasi Nasional</p>
                         </div>
                       </div>
@@ -226,7 +228,7 @@
                       </div>
                       <div class="card border-0 shadow-sm" >
                         <div class="card-body text-center p-4 p-xxl-5" >
-                          <h3 class="mb-2 display-6 fw-semibold" >78</h3>
+                          <h3 class="mb-2 display-6 fw-semibold" >>10</h3>
                           <p class="mb-0" >Prestasi Internasional</p>
                         </div>
                       </div>
@@ -255,7 +257,6 @@
           <div >
             <div class="row row-cols-xl-5 row-cols-md-3 row-cols-1 g-4 "  >
               <div class="col "  >
-                <a href="#" class="text-decoration-none" data-type="external" >
                   <div class="card text-center shadow-sm border-0 " >
                     <div class="card-body " >
                       <div class="mb-4 " >
@@ -267,10 +268,8 @@
                       </div>
                     </div>
                   </div>
-                </a>
               </div>
               <div class="col "  >
-                <a href="#" class="text-decoration-none" >
                   <div class="card text-center shadow-sm border-0 " >
                     <div class="card-body " >
                       <div class="mb-4 " >
@@ -282,10 +281,8 @@
                       </div>
                     </div>
                   </div>
-                </a>
               </div>
               <div class="col "  >
-                <a href="#" class="text-decoration-none" >
                   <div class="card text-center shadow-sm border-0 " >
                     <div class="card-body " >
                       <div class="mb-4 " >
@@ -297,10 +294,8 @@
                       </div>
                     </div>
                   </div>
-                </a>
               </div>
               <div class="col "  >
-                <a href="#" class="text-reset text-decoration-none" >
                   <div class="card text-center shadow-sm border-0 " >
                     <div class="card-body " >
                       <div class="mb-4 " >
@@ -312,7 +307,6 @@
                       </div>
                     </div>
                   </div>
-                </a>
               </div>
             </div>
           </div>
@@ -329,37 +323,17 @@
           <div class="justify-content-center row g-4"  >
             <div class="col-lg-4 col-md-6"  >
               <div class="bg-white shadow rounded" >
-                <a href="#" class="d-block" >
-                  <img src="item/lantik.png" class="img-fluid w-100 rounded-top" alt="..." width="700" height="480"  >
-                </a>
-                <div class="py-4 px-3" >
-                  <a href="#" class="text-dark text-decoration-none" >
-                    <h4 class="mb-3 fs-5" >Pengurus Blue Choir gelar rapat perdana usai dilantik.</h4>
-                  </a>
-                  <div class="align-items-center d-flex justify-content-between small" >
-                    <a href="#" class="align-items-center d-flex text-dark text-decoration-none" >
-                      <div >
-                        <p class="mb-0 text-secondary" >10 August 2020</p>
-                      </div>
-                    </a>
-                    <span class="text-secondary" >Baca selengkapnya ></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6"  >
-              <div class="bg-white shadow rounded" >
-                <a href="#" class="d-block" >
+                <a href="https://bisnismanado.com/2024/09/17/blue-choir-fakultas-teknik-unsrat-raih-dua-emas-di-picf-2024/" target="_blank" class="d-block" >
                   <img src="item/PICF.png" class="img-fluid w-100 rounded-top" alt="..." width="700" height="480"  >
                 </a>
                 <div class="py-4 px-3" >
-                  <a href="#" class="text-dark text-decoration-none" >
+                  <a href="https://bisnismanado.com/2024/09/17/blue-choir-fakultas-teknik-unsrat-raih-dua-emas-di-picf-2024/" target="_blank" class="text-dark text-decoration-none" >
                     <h4 class="mb-3 fs-5" >Blue Choir Fakultas Teknik Unsrat Raih Dua Emas di PICF 2024.</h4>
                   </a>
                   <div class="align-items-center d-flex justify-content-between small" >
-                    <a href="#" class="align-items-center d-flex text-dark text-decoration-none" >
+                    <a href="https://bisnismanado.com/2024/09/17/blue-choir-fakultas-teknik-unsrat-raih-dua-emas-di-picf-2024/" target="_blank" class="align-items-center d-flex text-dark text-decoration-none" >
                       <div >
-                        <p class="mb-0 text-secondary" >10 August 2024</p>
+                        <p class="mb-0 text-secondary" >17 September 2024</p>
                       </div>
                     </a>
                     <span class="text-secondary" >8 min read</span>
@@ -369,17 +343,17 @@
             </div>
             <div class="col-lg-4 col-md-6"  >
               <div class="bg-white shadow rounded" >
-                <a href="#" class="d-block" >
+                <a href="https://fatek.unsrat.ac.id/blue-choir-raih-gold-medal-pada-11th-bali-international-choir-festival-2022/"  target="_blank" class="d-block" >
                   <img src="item/BICF.png" class="img-fluid w-100 rounded-top" alt="..." width="700" height="480"  >
                 </a>
                 <div class="py-4 px-3" >
-                  <a href="#" class="text-dark text-decoration-none" >
+                  <a href="https://fatek.unsrat.ac.id/blue-choir-raih-gold-medal-pada-11th-bali-international-choir-festival-2022/" target="_blank" class="text-dark text-decoration-none" >
                     <h4 class="mb-3 fs-5" >Blue Choir Raih Gold Medal pada 11th BICF 2022.</h4>
                   </a>
                   <div class="align-items-center d-flex justify-content-between small" >
-                    <a href="#" class="align-items-center d-flex text-dark text-decoration-none" >
+                    <a href="https://fatek.unsrat.ac.id/blue-choir-raih-gold-medal-pada-11th-bali-international-choir-festival-2022/" target="_blank" class="align-items-center d-flex text-dark text-decoration-none" >
                       <div >
-                        <p class="mb-0 text-secondary" >10 August 2020</p>
+                        <p class="mb-0 text-secondary" >29 Juli 2022</p>
                       </div>
                     </a>
                     <span class="text-secondary" >5 min read</span>
@@ -390,12 +364,7 @@
           </div>
         </div>
       </section>
-      <!--berita end-->
-
-      <!--Login form-->
-          <!-- Button to Trigger Modal -->
-         
-      
+ 
           <!-- Login Modal -->
           <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -415,13 +384,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    @if (session('status')) {{-- Pesan sukses, misal setelah logout --}}
+                    @if (session('status')) 
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('status') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    @if (session('error')) {{-- Pesan error dari redirect, misal IsAdmin --}}
+                    @if (session('error')) 
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ session('error') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -439,10 +408,6 @@
 
                     <label for="password" class="sr-only"></label>
                     <input type="password" id="password" name="password" class="form-control mb-2 border border-dark" placeholder="Masukkan Kata Sandi" required autofocus>
-
-                    <div class=" mb-3">
-                        <p><a href="" class="text-black">Lupa kata sandi</a></p>
-                    </div>
 
                     <button type="submit" class="btn btn-primary btn-block" name="login" value="Login">Masuk</button>
                 </form>

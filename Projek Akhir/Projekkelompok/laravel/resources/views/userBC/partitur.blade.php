@@ -2,6 +2,7 @@
 <html lang="id">
   <head>
   	<title>Partitur - Blue Choir</title>
+     <link rel="icon" type="image/png" href="item/Logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -10,80 +11,123 @@
   </head>
   <style>
 	body{
-		background-color: #DFEAFC;
-        overflow-x: hidden; /* Mencegah scroll horizontal saat sidebar transisi */
+		background-color: #f4f7f9; 
+        overflow-x: hidden;
+        font-family: 'Poppins', sans-serif;
+        color: #333; 
 	}
-	/* CSS untuk card partitur */
     .card {
         height: 100%;
         display: flex;
         flex-direction: column;
+        background-color: #ffffff;
+        border: none; 
+        border-radius: 12px; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
+        transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    }
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
     .card-body {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding: 1.25rem; 
     }
     .card-img-top {
         width: 100%;
         height: 200px;
         object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+    .card-title {
+        font-weight: 600; 
+        color: #2c3e50; 
+        margin-bottom: 0.3rem;
+    }
+    .card-text.text-muted.small {
+        color: #7f8c8d !important; 
+        margin-bottom: 1rem;
     }
     .btn-download-container {
-        margin-top: auto;
+        margin-top: auto; 
+    }
+    .btn-primary { 
+        background-color: #3498db;
+        border-color: #3498db;
+        border-radius: 25px;
+        padding: 0.5rem 1.25rem;
+        font-weight: 500;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+        background-color: #2980b9;
+        border-color: #2980b9;
+    }
+    .btn-secondary { 
+        border-radius: 25px;
+        padding: 0.5rem 1.25rem;
+        font-weight: 500;
+    }
+    .input-group .form-control { 
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border-right: none; 
+        padding-left: 1.25rem;
+    }
+    .input-group .form-control:focus {
+        box-shadow: none;
+        border-color: #3498db;
+    }
+    .input-group .btn-primary { 
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+     .input-group .btn-secondary { 
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -1px;
     }
 
-    /* Kondisi default untuk #content ketika sidebar terlihat (layar besar) */
+
     #content {
-      margin-left: 270px; /* Sesuaikan dengan lebar sidebar Anda (misal: 270px) */
-      width: calc(100% - 270px); /* Lebar sisa setelah sidebar */
-      transition: all 0.3s; /* Transisi yang mulus */
-      min-height: 100vh; /* Minimal setinggi viewport */
-      /* Padding sudah diatur oleh kelas bootstrap p-4 p-md-5 pt-5 pada elemen HTML */
-      /* Jika ingin padding default di sini: padding: 20px; */
+      margin-left: 270px;
+      width: calc(100% - 270px);
+      transition: all 0.3s;
+      min-height: 100vh;
     }
-
-    /* Aturan untuk #sidebar ketika 'active' (terlipat/tertutup) */
-    /* Pastikan js/main.js menambahkan kelas 'active' ke #sidebar saat di-collapse */
-    /* dan #sidebar di style.css memiliki transition: all 0.3s; dan position:fixed */
     #sidebar.active {
-      margin-left: -270px; /* Menggeser sidebar ke luar layar (sesuai lebarnya) */
+      margin-left: -270px;
     }
-
-    /* Aturan untuk #content ketika sidebar 'active' (terlipat/tertutup) */
     #sidebar.active ~ #content {
       margin-left: 0;
       width: 100%;
     }
-
-    /* Media query untuk layar tablet dan di bawahnya */
     @media (max-width: 991.98px) {
         #content {
-            margin-left: 0; /* Konten mengambil lebar penuh */
+            margin-left: 0;
             width: 100%;
         }
-        /* Perilaku #sidebar.active di layar kecil (misalnya, sidebar muncul sebagai overlay) */
         #sidebar.active {
-             margin-left: 0; /* Sidebar muncul kembali dari kiri */
-             /* Anda mungkin perlu z-index yang lebih tinggi jika sidebar menjadi overlay dan menutupi .custom-menu */
+             margin-left: 0;
         }
     }
-
-    /* Media query untuk smartphone (layar ekstra kecil) */
-    @media (max-width: 575.98px) { /* Bootstrap xs breakpoint */
-      .zindexmedium { /* z-index untuk .custom-menu (tombol toggle sidebar) */
+    @media (max-width: 575.98px) {
+      .zindexmedium {
 	    z-index: 90;
 	  }
       #content {
-        /* Mengurangi padding horizontal pada layar smartphone yang sangat kecil */
-        /* Kelas p-4 pada elemen HTML memberikan padding 1.5rem. Ini akan menggantinya. */
-        /* Kelas pt-5 pada elemen HTML memberikan padding-top 3rem, ini akan tetap. */
-        padding-left: 1rem !important;  /* sekitar 16px */
-        padding-right: 1rem !important; /* sekitar 16px */
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
       }
 	}
-	.zindexatas{ /* z-index untuk konten di dalam sidebar agar di atas latar sidebar jika ada elemen bertumpuk */
+	.zindexatas{
 		z-index: 100;
 	}
 </style>
@@ -137,14 +181,13 @@
 
         <div id="content" class="p-4 p-md-5 pt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="text-dark mb-0">Koleksi Partitur</h2>
+                <h2 class="mb-0" style="color: #2c3e50; font-weight: 600;">Koleksi Partitur</h2>
             </div>
 
-            {{-- AWAL FORM PENCARIAN --}}
             <div class="mb-4">
                 <form action="{{ route('partitur.index') }}" method="GET">
                     <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Cari partitur berdasarkan judul..." value="{{ $queryPencarian ?? '' }}">
+                        <input type="text" name="search" class="form-control" placeholder="Cari partitur berdasarkan judul..." value="{{ $queryPencarian ?? '' }}" style="border-color: #bdc3c7;">
                         <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Cari</button>
                          @if(isset($queryPencarian) && !empty($queryPencarian))
                             <a href="{{ route('partitur.index') }}" class="btn btn-secondary" title="Hapus Pencarian"><i class="fa fa-times"></i></a>
@@ -152,27 +195,30 @@
                     </div>
                 </form>
             </div>
-            {{-- AKHIR FORM PENCARIAN --}}
 
 
             <div class="container-fluid px-0">
                 <div class="row">
                     @forelse ($partiturs as $partitur)
                     <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="card shadow-sm">
+                        <div class="card">
                             @if ($partitur->sampul_path)
                                 <img src="{{ Storage::url($partitur->sampul_path) }}" class="card-img-top" alt="Sampul {{ htmlspecialchars($partitur->judul) }}">
                             @else
-                                <img src="https://via.placeholder.com/200x280.png?text=Partitur" class="card-img-top" alt="Tidak ada sampul">
+                                <div class="d-flex align-items-center justify-content-center" style="height: 200px; background-color: #ecf0f1; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                                    <i class="fa fa-music fa-3x text-muted"></i>
+                                </div>
                             @endif
                             <div class="card-body">
                                 <div>
-                                    <h5 class="card-title" title="{{ htmlspecialchars($partitur->judul) }}">{{ Str::limit(htmlspecialchars($partitur->judul), 25) }}</h5>
-                                    <p class="card-text text-muted small" title="{{ htmlspecialchars($partitur->pencipta) }}">{{ Str::limit(htmlspecialchars($partitur->pencipta), 30) }}</p>
+                                    <h5 class="card-title" title="{{ htmlspecialchars($partitur->judul) }}">{{ Str::limit(htmlspecialchars($partitur->judul), 22) }}</h5>
+                                    <p class="card-text text-muted small" title="{{ htmlspecialchars($partitur->pencipta) }}">{{ Str::limit(htmlspecialchars($partitur->pencipta), 28) }}</p>
                                 </div>
                                 <div class="btn-download-container">
                                 @if ($partitur->file_path)
-                                    <a href="{{ Storage::url($partitur->file_path) }}" class="btn btn-primary btn-sm w-100" download="{{ htmlspecialchars($partitur->judul) }}.pdf">Unduh PDF</a>
+                                    <a href="{{ Storage::url($partitur->file_path) }}" class="btn btn-primary btn-sm w-100" download="{{ htmlspecialchars($partitur->judul) }}.pdf">
+                                        <i class="fa fa-download"></i> Unduh PDF
+                                    </a>
                                 @else
                                     <button class="btn btn-secondary btn-sm w-100" disabled>PDF Tidak Tersedia</button>
                                 @endif
@@ -182,7 +228,7 @@
                     </div>
                     @empty
                     <div class="col-12">
-                        <div class="alert alert-info text-center mt-3">
+                        <div class="alert alert-info text-center mt-3" style="border-radius: 12px; background-color: #e7f3fe; border-color: #b8daff; color: #31708f;">
                             @if(isset($queryPencarian) && !empty($queryPencarian))
                                 Partitur dengan judul "{{ htmlspecialchars($queryPencarian) }}" tidak ditemukan.
                             @else
@@ -192,14 +238,11 @@
                     </div>
                     @endforelse
                 </div>
-                {{-- AWAL Link Paginasi --}}
                 @if ($partiturs->hasPages())
                 <div class="d-flex justify-content-center mt-4 ">
                     {{ $partiturs->appends(['search' => $queryPencarian])->links() }}
                 </div>
                 @endif
-                {{-- AKHIR Link Paginasi --}}
-
             </div>
         </div>
     </div>
