@@ -41,7 +41,7 @@
                 <ul class="list-unstyled components mb-5">
                   <li><a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a></li>
                   <li class="active"><a href="{{ route('admin.pengumuman.index') }}"><span class="fa fa-bullhorn mr-3"></span> Pengumuman</a></li>
-                  {{-- ... link sidebar lainnya ... --}}
+
                 </ul>
                 <div class="footer">
                     <ul class="list-unstyled components mb-5"><li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-buat-pengumuman').submit();"><span class="fa fa-sign-out mr-3"></span> Keluar</a><form id="logout-form-buat-pengumuman" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form></li></ul>
@@ -69,7 +69,7 @@
                             </div>
                         @endif
 
-                        {{-- Form untuk membuat pengumuman baru --}}
+                    
                         <form action="{{ route('admin.pengumuman.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
@@ -87,16 +87,8 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="pengirim" class="form-label">Pengirim <span class="text-danger">*</span></label>
-                                    {{-- File Anda: <select name="posisi_suara_from_select">...</select> --}}
-                                    {{-- Ganti dengan input text atau select yang sesuai untuk pengirim --}}
                                     <input type="text" class="form-control @error('pengirim') is-invalid @enderror" id="pengirim" name="pengirim" value="{{ old('pengirim', Auth::user()->namadepan . ' (' . Auth::user()->posisi . ')') }}" required>
-                                    {{-- Atau jika ingin dropdown: --}}
-                                    {{-- <select class="form-select @error('pengirim') is-invalid @enderror" id="pengirim" name="pengirim" required>
-                                        <option value="NonBidang" {{ old('pengirim') == 'NonBidang' ? 'selected' : '' }}>Non Bidang (Admin)</option>
-                                        <option value="Tim Artistik" {{ old('pengirim') == 'Tim Artistik' ? 'selected' : '' }}>Tim Artistik</option>
-                                        <option value="Tim Media dan Dokumentasi" {{ old('pengirim') == 'Tim Media dan Dokumentasi' ? 'selected' : '' }}>Tim Media dan Dokumentasi</option>
-                                        {{-- Tambahkan opsi lain jika perlu --}}
-                                    {{-- </select> --}}
+
                                     @error('pengirim') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">

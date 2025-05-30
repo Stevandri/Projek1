@@ -18,16 +18,15 @@ class LoginController extends Controller
   
     public function postlogin(Request $request): RedirectResponse
     {
-        // 1. Validasi input dari form login
+
         $request->validate([
             'nim'      => 'required|string',
             'password' => 'required|string',
         ]);
 
-        // 2. Kredensial untuk upaya login
         $credentials = $request->only('nim', 'password'); 
 
-        // 3. Mencoba melakukan autentikasi pengguna
+        //autentikasi pengguna
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate(); 
 

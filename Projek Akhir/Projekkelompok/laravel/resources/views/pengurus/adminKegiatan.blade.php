@@ -10,7 +10,7 @@
   </head>
   <style>
     body {
-      background-color: #f8f9fa; /* Menggunakan warna dari template konsisten */
+      background-color: #f8f9fa; 
       font-family: 'Poppins', sans-serif;
       color: #495057;
     }
@@ -34,7 +34,7 @@
     .admin-card .card-text-value { font-size: 2rem; font-weight: 700; }
     .admin-card .icon-bg { font-size: 2.5rem; opacity: 0.5; }
     
-    .table-container { /* Nama kelas lebih umum */
+    .table-container { 
         border-radius: 8px; 
         overflow: hidden; 
         box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
@@ -63,12 +63,12 @@
     .btn-action-group .btn, .btn-action-group form { 
         display: inline-block; 
         margin-right: 5px; 
-        margin-bottom: 5px; /* Untuk mobile */
+        margin-bottom: 5px; 
     }
     .btn-action-group .btn:last-child, .btn-action-group form:last-child {
         margin-right: 0;
     }
-     /* Style status dari file Anda */
+     
     .card-status { font-size: 0.85em; font-weight: bold; padding: 0.375rem 0.75rem; border-radius: 0.25rem; }
     .status-akan-datang { background-color: #cfe2ff; color: #052c65; border: 1px solid #b6d4fe; }
     .status-selesai { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc;}
@@ -112,7 +112,7 @@
         text-decoration: none;
         opacity: .75;
     }
-    .btn-close-custom { /* Dikosongkan karena .close sudah menangani */ }
+    .btn-close-custom { }
 
  
     .zindexatas{ z-index: 100; }

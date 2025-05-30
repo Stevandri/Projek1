@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    {{-- Bootstrap Icons tidak digunakan di template lain, dihapus untuk konsistensi --}}
-		{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> --}}
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
   <style>
@@ -105,7 +103,7 @@
         text-decoration: none;
         opacity: .75;
     }
-    .btn-close-custom { /* Bisa dikosongkan jika .close sudah cukup */ }
+    .btn-close-custom {  }
 
     .zindexmedium { z-index: 90; } 
     .zindexatas{ z-index: 100; }
@@ -136,7 +134,7 @@
         .alert-message { font-size: 0.9rem; }
         .d-flex.justify-content-between.align-items-center { flex-direction: column; align-items: flex-start !important;}
         .d-flex.justify-content-between.align-items-center .btn { margin-top: 10px; width:100%;}
-        .d-flex.justify-content-end .btn { width:100%;} /* Tombol simpan full width di mobile */
+        .d-flex.justify-content-end .btn { width:100%;}
     }
   </style>
   <body>

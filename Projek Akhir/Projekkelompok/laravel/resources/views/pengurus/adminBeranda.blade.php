@@ -9,19 +9,19 @@
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
   <style>
-    /* Gaya dasar untuk halaman admin */
+    
     body {
-      background-color: #f8f9fa; /* Warna latar belakang umum yang lebih lembut */
-      font-family: 'Poppins', sans-serif; /* Menyamakan font dengan sidebar */
-      color: #495057; /* Warna teks default yang lebih lembut */
+      background-color: #f8f9fa; 
+      font-family: 'Poppins', sans-serif; 
+      color: #495057;
     }
 
-    /* Penyesuaian untuk kartu di dashboard admin */
+
     .admin-card {
-      border-radius: 10px; /* Sudut yang lebih halus untuk kartu */
-      border: none; /* Menghilangkan border default kartu */
+      border-radius: 10px; 
+      border: none; 
       transition: all 0.3s ease-in-out;
-      background-clip: border-box; /* Untuk Safari agar shadow terlihat benar dengan border-radius */
+      background-clip: border-box;
     }
     .admin-card:hover {
         transform: translateY(-5px);
@@ -29,27 +29,27 @@
     }
 
     .admin-card .card-body {
-        padding: 1.25rem; /* Padding di dalam kartu, disesuaikan */
+        padding: 1.25rem; 
     }
 
     .admin-card .card-title {
-      font-size: 0.85rem; /* Ukuran font judul kartu yang disesuaikan */
-      font-weight: 600; /* Judul kartu lebih tebal */
+      font-size: 0.85rem; 
+      font-weight: 600;
       text-transform: uppercase;
-      margin-bottom: 0.5rem; /* Margin bawah judul kartu */
+      margin-bottom: 0.5rem; 
     }
 
     .admin-card .card-text-value {
-      font-size: 2rem; /* Ukuran angka statistik, sedikit dikurangi */
-      font-weight: 700; /* Angka statistik tebal */
+      font-size: 2rem; 
+      font-weight: 700;
     }
 
     .admin-card .icon-bg {
-      font-size: 2.5rem; /* Ukuran ikon di kartu, sedikit dikurangi */
-      opacity: 0.5; /* Opasitas ikon agar tidak terlalu dominan */
+      font-size: 2.5rem; 
+      opacity: 0.5;
     }
     
-    /* Styling untuk tabel pengguna online */
+  
     .table-users-container { 
         border-radius: 8px; 
         overflow: hidden; 
@@ -132,7 +132,7 @@
         .main-content-title.h4 { font-size: 1.1rem; }
         #content { padding: 1rem !important; }
         .table-users thead th, .table-users tbody td { font-size: 0.8rem; padding: 0.5rem; }
-        #sidebar .logo span { display: block; font-size: 12px;} /* Agar span di logo tidak terlalu panjang di mobile */
+        #sidebar .logo span { display: block; font-size: 12px;}
     }
     @media (max-width: 575.98px) { 
         .admin-card .card-title { font-size: 0.8rem; }
@@ -179,7 +179,7 @@
             </li>
 
             <li>
-              <a href="#"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
+              <a href="{{ route('admin.partitur.index') }}"><span class="fa fa-file-text-o mr-3"></span> Partitur</a>
             </li>
 
             <li class="{{ (request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create')) && !request()->routeIs('admin.beranda') ? 'active' : '' }}">

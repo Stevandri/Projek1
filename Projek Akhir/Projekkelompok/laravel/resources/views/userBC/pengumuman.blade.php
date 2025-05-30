@@ -28,11 +28,11 @@
       .custom-alert {
         border-left-width: 4px;
         border-radius: 8px;
-        padding: 0.6rem 0.8rem; /* Reduced padding */
+        padding: 0.6rem 0.8rem; 
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        margin-bottom: 0.4rem; /* Reduced margin */
+        margin-bottom: 0.4rem; 
         background-color: #fff;
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       }
@@ -42,22 +42,21 @@
       .custom-alert-warning { border-left-color: #ffc107; background-color: #fff8e5; color: #856404; }
 
       .alert-icon {
-        margin-right: 0.3rem; /* Further reduced */
-        font-size: 0.9rem; /* Further reduced */
-        margin-top: 0; /* Align to top */
+        margin-right: 0.3rem; 
+        font-size: 0.9rem; 
       }
       .alert-content {
         flex: 1;
-        margin-left: 0.1rem; /* Further reduced */
+        margin-left: 0.1rem; 
       }
       .alert-title {
         font-weight: 600;
         margin-bottom: 0.05rem;
-        font-size: 0.85rem; /* Further reduced */
+        font-size: 0.85rem; 
       }
       .alert-message {
-        font-size: 0.75rem; /* Further reduced */
-        line-height: 1.1; /* Further reduced */
+        font-size: 0.75rem;
+        line-height: 1.1; 
         margin-bottom: 0;
       }
       .btn-close-custom {
@@ -84,29 +83,29 @@
         background-color: #fff;
         border: none;
         border-radius: 10px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* Softer shadow */
-        margin-bottom: 0.6rem; /* Reduced margin between cards */
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08); 
+        margin-bottom: 0.6rem; 
       }
       .announcement-card .card-body {
-        padding: 0.7rem; /* Reduced padding */
+        padding: 0.7rem; 
       }
       .announcement-card .card-title {
         color: #0056b3;
         font-weight: 600;
-        margin-bottom: 0.2rem; /* Reduced margin */
-        font-size: 1.1rem; /* Adjusted font size for title */
+        margin-bottom: 0.2rem; 
+        font-size: 1.1rem; 
       }
       .announcement-card .card-meta {
-        font-size: 0.7rem; /* Further reduced font size */
+        font-size: 0.7rem; 
         color: #6c757d;
-        margin-bottom: 0.4rem; /* Reduced margin */
+        margin-bottom: 0.4rem; 
       }
       .announcement-card .card-text-content {
         color: #343a40;
-        line-height: 1.3; /* Further reduced line height */
+        line-height: 1.3; 
         white-space: pre-wrap;
-        font-size: 0.8rem; /* Further reduced font size */
-        margin-bottom: 0.3rem; /* Reduced margin */
+        font-size: 0.8rem; 
+        margin-bottom: 0.3rem;
       }
       .announcement-card .btn-link {
         color: #007bff;
@@ -117,25 +116,25 @@
       .announcement-card .btn-link:hover { text-decoration: underline; }
       .announcement-sender {
         font-style: italic;
-        font-size: 0.75rem; /* Further reduced font size */
+        font-size: 0.75rem; 
         color: #555;
-        margin-top: 0.3rem; /* Reduced margin */
-        text-align: left; /* Aligned left as per image */
+        margin-top: 0.3rem; 
+        text-align: left; 
       }
 
       #content {
-        padding: 10px 15px; /* Reduced overall padding */
+        padding: 10px 15px; 
         width: 100%;
         overflow-y: auto;
       }
       #content h2.text-dark.mb-4 {
         color: #343a40;
         font-weight: 600;
-        margin-bottom: 0.8rem; /* Reduced margin */
+        margin-bottom: 0.8rem; 
       }
       #content .container.my-4 {
-        margin-top: 0.5rem !important; /* Reduced margin */
-        margin-bottom: 0.5rem !important; /* Reduced margin */
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important; 
         padding: 0;
       }
     </style>
@@ -161,19 +160,22 @@
             <li><a href="{{ route('profil.show') }}"><span class="fa fa-user mr-3"></span> Akun</a></li>
           </ul>
           <div class="footer">
-            <ul class="list-unstyled components mb-5">
-              <li>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();">
-                  <span class="fa fa-sticky-note mr-3"></span> Keluar
+  					<ul class="list-unstyled components mb-5">
+  						<li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                   <span class="fa fa-sign-out mr-3"></span> Keluar
                 </a>
-                <form id="user-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
                 </form>
-              </li>
-            </ul>
+  						</li>
+  					</ul>
           </div>
-          <div class="footer "><p><small>&copy; {{ date('Y') }} Blue Choir</small></p></div>
-        </div>
+  	      <div class="footer">
+  	      	<p><small>&copy; Blue Choir {{ date('Y') }}</small></p> 
+          </div>
+  	    </div>
       </nav>
 
       <div id="content" class="p-3 p-md-4" style="width:100%; overflow-y:auto;">

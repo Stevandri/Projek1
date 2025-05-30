@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <title>Admin - Buat Pengumuman Baru</title>
-    {{-- Referensi ke <head> dari adminEditPengumuman.blade.php Anda --}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -42,7 +40,6 @@
                 <ul class="list-unstyled components mb-5">
                   <li><a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a></li>
                   <li class="active"><a href="{{ route('admin.announcement.index') }}"><span class="fa fa-bullhorn mr-3"></span> Pengumuman</a></li>
-                  {{-- ... link sidebar lainnya ... --}}
                 </ul>
                 <div class="footer">
                     <ul class="list-unstyled components mb-5"><li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-create-announcement').submit();"><span class="fa fa-sign-out mr-3"></span> Keluar</a><form id="logout-form-create-announcement" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form></li></ul>
@@ -87,8 +84,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="sender" class="form-label">Pengirim <span class="text-danger">*</span></label>
-                                    {{-- Di file adminEditPengumuman.blade.php Anda, ini adalah select --}}
-                                    {{-- Saya akan gunakan input text, bisa diisi default dengan nama admin --}}
+                                    
                                     <input type="text" class="form-control @error('sender') is-invalid @enderror" id="sender" name="sender" value="{{ old('sender', Auth::user()->namadepan . ' (Admin)') }}" required>
                                     @error('sender') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>

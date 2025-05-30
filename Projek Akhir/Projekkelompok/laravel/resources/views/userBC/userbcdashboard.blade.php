@@ -21,8 +21,8 @@
       border: none; 
     }
     .profile-img {
-        width: 70px; 
-        height: 70px;
+        width: 70px; /* Ukuran sesuai file Anda */
+        height: 70px; /* Ukuran sesuai file Anda */
         border-radius: 50%;
         object-fit: cover;
         border: 2px solid #e9ecef;
@@ -82,18 +82,17 @@
         opacity: 1;
     }
 
-    .zindexatas{ z-index: 100; }
+    .zindexatas{ z-index: 100; } /* zindexmedium Anda sudah ada, ini hanya referensi */
 
     .main-content-title { 
         color: #343a40;
         font-weight: 600;
     }
         
-    
- 
-    .custom-menu { position: absolute; top: 15px; right: -50px; }
+    .custom-menu { position: absolute; top: 15px; right: -50px; } /* Pastikan ini tidak tertimpa atau sesuai kebutuhan*/
     .custom-menu button { color: #fff; background-color: #007bff; border: none; }
 
+    /* Status styles, as they were in your file */
     .status-akan-datang, .upcoming { background-color: #cfe2ff; color: #052c65; border: 1px solid #b6d4fe;}
     .status-selesai, .completed { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc;}
     .status-berlangsung, .in-progress { background-color: #fff3cd; color: #664d03; border: 1px solid #ffecb5;}
@@ -144,14 +143,13 @@
         .alert-title { font-size: 1rem; }
         .alert-message { font-size: 0.9rem; }
         .welcome-card { flex-direction: column !important; text-align: center;} 
-        .welcome-card img { margin-top: 1rem; }
+        .welcome-card img { margin-top: 1rem; } /* Ini akan membuat gambar di bawah teks pada mobile */
     }
   </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
       <nav id="sidebar" class="min-vh-100">
-        <div class="custom-menu zindexmedium">
-          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        <div class="custom-menu zindexmedium"> <button type="button" id="sidebarCollapse" class="btn btn-primary">
             <i class="fa fa-bars"></i>
             <span class="sr-only">Toggle Menu</span>
           </button>
@@ -195,18 +193,17 @@
   	    </div>
     	</nav>
 
-      <div id="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 py-3">
-                    <h2 class="main-content-title mb-4 ml-5">Beranda</h2>
-                    <div class="card p-3 p-md-4 shadow-sm d-flex flex-row align-items-center rounded-lg welcome-card">
+      <div id="content"> <div class="container-fluid"> <div class="row">
+                <div class="col-lg-8 py-3"> <h2 class="main-content-title mb-4 ml-md-3">Beranda</h2> <div class="card p-3 p-md-4 shadow-sm d-flex flex-row align-items-center rounded-lg welcome-card">
                         <div class="flex-grow-1">
                             <h3>Halo, <strong>{{ Auth::user()->namadepan ?? 'Pengguna' }}</strong>!</h3>
                             <p class="mb-0">Selamat datang di <strong>WEBSITE BLUE CHOIR</strong> Fakultas Teknik Universitas Sam Ratulangi.</p>
                         </div>
                         <div class="ms-md-3 mt-3 mt-md-0 text-center">
-                            <img src="{{ asset('item/ping.png') }}" alt="Foto Profil" class="profile-img" onerror="this.onerror=null;this.src='https://placehold.co/70x70/e9ecef/343a40?text=BC';">
+                            <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('item/profildefault.png') }}" 
+                                 alt="Foto Profil {{ Auth::user()->namadepan ?? '' }}" 
+                                 class="profile-img" 
+                                 onerror="this.onerror=null;this.src='{{ asset('item/profildefault.png') }}'; this.alt='Gambar default';">
                         </div>
                     </div>
         
@@ -231,15 +228,11 @@
                 </div>
 
                 <div class="col-lg-4 py-3">
-                    <div class="card announcements-panel text-white rounded-lg h-100">
-                        <div class="card-body">
-                            <h5 class="text-center text-light mb-3"><b><u>PENGUMUMAN</u></b></h5>
+                    <div class="card announcements-panel text-white rounded-lg h-100"> <div class="card-body"> <h5 class="text-center text-light mb-3"><b><u>PENGUMUMAN</u></b></h5>
                             <div class="list-announcements">
                                 @if(isset($latestAnnouncements) && $latestAnnouncements->count() > 0)
                                     @foreach($latestAnnouncements as $announcement)
-                                        <div class="custom-alert custom-alert-info mb-2">
-                                            <div class="d-flex">
-                                                <span class="alert-icon">
+                                        <div class="custom-alert custom-alert-info mb-2"> <div class="d-flex"> <span class="alert-icon">
                                                     <i class="fa fa-info-circle"></i>
                                                 </span>
                                                 <div class="alert-content">
@@ -250,8 +243,7 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="custom-alert custom-alert-info text-center">
-                                        <div class="alert-content">
+                                    <div class="custom-alert custom-alert-info text-center"> <div class="alert-content">
                                             <p class="alert-title">Tidak ada pengumuman terbaru.</p>
                                         </div>
                                     </div>
@@ -264,7 +256,7 @@
             </div>
         </div>
       </div> 
-    </div> 
+		</div>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>

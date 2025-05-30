@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Partitur;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Announcement;
 use Illuminate\Validation\Rule;
 use App\Models\Kegiatan;
@@ -84,18 +86,16 @@ class AdminController extends Controller
 
     public function indexAnnouncements() // Nama metode diubah
     {
-        // Menggunakan model Announcement dan urutkan berdasarkan tanggal publish
         $announcements = Announcement::orderBy('publish_date', 'desc')->orderBy('created_at', 'desc')->get();
         return view('pengurus.announcement.indexAdmin', compact('announcements')); // View baru
     }
 
     public function createAnnouncement() // Nama metode diubah
     {
-        // View untuk membuat announcement baru
         return view('pengurus.announcement.createAdmin'); // View baru
     }
 
-    public function storeAnnouncement(Request $request) // Nama metode diubah
+    public function storeAnnouncement(Request $request) 
     {
         $validatedData = $request->validate([
             'subject'       => 'required|string|max:255',
@@ -109,13 +109,12 @@ class AdminController extends Controller
         return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil dibuat.'); // Rute baru
     }
 
-    public function editAnnouncement(Announcement $announcement) // Nama metode dan parameter diubah
+    public function editAnnouncement(Announcement $announcement)
     {
-        // View untuk mengedit announcement, menggunakan $announcement dari Route Model Binding
-        return view('pengurus.announcement.editAdmin', compact('announcement')); // View baru
+        return view('pengurus.announcement.editAdmin', compact('announcement')); 
     }
 
-    public function updateAnnouncement(Request $request, Announcement $announcement) // Nama metode dan parameter diubah
+    public function updateAnnouncement(Request $request, Announcement $announcement) 
     {
         $validatedData = $request->validate([
             'subject'       => 'required|string|max:255',
@@ -126,13 +125,13 @@ class AdminController extends Controller
 
         $announcement->update($validatedData);
 
-        return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil diperbarui.'); // Rute baru
+        return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil diperbarui.'); 
     }
 
-    public function destroyAnnouncement(Announcement $announcement) // Nama metode dan parameter diubah
+    public function destroyAnnouncement(Announcement $announcement) 
     {
         $announcement->delete();
-        return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil dihapus.'); // Rute baru
+        return redirect()->route('admin.announcement.index')->with('success', 'Pengumuman berhasil dihapus.'); 
     }
 
 
@@ -194,6 +193,117 @@ class AdminController extends Controller
     {
         $kegiatan->delete();
         return redirect()->route('admin.kegiatan.index')->with('success', 'Kegiatan berhasil dihapus.');
+    }
+
+    //daftar partitur
+    public function indexPartitur()
+    {
+        $partiturs = Partitur::orderBy('created_at', 'desc')->get();
+        return view('pengurus.adminPartitur', compact('partiturs'));
+    }
+
+    //Menambah Partitur baru
+    public function storePartitur(Request $request)
+    {
+        $validatedData = $request->validate([
+            'judul' => 'required|string|max:255',
+            'pencipta' => 'required|string|max:255',
+            'partitur_file' => 'required|file|mimes:pdf|max:10240', // PDF maks 10MB
+            'sampul_file' => 'nullable|file|image|mimes:jpeg,png,jpg,gif|max:2048', // Gambar maks 2MB
+        ], [
+            'partitur_file.required' => 'File partitur PDF wajib diunggah.',
+            'partitur_file.mimes' => 'File partitur harus berformat PDF.',
+            'partitur_file.max' => 'Ukuran file partitur maksimal 10MB.',
+            'sampul_file.image' => 'File sampul harus berupa gambar.',
+            'sampul_file.mimes' => 'Format gambar sampul harus jpeg, png, jpg, atau gif.',
+            'sampul_file.max' => 'Ukuran gambar sampul maksimal 2MB.',
+        ]);
+
+        $partitur = new Partitur();
+        $partitur->judul = $validatedData['judul'];
+        $partitur->pencipta = $validatedData['pencipta'];
+
+        //upload pdf
+        if ($request->hasFile('partitur_file')) {
+            $filePdf = $request->file('partitur_file');
+            //File tujuan storage/app/public/partitur/pdf
+            $fileNamePdf = time() . '_' . $filePdf->getClientOriginalName();
+            $pathPdf = $filePdf->storeAs('partitur/pdf', $fileNamePdf, 'public');
+            $partitur->file_path = $pathPdf;
+        }
+
+        //upload file sampul
+        if ($request->hasFile('sampul_file')) {
+            $fileSampul = $request->file('sampul_file');
+            $fileNameSampul = time() . '_' . $fileSampul->getClientOriginalName();
+            $pathSampul = $fileSampul->storeAs('partitur/cover', $fileNameSampul, 'public');
+            $partitur->sampul_path = $pathSampul;
+        }
+
+        $partitur->save();
+
+        return redirect()->route('admin.partitur.index')->with('success', 'Partitur berhasil diunggah.');
+    }
+
+   //ubahpartitur
+    public function editPartitur(Partitur $partitur)
+    {
+        return view('pengurus.adminUbahpartitur', compact('partitur'));
+    }
+
+    //update partitur d database
+    public function updatePartitur(Request $request, Partitur $partitur)
+    {
+        $validatedData = $request->validate([
+            'judul' => 'required|string|max:255',
+            'pencipta' => 'required|string|max:255',
+            'partitur_file_ubah' => 'nullable|file|mimes:pdf|max:10240', 
+            'sampul_file_ubah' => 'nullable|file|image|mimes:jpeg,png,jpg,gif|max:2048', 
+        ]);
+
+        $partitur->judul = $validatedData['judul'];
+        $partitur->pencipta = $validatedData['pencipta'];
+
+        //update file partitur PDF
+        if ($request->hasFile('partitur_file_ubah')) {
+            if ($partitur->file_path && Storage::disk('public')->exists($partitur->file_path)) {
+                Storage::disk('public')->delete($partitur->file_path);
+            }
+            $filePdf = $request->file('partitur_file_ubah');
+            $fileNamePdf = time() . '_' . $filePdf->getClientOriginalName();
+            $pathPdf = $filePdf->storeAs('partitur/pdf', $fileNamePdf, 'public');
+            $partitur->file_path = $pathPdf;
+        }
+
+        //update file sampul
+        if ($request->hasFile('sampul_file_ubah')) {
+            if ($partitur->sampul_path && Storage::disk('public')->exists($partitur->sampul_path)) {
+                Storage::disk('public')->delete($partitur->sampul_path);
+            }
+            $fileSampul = $request->file('sampul_file_ubah');
+            $fileNameSampul = time() . '_' . $fileSampul->getClientOriginalName();
+            $pathSampul = $fileSampul->storeAs('partitur/cover', $fileNameSampul, 'public');
+            $partitur->sampul_path = $pathSampul;
+        }
+
+        $partitur->save();
+
+        return redirect()->route('admin.partitur.index')->with('success', 'Partitur berhasil diperbarui.');
+    }
+
+   //apus partitur
+    public function destroyPartitur(Partitur $partitur)
+    {
+        //hpus pdf fisik
+        if ($partitur->file_path && Storage::disk('public')->exists($partitur->file_path)) {
+            Storage::disk('public')->delete($partitur->file_path);
+        }
+        if ($partitur->sampul_path && Storage::disk('public')->exists($partitur->sampul_path)) {
+            Storage::disk('public')->delete($partitur->sampul_path);
+        }
+
+        $partitur->delete();
+        return redirect()->route('admin.partitur.index')->with('success', 'Partitur berhasil dihapus.');
     }
 
 

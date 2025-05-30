@@ -18,6 +18,7 @@ class ProfilController extends Controller
     {
         $request->validate([
             'namadepan' => 'required|string|max:255',
+            'namabelakang' => 'required|string|max:255',
             'posisi_suara' => 'nullable|string|max:100',
             'nim' => 'nullable|string|max:50',
             'email' => 'required|email|max:255',
@@ -27,13 +28,14 @@ class ProfilController extends Controller
 
         $user = Auth::user();
         $user->namadepan = $request->namadepan;
+        $user->namabelakang = $request->namabelakang;
         $user->posisi_suara = $request->posisi_suara;
         $user->nim = $request->nim;
         $user->email = $request->email;
         $user->telepon = $request->telepon;
         
     if ($request->hasFile('profile_picture')) {
-        // Hapus foto lama jika ada
+        // Hapus foto lama
         if ($user->profile_picture) {
             Storage::delete('public/profile_pictures/' . $user->profile_picture);
         }

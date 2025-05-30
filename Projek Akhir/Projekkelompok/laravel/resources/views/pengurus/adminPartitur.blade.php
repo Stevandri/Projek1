@@ -1,329 +1,312 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
-  	<title>Admin</title>
+  	<title>Admin - Manajemen Partitur</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {{-- Tambahkan CSS spesifik halaman jika ada --}}
+    <style>
+        /* Tambahkan CSS dari file adminKegiatan.blade.php jika relevan dan belum ada di style.css global */
+        body { background-color: #f8f9fa; font-family: 'Poppins', sans-serif; color: #495057; }
+        .table-container { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .table thead th { background-color: #343a40; color: #ffffff; font-weight: 600; border-bottom-width: 0; font-size: 0.9rem; padding-top: 0.75rem; padding-bottom: 0.75rem; vertical-align: middle;}
+        .table tbody td { font-size: 0.85rem; vertical-align: middle; }
+        .table tbody tr:hover { background-color: #f1f1f1; }
+        .table .badge { font-size: 0.75em; padding: 0.5em 0.75em;}
+        .btn-action-group .btn, .btn-action-group form { display: inline-block; margin-right: 5px; margin-bottom: 5px; }
+        .btn-action-group .btn:last-child, .btn-action-group form:last-child { margin-right: 0; }
+        .main-content-title { color: #343a40; font-weight: 600; }
+        .border-bottom-custom { border-bottom: 1px solid #dee2e6 !important; }
+
+        /* Alert Styles (jika belum ada di style.css global) */
+        .custom-alert { border-left-width: 4px; border-radius: 5px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+        .custom-alert-info { border-left-color: #0dcaf0; background-color: #e8f8fd; color: #0c5460; }
+        .custom-alert-success { border-left-color: #198754; background-color: #e8fce8; color: #155724; }
+        .custom-alert-danger { border-left-color: #dc3545; background-color: #fde8e8; color: #842029; }
+        .custom-alert-warning { border-left-color: #ffc107; background-color: #fff8e5; color: #856404; }
+        .alert-icon { margin-right: 1rem; font-size: 1.5rem; }
+        .alert-content { flex: 1; }
+        .alert-title { font-weight: 600; margin-top: 0; margin-bottom: 0.25rem; font-size: 1.1rem; }
+        .alert-message { font-size: 0.95rem; margin-bottom: 0; }
+        .custom-alert .close { float: right; font-size: 1.5rem; font-weight: 700; line-height: 1; color: #000; text-shadow: 0 1px 0 #fff; opacity: .5; padding: 0; background-color: transparent; border: 0; }
+        .custom-alert .close:hover { color: #000; text-decoration: none; opacity: .75; }
+        .btn-close-custom {} /* Jika ada styling khusus untuk tombol close alert */
+
+        #sidebar .logo span { display: block; font-size: 12px;} /* Untuk breadcrumb di sidebar */
+        .zindexatas{ z-index: 100; }
+        #sidebar ul.collapse li.active-sub > a { color: #28a745; font-weight: bold; background: rgba(0,0,0,0.05); } /* Styling submenu aktif */
+        #sidebar ul li a[aria-expanded="true"] { color: #4e73df; } /* Styling dropdown terbuka */
+    </style>
   </head>
-  <style>
-            body {
-            background-color: #f8f9fa; /* Warna latar belakang yang lebih lembut */
-        }
-        .card {
-            border-radius: 15px; /* Sudut yang lebih halus */
-        }
-        .btn-primary {
-            background-color: #007bff; /* Warna tombol yang lebih cerah */
-            border: none; /* Menghilangkan border default */
-        }
-        .btn-primary:hover {
-            background-color: #0056b3; /* Warna saat hover */
-        }
-        input[type="file"] {
-            display: none; /* Menyembunyikan input file default */
-        }
-        .custom-file-upload {
-            display: inline-block;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-        }
-
-	body{
-		background-color: #DFEAFC;
-	}
-	.profile-img {
-		width: 100px;
-		height: 100px;
-		border-radius: 50%;
-		object-fit: cover;
-	}
-	.card-status {
-		font-size: 14px;
-		font-weight: bold;
-		padding: 5px 10px;
-		border-radius: 10px;
-	}
-
-	.custom-alert {
-      border-left: 1px solid;
-      border-radius: 5px;
-      padding: 0.1rem 0.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
-    /* Warna khusus untuk alert */
-    .custom-alert-info {
-      border-color: #0dcaf0; /* Warna border kiri sesuai info */
-      background-color: #e8f8fd; /* Warna latar alert info */
-      color: #0c5460; /* Warna teks info */
-    }
-    .custom-alert-success {
-      border-color: #198754;
-      background-color: #e8fce8;
-      color: #155724;
-    }
-    .custom-alert-danger {
-      border-color: #dc3545;
-      background-color: #fde8e8;
-      color: #842029;
-    }
-    .custom-alert-warning {
-      border-color: #ffc107;
-      background-color: #fff8e5;
-      color: #856404;
-    }
-    /* Icon di sisi kiri */
-    .alert-icon {
-      display: inline-flex;
-      align-items: center;
-      margin-right: 0.5rem;
-      font-size: 1.25rem;
-    }
-    /* Title dan Message */
-    .alert-content {
-      flex: 1;
-      margin-left: 0.5rem;
-    }
-    .alert-title {
-      font-weight: 600;
-      margin: 0;
-    }
-    .alert-message {
-      top:0;
-      font-size: 0.95rem;
-    }
-    /* Tombol close */
-    .btn-close-custom {
-      border: none;
-      background: transparent;
-      font-size: 1.25rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-    .btn-close-custom:hover {
-      color: #000;
-    }
-	.zindexmedium{
-		z-index: 90;
-	}
-	.zindexatas{
-		z-index: 100;
-	}
-	.completed { background-color: #d4edda; color: #155724; }
-	.in-progress { background-color: #f8d7da; color: #721c24; }
-</style>
   <body>
-	
-		
-		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
-				<div class="custom-menu zindexmedium">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
-	          <i class="fa fa-bars"></i>
-	          <span class="sr-only">Toggle Menu</span>
-	        </button>
-        </div>
-				<div class="p-4 zindexatas">
-		  		<h1><a href="index.html" class="logo">Hallo Admin<span>> Partitur</span></a></h1>
-	        <ul class="list-unstyled components mb-5">
-	          <li>
-	            <a href="admin-beranda.html"><span class="fa fa-home mr-3"></span> Beranda</a>
-	          </li>
-	          <li>
-	              <a href="admin-pengumuman.html"><span class="fa fa-info mr-3"></span> Buat Pengumuman</a>
-	          </li>
-	          <li>
-              <a href="admin-kegiatan.html"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
-	          </li>
-	          <li  class="active">
-              <a href="admin-partitur.html"><span class="fa fa-file mr-3"></span> Partitur</a>
-	          </li>
-	          <li>
-              <a href="admin-pengguna.html"><span class="fa fa-user mr-3"></span> Pengguna</a>
-	          </li>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="custom-menu zindexmedium">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                  <i class="fa fa-bars"></i>
+                  <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4 zindexatas">
+                <h1><a href="{{ route('admin.beranda') }}" class="logo">Hallo Admin<span>&gt; Partitur</span></a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li class="{{ request()->routeIs('admin.beranda') ? 'active' : '' }}">
+                        <a href="{{ route('admin.beranda') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
+                    </li>
 
-	        </ul>
+                    @php
+                        $isAnnouncementActive = request()->routeIs('admin.announcement.index') || request()->routeIs('admin.announcement.create') || request()->routeIs('admin.announcement.edit');
+                    @endphp
+                    <li class="{{ $isAnnouncementActive ? 'active' : '' }}">
+                      <a href="#announcementSubmenu" data-toggle="collapse" aria-expanded="{{ $isAnnouncementActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-bullhorn mr-3"></span> Pengumuman</a>
+                      <ul class="collapse list-unstyled {{ $isAnnouncementActive ? 'show' : '' }}" id="announcementSubmenu">
+                        <li class="{{ request()->routeIs('admin.announcement.index') ? 'active-sub' : '' }}">
+                            <a href="{{ route('admin.announcement.index') }}">Lihat Pengumuman</a>
+                        </li>
+                        <li class="{{ request()->routeIs('admin.announcement.create') ? 'active-sub' : '' }}">
+                            <a href="{{ route('admin.announcement.create') }}">Buat Pengumuman</a>
+                        </li>
+                      </ul>
+                    </li>
 
+                    @php
+                        $isKegiatanActive = request()->routeIs('admin.kegiatan.index') || request()->routeIs('admin.kegiatan.create') || request()->routeIs('admin.kegiatan.edit');
+                    @endphp
+                    <li class="{{ $isKegiatanActive ? 'active' : '' }}">
+                      <a href="#kegiatanSubmenu" data-toggle="collapse" aria-expanded="{{ $isKegiatanActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-rocket mr-3"></span> Kegiatan</a>
+                      <ul class="collapse list-unstyled {{ $isKegiatanActive ? 'show' : '' }}" id="kegiatanSubmenu">
+                        <li class="{{ request()->routeIs('admin.kegiatan.index') ? 'active-sub' : '' }}">
+                            <a href="{{ route('admin.kegiatan.index') }}">Lihat Kegiatan</a>
+                        </li>
+                        <li class="{{ request()->routeIs('admin.kegiatan.create') ? 'active-sub' : '' }}">
+                            <a href="{{ route('admin.kegiatan.create') }}">Tambah Kegiatan</a>
+                        </li>
+                      </ul>
+                    </li>
 
-	        <div class="footer ">
-				<ul class="list-unstyled components mb-5">
-					<li>
-						<a href="../../Database/keluar.php"><span class="fa fa-sticky-note mr-3"></span> Keluar</a>
-						</li>
-					</ul>
+                    @php
+                        $isPartiturActive = request()->routeIs('admin.partitur.index') || request()->routeIs('admin.partitur.edit');
+                    @endphp
+                    <li class="{{ $isPartiturActive ? 'active' : '' }}">
+                      <a href="{{ route('admin.partitur.index') }}">
+                        <span class="fa fa-file-text-o mr-3"></span> Partitur
+                      </a>
+                    </li>
 
-	      </div>
-		  <div class="footer ">
-			<p>@bluechoir</p>
+                    @php
+                        $isPenggunaActive = request()->routeIs('admin.pengguna.index') || request()->routeIs('admin.pengguna.create');
+                    @endphp
+                    <li class="{{ $isPenggunaActive ? 'active' : '' }}">
+                        <a href="#userSubmenu" data-toggle="collapse" aria-expanded="{{ $isPenggunaActive ? 'true' : 'false' }}" class="dropdown-toggle"><span class="fa fa-users mr-3"></span> Pengguna</a>
+                        <ul class="collapse list-unstyled {{ $isPenggunaActive ? 'show' : '' }}" id="userSubmenu">
+                            <li class="{{ request()->routeIs('admin.pengguna.index') ? 'active-sub' : '' }}">
+                                <a href="{{ route('admin.pengguna.index') }}">Lihat Pengguna</a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin.pengguna.create') ? 'active-sub' : '' }}">
+                                <a href="{{ route('admin.pengguna.create') }}">Tambah Pengguna</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 
-	  </div>
-    	</nav>
-	<div class="container containerku">
-        <div class="row">
-            <div class="col-lg-12">
+                <div class="footer">
+                    <ul class="list-unstyled components mb-5">
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form-adminpartitur').submit();">
+                               <span class="fa fa-sign-out mr-3"></span> Keluar
+                            </a>
+                            <form id="logout-form-adminpartitur" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                </div>
 
-				<!--pengumuman-->
-        <div class="container-fluid">
-          <div class="row">
-              <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <div class="footer">
+                    <p><small>&copy; Blue Choir {{ date('Y') }}</small></p>
                   </div>
-                  <div class="container mt-5">
-                    <h1 class="mb-4">Unggah Partitur</h1>
-                    <form action="proses_upload.php" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="judul" class="form-label">Judul Partitur</label>
-                            <input type="text" class="form-control" id="judul" name="judul" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="pencipta" class="form-label">Pencipta</label>
-                            <input type="text" class="form-control" id="pencipta" name="pencipta" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="partitur" class="form-label">File Partitur (PDF)</label>
-                            <input type="file" class="form-control" id="partitur" name="partitur" accept=".pdf" required onchange="tampilkanJudulFile()">
-                            <small id="judulFile" class="form-text text-muted"></small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="sampul" class="form-label">Gambar Sampul (JPG/PNG)</label>
-                            <input type="file" class="form-control" id="sampul" name="sampul" accept="image/*">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Unggah Partitur</button>
-                    </form>
+            </div>
+        </nav>
+
+        <div id="content" class="p-3 p-md-4 p-lg-5" style="width:100%; overflow-y:auto;">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom-custom">
+                    <h1 class="h2 main-content-title">Manajemen Partitur</h1>
                 </div>
 
+                {{-- Tampilkan Pesan Sukses/Error --}}
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show custom-alert custom-alert-success" role="alert">
+                        <div class="alert-icon"><i class="fa fa-check-circle"></i></div>
+                        <div class="alert-content">
+                            <strong class="alert-title">Berhasil!</strong>
+                            <span class="alert-message">{{ session('success') }}</span>
+                        </div>
+                        <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                @if(session('error'))
+                     <div class="alert alert-danger alert-dismissible fade show custom-alert custom-alert-danger" role="alert">
+                        <div class="alert-icon"><i class="fa fa-times-circle"></i></div>
+                        <div class="alert-content">
+                            <strong class="alert-title">Gagal!</strong>
+                            <span class="alert-message">{{ session('error') }}</span>
+                        </div>
+                         <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
 
-                <!--Daftar partitur-->
-                <div class="container-fluid bg-light mt-5 min-vh-100 p-4">
-                  <h2 class="mb-4">Daftar Partitur</h2>
-                  <table class="table table-hover table-bordered align-middle bg-white">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Judul</th>
-                        <th>Pencipta</th>
-                        <th>File</th>
-                        <th>Sampul</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>I Will Lift Mine</td>
-                        <td>Jake Runestad</td>
-                        <td><a href="file/mars-unsrat.pdf" target="_blank">Lihat PDF</a></td>
-                        <td><img src="../UserBC/Partitur/cover/i_will_lift_mine_eyes.png" alt="Sampul Mars Unsrat" width="60"></td>
-                        <td>
-                          <a href="admin-ubahpartitur.html" class="btn btn-sm btn-warning">Edit</a>
-                          <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Orde-E</td>
-                        <td>Lester Delgado</td>
-                        <td><a href="file/hymne-unsrat.pdf" target="_blank">Lihat PDF</a></td>
-                        <td><img src="../UserBC/Partitur/cover/i_will_lift_mine_eyes.png" alt="Sampul Hymne Unsrat" width="60"></td>
-                        <td>
-                          <a href="admin-ubahpartitur.html" class="btn btn-sm btn-warning">Edit</a>
-                          <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Paris Barantai</td>
-                        <td>Ken Steven</td>
-                        <td><a href="file/hymne-unsrat.pdf" target="_blank">Lihat PDF</a></td>
-                        <td><img src="../UserBC/Partitur/cover/i_will_lift_mine_eyes.png" alt="Sampul Hymne Unsrat" width="60"></td>
-                        <td>
-                          <a href="admin-ubahpartitur.html" class="btn btn-sm btn-warning">Edit</a>
-                          <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                {{-- Tampilkan Error Validasi --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger custom-alert custom-alert-danger" role="alert">
+                        <div class="alert-icon"><i class="fa fa-exclamation-triangle"></i></div>
+                        <div class="alert-content">
+                            <strong class="alert-title">Validasi Gagal!</strong>
+                            <ul class="alert-message mb-0 ps-3" style="list-style-type: disc;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <button type="button" class="close btn-close-custom" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Unggah Partitur Baru</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('admin.partitur.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="judul" class="form-label">Judul Partitur</label>
+                                <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}" required>
+                                @error('judul')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="pencipta" class="form-label">Pencipta</label>
+                                <input type="text" class="form-control @error('pencipta') is-invalid @enderror" id="pencipta" name="pencipta" value="{{ old('pencipta') }}" required>
+                                @error('pencipta')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="partitur_file_upload" class="form-label">File Partitur (PDF)</label>
+                                <input type="file" class="form-control @error('partitur_file') is-invalid @enderror" id="partitur_file_upload" name="partitur_file" accept=".pdf" required onchange="tampilkanJudulFile('partitur_file_upload', 'judulFilePartiturUpload')">
+                                <small id="judulFilePartiturUpload" class="form-text text-muted"></small>
+                                @error('partitur_file')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="sampul_file_upload" class="form-label">Gambar Sampul (JPG/PNG)</label>
+                                <input type="file" class="form-control @error('sampul_file') is-invalid @enderror" id="sampul_file_upload" name="sampul_file" accept="image/jpeg,image/png,image/jpg,image/gif" onchange="tampilkanJudulFile('sampul_file_upload', 'judulFileSampulUpload')">
+                                <small id="judulFileSampulUpload" class="form-text text-muted"></small>
+                                @error('sampul_file')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-upload"></i> Unggah Partitur</button>
+                        </form>
+                    </div>
                 </div>
-                
 
-                <!-- <h2 class="mt-5">Daftar Partitur</h2>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Judul</th>
-                                <th>Pencipta</th>
-                                <th>File</th>
-                                <th>Sampul</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead> -->
-                        <!-- <tbody>
-                            <?php
-                                // Koneksi ke database (ganti dengan kredensial Anda)
-                                $servername = "localhost";
-                                $username = "root";
-                                $password = "";
-                                $dbname = "nama_database";
-        
-                                $conn = new mysqli($servername, $username, $password, $dbname);
-        
-                                if ($conn->connect_error) {
-                                    die("Koneksi gagal: " . $conn->connect_error);
-                                }
-        
-                                $sql = "SELECT * FROM partitur";
-                                $result = $conn->query($sql);
-        
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<tr>";
-                                        echo "<td>" . $row["judul"] . "</td>";
-                                        echo "<td>" . $row["pencipta"] . "</td>";
-                                        echo "<td><a href='" . $row["file_path"] . "' target='_blank'>Lihat PDF</a></td>";
-                                        echo "<td><img src='" . $row["sampul_path"] . "' alt='Sampul' width='100'></td>";
-                                        echo "<td>";
-                                        echo "<a href='ubah_partitur.php?id=" . $row["id"] . "' class='btn btn-sm btn-primary'>Ubah</a> ";
-                                        echo "<a href='hapus_partitur.php?id=" . $row["id"] . "' class='btn btn-sm btn-danger'>Hapus</a>";
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }
-                                } else {
-                                    echo "<tr><td colspan='5'>Tidak ada partitur yang diunggah.</td></tr>";
-                                }
-        
-                                $conn->close();
-                            ?>
-                        </tbody> -->
-                    </table>
+                <div class="card shadow-sm table-container">
+                    <div class="card-header">
+                        <h5 class="mb-0">Daftar Semua Partitur</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered align-middle">
+                                <thead class="table-dark">
+                                  <tr>
+                                    <th>Judul</th>
+                                    <th>Pencipta</th>
+                                    <th>File</th>
+                                    <th>Sampul</th>
+                                    <th class="text-center">Aksi</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($partiturs as $partitur)
+                                    <tr>
+                                        <td>{{ htmlspecialchars($partitur->judul) }}</td>
+                                        <td>{{ htmlspecialchars($partitur->pencipta) }}</td>
+                                        <td>
+                                            @if ($partitur->file_path)
+                                                <a href="{{ Storage::url($partitur->file_path) }}" target="_blank" class="btn btn-sm btn-outline-info py-1 px-2"><i class="fa fa-eye"></i> Lihat PDF</a>
+                                            @else
+                                                <span class="text-muted">Tidak ada file</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($partitur->sampul_path)
+                                                <img src="{{ Storage::url($partitur->sampul_path) }}" alt="Sampul {{ htmlspecialchars($partitur->judul) }}" width="60" style="height: auto; max-height: 80px; object-fit: contain;">
+                                            @else
+                                                <span class="text-muted">Tidak ada sampul</span>
+                                            @endif
+                                        </td>
+                                        <td class="btn-action-group text-center">
+                                            <a href="{{ route('admin.partitur.edit', $partitur->id) }}" class="btn btn-sm btn-warning py-1 px-2" title="Edit"><i class="fa fa-pencil"></i> Edit</a>
+                                            <form action="{{ route('admin.partitur.destroy', $partitur->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus partitur ini?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger py-1 px-2" title="Hapus"><i class="fa fa-trash"></i> Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">Belum ada partitur yang diunggah.</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                              </table>
+                        </div>
+                         @if ($partiturs instanceof \Illuminate\Pagination\LengthAwarePaginator && $partiturs->hasPages())
+                            <div class="mt-3 d-flex justify-content-center">
+                                {{ $partiturs->links() }}
+                            </div>
+                        @elseif ($partiturs instanceof \Illuminate\Contracts\Pagination\Paginator && $partiturs->hasPages())
+                            <div class="mt-3 d-flex justify-content-center">
+                                {{ $partiturs->links() }}
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
-              </main>
-          </div>
-      </div>
-	<!--pengumuman end-->
-	
-		</div>
-  
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/main.js"></script>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script>
-        function tampilkanJudulFile() {
-            const input = document.getElementById('partitur');
-            const judulFile = document.getElementById('judulFile');
+        function tampilkanJudulFile(inputId, smallId) {
+            const input = document.getElementById(inputId);
+            const judulFileDisplay = document.getElementById(smallId);
 
             if (input.files.length > 0) {
-                judulFile.textContent = "File: " + input.files[0].name;
+                judulFileDisplay.textContent = "File terpilih: " + input.files[0].name;
             } else {
-                judulFile.textContent = "";
+                judulFileDisplay.textContent = "";
             }
         }
+
     </script>
   </body>
 </html>

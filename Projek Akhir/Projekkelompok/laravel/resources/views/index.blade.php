@@ -17,7 +17,7 @@
         <nav class="bg-light navbar navbar-expand-lg navbar-light pg-lib-item py-lg-1 opacity-10" data-navbar-id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
           <div class="container">
             <img src="item/Logo.png" alt="logoBC" width="50" height="36">
-            <a class="fw-bold navbar-brand fs-4" href="index.html">
+            <a class="fw-bold navbar-brand fs-4" href="{{ url('/') }}">
               <span><SPan class="warnaputih">.</SPan>    BLUE CHOIR</span>
             </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-controls="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
             <div class="navbar-collapse collapse" id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
               <ul class="mb-2 mb-lg-0 me-lg-auto navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link px-lg-3 py-lg-4" aria-current="page" href="Artikel/Artikel/Page1/berita.html">Berita</a>
+                  <a class="nav-link px-lg-3 py-lg-4" aria-current="page" href="{{ url('/BCNews') }}">Berita</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link px-lg-3 py-lg-4" href="#tentang">Tentang</a>
@@ -39,11 +39,11 @@
                     Lainnya
                   </a>
                   <ul class="dropdown-menu z-3">
-                    <li><a class="dropdown-item" href="Artikel/Sejarah/sejarah.html">Sejarah</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/Sejarah') }}">Sejarah</a></li>
                     <li><a class="dropdown-item" href="allacces/Prestasi/prestasi.html">Prestasi</a></li>
-                    <li><a class="dropdown-item" href="allacces/Kepengurusan2025/kepengurusan2025.html">Kepengurusan 2025</a></li>
-                    <li><a class="dropdown-item" href="allacces/VisiMisi/visimisi.html">Visi Misi</a></li>
-                    <li><a class="dropdown-item" href="allacces/openrecruitment/openrecruitment.html">open recruitment</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/kepengurusan') }}">Kepengurusan 2025</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/Visi&Misi') }}">Visi Misi</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/OpenRecruitment') }}">open recruitment</a></li>
                     <li><hr class="dropdown-divider"></li>
                   </ul>
                 </li>
@@ -70,7 +70,7 @@
                     <div class="d-flex flex-column gap-7 mb-4 mb-md-0">
                       <div class="d-flex flex-column gap-3 mb-md-5">
                         <div class="d-flex flex-row align-items-center ">
-                          <a href="allacces\openrecruitment\openrecruitment.html" class="border px-3 rounded-pill text-decoration-none py-1 small">
+                          <a href="{{ url('/OpenRecruitment') }}" class="border px-3 rounded-pill text-decoration-none py-1 small">
                             <span class="warnaputih">Gabung Bersama Kami!</span>
                             <span class="ms-1">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="warnaputih bi bi-arrow-right" viewBox="0 0 16 16">

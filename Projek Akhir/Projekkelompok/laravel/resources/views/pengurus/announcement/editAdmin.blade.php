@@ -103,7 +103,7 @@
         text-decoration: none;
         opacity: .75;
     }
-    .btn-close-custom { /* Dikosongkan karena .close sudah menangani */ }
+    .btn-close-custom {  }
 
 
     .zindexatas{ z-index: 100; }
@@ -120,19 +120,19 @@
         font-size: 0.8em;
     }
     textarea.resizable-textarea {
-        min-height: 120px; /* Tinggi awal yang disesuaikan */
+        min-height: 120px; 
         resize: vertical; 
     }
-    .input-group-text { /* Styling untuk ikon di input group */
+    .input-group-text { 
         background-color: #e9ecef;
-        border-right: 0; /* Hilangkan border kanan agar menyatu dengan input */
+        border-right: 0; 
     }
     .input-group .form-control {
-        border-left: 0; /* Hilangkan border kiri input agar menyatu */
+        border-left: 0; 
     }
-    .input-group .form-control:focus { /* Pastikan shadow tetap saat fokus */
+    .input-group .form-control:focus { 
         box-shadow: none !important;
-        border-color: #86b7fe; /* Warna border default Bootstrap saat fokus */
+        border-color: #86b7fe; 
     }
 
 

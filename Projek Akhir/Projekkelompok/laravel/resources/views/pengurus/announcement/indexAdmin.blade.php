@@ -86,7 +86,7 @@
     .alert-title { font-weight: 600; margin-top: 0; margin-bottom: 0.25rem; font-size: 1.1rem; }
     .alert-message { font-size: 0.95rem; margin-bottom: 0; }
     
-    /* Penyesuaian untuk tombol close alert agar mirip Bootstrap 4 */
+   
     .custom-alert .close {
         float: right;
         font-size: 1.5rem;
@@ -104,13 +104,9 @@
         text-decoration: none;
         opacity: .75;
     }
-    /* Jika Anda memiliki .btn-close-custom untuk styling tambahan, bisa diterapkan di sini */
+   
     .btn-close-custom { 
-      /* Gaya kustom Anda bisa tetap di sini jika diperlukan, */
-      /* namun pastikan tidak konflik dengan .close di atas */
-      /* Contoh: */
-      /* padding: 0.5rem; */
-      /* margin-left: 1rem; */
+
     }
 
     .zindexatas{ z-index: 100; }

@@ -10,20 +10,20 @@
   </head>
   <style>
             body {
-            background-color: #f8f9fa; /* Warna latar belakang yang lebih lembut */
+            background-color: #f8f9fa; 
         }
         .card {
-            border-radius: 15px; /* Sudut yang lebih halus */
+            border-radius: 15px; 
         }
         .btn-primary {
-            background-color: #007bff; /* Warna tombol yang lebih cerah */
-            border: none; /* Menghilangkan border default */
+            background-color: #007bff; 
+            border: none; 
         }
         .btn-primary:hover {
-            background-color: #0056b3; /* Warna saat hover */
+            background-color: #0056b3; 
         }
         input[type="file"] {
-            display: none; /* Menyembunyikan input file default */
+            display: none;
         }
         .custom-file-upload {
             display: inline-block;
@@ -59,11 +59,11 @@
       justify-content: space-between;
       margin-bottom: 1rem;
     }
-    /* Warna khusus untuk alert */
+    
     .custom-alert-info {
-      border-color: #0dcaf0; /* Warna border kiri sesuai info */
-      background-color: #e8f8fd; /* Warna latar alert info */
-      color: #0c5460; /* Warna teks info */
+      border-color: #0dcaf0; 
+      background-color: #e8f8fd;
+      color: #0c5460; 
     }
     .custom-alert-success {
       border-color: #198754;
@@ -80,14 +80,14 @@
       background-color: #fff8e5;
       color: #856404;
     }
-    /* Icon di sisi kiri */
+   
     .alert-icon {
       display: inline-flex;
       align-items: center;
       margin-right: 0.5rem;
       font-size: 1.25rem;
     }
-    /* Title dan Message */
+ 
     .alert-content {
       flex: 1;
       margin-left: 0.5rem;
@@ -100,7 +100,7 @@
       top:0;
       font-size: 0.95rem;
     }
-    /* Tombol close */
+   
     .btn-close-custom {
       border: none;
       background: transparent;
@@ -212,55 +212,7 @@
                   </div>
                       
 
-                        <!-- <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nama</th>
-                                    <th>NIM</th>
-                                    <th>Email</th>
-                                    <th>Nomor Telepon</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody> -->
-                                <!-- <?php
-                                    // Koneksi ke database (ganti dengan kredensial Anda)
-                                    $servername = "localhost";
-                                    $username = "root";
-                                    $password = "";
-                                    $dbname = "nama_database";
-            
-                                    $conn = new mysqli($servername, $username, $password, $dbname);
-            
-                                    if ($conn->connect_error) {
-                                        die("Koneksi gagal: " . $conn->connect_error);
-                                    }
-            
-                                    $sql = "SELECT * FROM users";
-                                    $result = $conn->query($sql);
-            
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["nama"] . "</td>";
-                                            echo "<td>" . $row["nim"] . "</td>";
-                                            echo "<td>" . $row["email"] . "</td>";
-                                            echo "<td>" . $row["telepon"] . "</td>";
-                                            echo "<td>";
-                                            echo "<a href='hapus_pengguna.php?id=" . $row["id"] . "' class='btn btn-sm btn-danger'>Hapus</a>";
-                                            echo "</td>";
-                                            echo "</tr>";
-                                        }
-                                    } else {
-                                        echo "<tr><td colspan='6'>Tidak ada pengguna yang terdaftar.</td></tr>";
-                                    }
-            
-                                    $conn->close();
-                                ?> -->
-                            <!-- </tbody>
-                        </table> -->
+                        
                     </div>
                 </div>
               </main>

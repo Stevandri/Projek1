@@ -10,20 +10,20 @@
   </head>
   <style>
             body {
-            background-color: #f8f9fa; /* Warna latar belakang yang lebih lembut */
+            background-color: #f8f9fa; 
         }
         .card {
-            border-radius: 15px; /* Sudut yang lebih halus */
+            border-radius: 15px; 
         }
         .btn-primary {
-            background-color: #007bff; /* Warna tombol yang lebih cerah */
-            border: none; /* Menghilangkan border default */
+            background-color: #007bff; 
+            border: none; 
         }
         .btn-primary:hover {
-            background-color: #0056b3; /* Warna saat hover */
+            background-color: #0056b3; 
         }
         input[type="file"] {
-            display: none; /* Menyembunyikan input file default */
+            display: none;
         }
         .custom-file-upload {
             display: inline-block;
@@ -59,11 +59,11 @@
       justify-content: space-between;
       margin-bottom: 1rem;
     }
-    /* Warna khusus untuk alert */
+
     .custom-alert-info {
-      border-color: #0dcaf0; /* Warna border kiri sesuai info */
-      background-color: #e8f8fd; /* Warna latar alert info */
-      color: #0c5460; /* Warna teks info */
+      border-color: #0dcaf0; 
+      background-color: #e8f8fd; 
+      color: #0c5460; 
     }
     .custom-alert-success {
       border-color: #198754;
@@ -80,14 +80,14 @@
       background-color: #fff8e5;
       color: #856404;
     }
-    /* Icon di sisi kiri */
+   
     .alert-icon {
       display: inline-flex;
       align-items: center;
       margin-right: 0.5rem;
       font-size: 1.25rem;
     }
-    /* Title dan Message */
+  
     .alert-content {
       flex: 1;
       margin-left: 0.5rem;
@@ -100,7 +100,7 @@
       top:0;
       font-size: 0.95rem;
     }
-    /* Tombol close */
+
     .btn-close-custom {
       border: none;
       background: transparent;
@@ -180,17 +180,21 @@
                   <div class="container mt-5">
                     <form method="post" action="proses_pengumuman.php">
                         <div class="mb-3">
-                            <label for="subjek" class="form-label">Subjek</label>
+                            <label for="subjek" class="form-label">Subjek Pengumuman</label>
                             <input type="text" class="form-control" id="subjek" name="subjek" required>
                         </div>
                         <div class="mb-3">
-                            <label for="konten" class="form-label">Konten</label>
+                            <label for="konten" class="form-label">Isi Pengumuman</label>
                             <textarea class="form-control" id="konten" name="konten" rows="5" required></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label for="pengirim" class="form-label">Pengirim</label>
-                            <input type="text" class="form-control" id="pengirim" name="pengirim" required>
-                        </div>
+                        <label for="posisi_suara_from_select" class="form-label">Pengirim</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-mic"></i></span>
+                                        <select class="form-select @error('posisi_suara_from_select') is-invalid @enderror" id="posisi_suara_from_select" name="posisi_suara_from_select">
+                                            - Non Bidang
+                                            - Tim Artistik
+                                            - Tim Media dan dokumentasi
+                                    </div>
                         <div class="mb-3">
                             <label for="tanggal" class="form-label">Tanggal</label>
                             <input type="date" class="form-control" id="tanggal" name="tanggal" required>

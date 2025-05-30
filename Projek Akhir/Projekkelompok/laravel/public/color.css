@@ -52,7 +52,7 @@ a {
 
 
 .sejarahimg{
-    background-image: url(Artikel/Sejarah/img/Image.png);
+    background-image: url(allacces/Artikel/Sejarah/img/Image.png);
     background-size: cover;
     background-position: center;
     height: 300px;
@@ -60,7 +60,7 @@ a {
 }
 
 .BCnews{
-    background-image: url(Artikel/Artikel/img/Image.png);
+    background-image: url(allacces/Artikel/Artikel/img/Image.png);
     background-size: cover;
     background-position: center;
     height: 300px;

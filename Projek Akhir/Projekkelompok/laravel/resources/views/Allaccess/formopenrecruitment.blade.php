@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../color.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <title>Form Open Recruitment</title>
+  <style>
+    .error-message {
+      color: red;
+      font-size: 0.875em;
+      display: none;
+    }
+    .carousel-item {
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    .backgroundopenrec{
+        background-image: url("allacces/openrecruitment/latar.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+         background-position: center;
+        height: 700px;
+
+    }
+
+    .ukurankolom{
+        height: 180px;
+        width: 85%;
+    }
+    .anakkolom {
+        height: 70px;
+        width: 83%;
+    }
+  </style>
+</head>
+<body class="backgroundopenrec ">
+  <div class="container mt-5">
+
+    
+
+<!--Ini navbar ke2-->
+<section data-aos="fade-down" data-aos="fade-down">
+    <nav class="bg-white navbar navbar-expand-lg navbar-light pg-lib-item py-lg-1" data-navbar-id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
+      <div class="container">
+        <img src="../../../item/Logo.png" alt="Bootstrap" width="50" height="36">
+        <a class="fw-bold navbar-brand fs-4" href="../../index.html">
+          <span><SPan class="warnaputih">.</SPan>    BLUE CHOIR</span>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-controls="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="vs5372b703bb32-09eb513b-ecd1ec14-b8912b66d28a189a">
+          <ul class="mb-2 mb-lg-0 me-lg-auto navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link px-lg-3 py-lg-4" aria-current="page" href="../../Artikel/Artikel/Page1/berita.html">Berita</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-lg-3 py-lg-4" href="../../index.html#tentang">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-lg-3 py-lg-4" href="../../index.html#kami">Kami</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-lg-3 py-lg-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Lainnya
+              </a>
+              <ul class="dropdown-menu z-3">
+                <li><a class="dropdown-item" href="../../Artikel/Sejarah/sejarah.html">Sejarah</a></li>
+                <li><a class="dropdown-item" href="../Prestasi/prestasi.html">Prestasi</a></li>
+                <li><a class="dropdown-item" href="../Kepengurusan2025/kepengurusan2025.html">Kepengurusan 2025</a></li>
+                <li><a class="dropdown-item" href="../VisiMisi/visimisi.html">Visi Misi</a></li>
+                <li><a class="dropdown-item" href="#">open recruitment</a></li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>
+            </li>
+          </ul>
+          
+          <div class="d-flex flex-wrap gap-2 py-1">
+            <a href="#" class="btn btn-dark pb-2 pe-4 ps-4 pt-2 " data-bs-toggle="modal" data-bs-target="#loginModal">Masuk</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </section>
+<!--Navbar 2 end-->
+
+    <h1 class="text-center mb-4 text-light" >FORM OPEN RECRUITMENT<br><br></h1>
+    <div id="formCarousel" class="carousel slide" data-bs-interval="false" data-bs-keyboard="false">
+      <div class="carousel-inner">
+        <!-- Nama Lengkap -->
+        
+        <div class="carousel-item active p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="namaLengkap" class="form-label" style="color: white;"><b><h5>Nama Lengkap Kamu*</h5></b></label>
+                <input
+                  type="text"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="namaLengkap"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;"
+                >
+                <div class="error-message">Harap isi nama lengkap kamu</div>
+              </div>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+
+
+
+        <!-- Tempat Lahir -->
+        <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="tempatLahir" class="form-label" style="color: white;"><b><h5>Tempat Lahir*</h5></b></label>
+                <input
+                  type="text"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="tempatLahir"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;"
+                >
+                <div class="error-message">Harap isi tempat lahir</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+
+
+
+        <!-- Tanggal Lahir -->
+        <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="tanggalLahir" class="form-label" style="color: white;"><b><h5>Tanggal Lahir*</h5></b></label>
+                <input
+                  type="date"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="tanggalLahir"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;"
+                >
+                <div class="error-message">Harap pilih tanggal lahir</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+
+        <!-- Asal -->
+        <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="asal" class="form-label" style="color: white;"><b><h5>Asal*</h5></b></label>
+                <input
+                  type="text"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="asal"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;"
+                >
+                <div class="error-message">Harap masukkan asal.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Angkatan-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="angkatan" class="form-label" style="color: white;"><b><h5>Angkatan Masuk Kuliah*</h5></b></label>
+                <input
+                  type="number"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="angkatan"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+                <div class="error-message">Harap masukkan Angkatan.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Fakultas jurusan prodi-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="fakultas" class="form-label" style="color: white;"><b><h5>Fakultas/Jurusan/Prodi*</b><br></h5><i>Mis: Teknik/Elektro/Informatika</i></label>
+                <input
+                  type="text"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="fakultas"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+                <div class="error-message">Harap masukkan Fakultas anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Alamat-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="alamat" class="form-label" style="color: white;"><b><h5>Alamat*</b><br></h5><i>(Tempat tinggal)</i></label>
+                <input
+                  type="text"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="alamat"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+                <div class="error-message">Harap masukkan Fakultas anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+
+          <!-- gender-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="gender" class="form-label" style="color: white;"><b><h5>Gender*</b><br></h5><i>(Jenis Kelamin)</i></label>
+                <select 
+                  class="form-control anakkolom mx-auto text-center"
+                  id="gender"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+                  <option value="" disabled selected>Pilih Gender</option>
+                  <option value="Laki-laki">Laki-laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+                <div class="error-message">Harap pilih gender anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Agama-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="agama" class="form-label" style="color: white;"><b><h5>Agama*</b></h5></label>
+                <input
+                  type="text"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="agama"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+                <div class="error-message">Harap masukkan Agama anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Pengalaman choir-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="pengalaman" class="form-label" style="color: white;"><b><h5>Pernah Mengikuti Sanggar / Paduan Suara*</b><br></h5><i>(Sekolah/Gereja)</i></label>
+                <select 
+                  class="form-control anakkolom mx-auto text-center"
+                  id="pengalaman"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+                  <option value="" disabled selected>Pilih pilihan</option>
+                  <option value="Laki-laki">Pernah</option>
+                  <option value="Perempuan">Belum Pernah</option>
+                </select>
+                <div class="error-message">Harap pilih pilihan anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Nama sanggar-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center">
+              <div class="mb-3 row justify-content-center">
+                <label for="namasanggar" class="form-label" style="color: white;"><b><h5>Nama Sanggar / Paduan Suara (Sekolah/Gereja)*</b><br></h5><i>cat: Jika mengisi pernah, masukkan nama sanggar / paduan suara</i></label>
+                <input
+                  type="text"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="namasanggar"
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--email-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="email" class="form-label" style="color: white;"><b><h5>Email*</b><br></h5></label>
+                <input
+                  type="email"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="email"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+                <div class="error-message">Harap masukkan Email anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+        <!--Wa-->
+        <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="whatsapp" class="form-label" style="color: white;"><b><h5>No Telp / WA (aktif)*</b><br></h5></label>
+                <input
+                  type="text"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="whatsapp"
+                  required
+                  style="max-width: 900px; font-size: 1.5rem; height: 3rem;">
+                <div class="error-message">Harap masukkan Telp/WA anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--KRS-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="krs" class="form-label" style="color: white;">
+                  <b><h5>KRS (screenshot)*</h5></b><br>
+                </label>
+                <input
+                  type="file"
+                  class="form-control anakkolom mx-auto text-center"
+                  id="krs"
+                  required
+                  accept="image/*"
+                  style="max-width: 900px; font-size: 1.5rem; height: auto;">
+                <div class="error-message">Harap unggah KRS Anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Kesibukan-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="kesibukan" class="form-label" style="color: white;">
+                  <b><h5>Kesibukan Saat Ini*</h5></b><br>
+                </label>
+                <textarea
+                  class="form-control anakkolom mx-auto"
+                  id="kesibukan"
+                  required
+                  rows="5"
+                  style="max-width: 900px; font-size: 1.5rem;">
+                </textarea>
+                <div class="error-message">Harap masukkan informasi tentang kesibukan Anda.</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Motivasi-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="motivasi" class="form-label" style="color: white;">
+                  <b><h5>Motivasi Gabung Bersama Blue Choir*</h5></b><br>
+                </label>
+                <textarea
+                  class="form-control anakkolom mx-auto"
+                  id="motivasi"
+                  required
+                  rows="5"
+                  style="max-width: 900px; font-size: 1.5rem;">
+                </textarea>
+                <div class="error-message">Harap masukkan Motivasi Anda</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>Lanjut</b></button>
+            </form>
+          </div>
+          <!--Kekhawatiran-->
+          <div class="carousel-item p-2" style="background-color: transparent;">
+            <form class="needs-validation text-center" novalidate>
+              <div class="mb-3 row justify-content-center">
+                <label for="komitmen" class="form-label" style="color: white;">
+                  <b><h5>Komitmen*</h5></b><br>
+                </label>
+                <textarea
+                  class="form-control anakkolom mx-auto"
+                  id="komitmen"
+                  required
+                  rows="5"
+                  style="max-width: 900px; font-size: 1.5rem;">
+                </textarea>
+                <div class="error-message">Harap masukkan Komitmen Anda</div>
+              </div>
+              <button type="button" class="btn btn-secondary prev-btn mt-3"><b>Kembali</b></button>
+              <button type="button" class="btn btn-primary next-btn mt-3"><b>KIRIM JAWABAN ANDA</b></button>
+            </form>
+          </div>
+
+          
+ <!--akhir-->       
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousel = new bootstrap.Carousel(document.getElementById('formCarousel'), {
+        interval: false,
+        wrap: false
+      });
+
+      // Handle next button
+      document.querySelectorAll('.next-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+          const currentForm = this.closest('.carousel-item');
+          const input = currentForm.querySelector('input, select, textarea');
+          
+          if (!input.checkValidity()) {
+            input.classList.add('is-invalid');
+            currentForm.querySelector('.error-message').style.display = 'block';
+            return;
+          }
+          
+          carousel.next();
+          resetValidation(currentForm);
+        });
+      });
+
+      // Handle previous button
+      document.querySelectorAll('.prev-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          carousel.prev();
+        });
+      });
+
+      // Reset validation when going back
+      function resetValidation(form) {
+        form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+        form.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+      }
+
+      // Real-time validation
+      document.querySelectorAll('input, select, textarea').forEach(input => {
+        input.addEventListener('input', function() {
+          if (this.checkValidity()) {
+            this.classList.remove('is-invalid');
+            this.parentElement.querySelector('.error-message').style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

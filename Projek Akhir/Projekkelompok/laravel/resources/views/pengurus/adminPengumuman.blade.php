@@ -34,11 +34,11 @@
       justify-content: space-between;
       margin-bottom: 1rem;
     }
-    /* Warna khusus untuk alert */
+  
     .custom-alert-info {
-      border-color: #0dcaf0; /* Warna border kiri sesuai info */
-      background-color: #e8f8fd; /* Warna latar alert info */
-      color: #0c5460; /* Warna teks info */
+      border-color: #0dcaf0;
+      background-color: #e8f8fd; 
+      color: #0c5460; 
     }
     .custom-alert-success {
       border-color: #198754;
@@ -55,14 +55,14 @@
       background-color: #fff8e5;
       color: #856404;
     }
-    /* Icon di sisi kiri */
+   
     .alert-icon {
       display: inline-flex;
       align-items: center;
       margin-right: 0.5rem;
       font-size: 1.25rem;
     }
-    /* Title dan Message */
+ 
     .alert-content {
       flex: 1;
       margin-left: 0.5rem;
@@ -75,7 +75,7 @@
       top:0;
       font-size: 0.95rem;
     }
-    /* Tombol close */
+
     .btn-close-custom {
       border: none;
       background: transparent;
@@ -148,7 +148,7 @@
 
 				<!--pengumuman-->
     <div class="container my-5">
-    <!-- Judul Halaman -->
+   
     <h2 class="text-dark">Pengumuman</h2>
 
     <!-- Pengumuman1 -->

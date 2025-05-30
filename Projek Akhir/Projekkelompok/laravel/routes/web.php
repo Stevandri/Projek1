@@ -1,46 +1,59 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserPageController; // Pastikan ini ada
+use App\Http\Controllers\UserPageController;
 use Illuminate\Support\Facades\Auth;
 
 
-// Guest routes (for unauthenticated users)
+// Guest routes 
+Route::get('/kepengurusan', function () {return view('Allaccess.kepengurusan2025');}); //kepengurusan
+Route::get('/BCNews', function () {return view('Allaccess.berita');}); //berita
+Route::get('/Sejarah', function () {return view('Allaccess.sejarah');}); //Sejarah BC
+Route::get('/Visi&Misi', function () {return view('Allaccess.visimisi');}); //Sejarah BC
+Route::get('/OpenRecruitment', function () {return view('Allaccess.openrecruitment');}); //oprec
+Route::get('/OpenRecruitmentForm', function () {return view('Allaccess.formopenrecruitment');}); //oprecForm
+//beritaBC
+    Route::get('/PICF2024', function () {return view('Allaccess.beritacontent.Blue_Choir_Fakultas_Teknik_Unsrat_Raih_Dua_Emas_di_PICF_2024');});
+    Route::get('/Bc_In_Tahiland', function () {return view('Allaccess.beritacontent.thailand');});
+
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'postlogin'])->name('postlogin.attempt')->middleware('guest');
 
-// Logout route (for authenticated users)
+// Logout route 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 
-// User/Member routes (require authentication)
+// User routes 
 Route::middleware(['auth'])->group(function () {
-    // Dashboard for regular users
-    Route::get('/beranda', [UserPageController::class, 'index'])->name('userbcdashboard'); // Ini yang penting untuk dashboard pengguna
+    // dsb
+    Route::get('/beranda', [UserPageController::class, 'index'])->name('userbcdashboard'); 
 
-    // User profile display and edit
-    // Pastikan view 'userBC.profilBC' ada
-    Route::get('/profil', function () { return view('userBC.profilBC'); })->name('profil.show');
-    if (class_exists(ProfilController::class)) {
-        Route::get('/profil/edit', [ProfilController::class, 'edit'])->name('profil.edit');
-        Route::post('/profil', [ProfilController::class, 'update'])->name('profil.update');
-    }
+    // User prf
+
+    Route::get('/profil', [UserProfileController::class, 'show'])->name('profil.show');
+    Route::get('/profil/edit', [UserProfileController::class, 'edit'])->name('profil.edit');
+    Route::post('/profil/update', [UserProfileController::class, 'update'])->name('profil.update');
+    // Route::get('/profil', function () { return view('userBC.profilBC'); })->name('profil.show');
+    // if (class_exists(ProfilController::class)) {
+    //     Route::get('/profil/edit', [ProfilController::class, 'edit'])->name('profil.edit');
+    //     Route::post('/profil', [ProfilController::class, 'update'])->name('profil.update');
+    // }
     
-    // All announcements page
+    // smw pegmmn
     Route::get('/pengumuman', [UserPageController::class, 'showAnnouncements'])->name('pengumuman.index');
     
-    // All activities page for users
+    // keg
     Route::get('/kegiatan', [UserPageController::class, 'showUserKegiatan'])->name('kegiatan.index');
 
-    // Partitur page (assuming 'userBC.partitur' exists)
-    Route::get('/partitur', function () { return view('userBC.partitur'); })->name('partitur.index');
+    // parttr
+    Route::get('/partitur', [UserPageController::class, 'showPartiturs'])->name('partitur.index');
 });
 
 
-// Admin routes (require authentication and isAdmin middleware)
 Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(function () {
     // Dashboard Admin
     Route::get('/beranda', [AdminController::class, 'dashboard'])->name('beranda');
@@ -66,12 +79,12 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(f
     Route::get('/kegiatan/{kegiatan}/edit', [AdminController::class, 'editKegiatan'])->name('kegiatan.edit');
     Route::put('/kegiatan/{kegiatan}', [AdminController::class, 'updateKegiatan'])->name('kegiatan.update');
     Route::delete('/kegiatan/{kegiatan}', [AdminController::class, 'destroyKegiatan'])->name('kegiatan.destroy');
+
+    //partitur
+    Route::get('/partitur', [AdminController::class, 'indexPartitur'])->name('partitur.index');
+    Route::post('/partitur', [AdminController::class, 'storePartitur'])->name('partitur.store');
+    Route::get('/partitur/{partitur}/edit', [AdminController::class, 'editPartitur'])->name('partitur.edit'); 
+    Route::put('/partitur/{partitur}', [AdminController::class, 'updatePartitur'])->name('partitur.update');
+    Route::delete('/partitur/{partitur}', [AdminController::class, 'destroyPartitur'])->name('partitur.destroy');
 });
 
-// Route ini saya hilangkan karena sudah tercakup di middleware 'auth' untuk user dashboard
-// Route::get('/postlogin', function () {
-//      return view('index');
-// })->name('index');
-
-// Route ini saya hilangkan karena rute login utama sudah ada di '/'
-// Route::get('/', [LoginController::class, 'index'])->name('index');
