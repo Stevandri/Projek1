@@ -54,7 +54,7 @@ class AdminController extends Controller
             'telepon'       => 'nullable|string|max:20',
             'posisi_suara'  => 'nullable|string|max:100',                                           
             'posisi'        => 'required|string|max:100', 
-            'password'      => 'required|string|min:8',
+            'password'      => 'required|string|min:6',
         ]);
 
         // Buat pengguna baru

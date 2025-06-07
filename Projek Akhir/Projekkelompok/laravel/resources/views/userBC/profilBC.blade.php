@@ -76,7 +76,6 @@
       width: calc(100% - 270px);
       min-height: 100vh;
       transition: all 0.3s;
-      overflow-y: auto;
     }
 
     #sidebar.active {
@@ -108,7 +107,7 @@
     }
 
     @media (max-width: 575.98px) {
-      .zindexmedium { z-index: 90; }
+      .zindexmedium { z-index: 90; } 
     }
   </style>
   <body>
@@ -220,11 +219,7 @@
       </div>
     </div>
     <script src="{{ asset('js/jquery.min.js') }}"></script> <script src="{{ asset('js/popper.js') }}"></script> <script src="{{ asset('js/bootstrap.min.js') }}"></script> <script src="{{ asset('js/main.js') }}"></script> <script>
-      $(document).ready(function() {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-      });
+      
     </script>
   </body>
 </html>

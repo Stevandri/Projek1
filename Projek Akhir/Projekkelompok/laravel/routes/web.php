@@ -67,6 +67,7 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(f
     Route::get('/pengguna/{user}/edit', [AdminController::class, 'editUser'])->name('pengguna.edit');
     Route::put('/pengguna/{user}', [AdminController::class, 'updateUser'])->name('pengguna.update');
 
+
     // Announcements Management (Admin)
     Route::get('/announcements', [AdminController::class, 'indexAnnouncements'])->name('announcement.index');
     Route::get('/announcements/create', [AdminController::class, 'createAnnouncement'])->name('announcement.create');

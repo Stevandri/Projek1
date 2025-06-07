@@ -363,7 +363,6 @@
                                         <option value="Tenor 2" {{ old('posisi_suara') == 'Tenor 2' ? 'selected' : '' }}>Tenor 2</option>
                                         <option value="Bass 1" {{ old('posisi_suara') == 'Bass 1' ? 'selected' : '' }}>Bass 1</option>
                                         <option value="Bass 2" {{ old('posisi_suara') == 'Bass 2' ? 'selected' : '' }}>Bass 2</option>
-                                        <option value="Baritone" {{ old('posisi_suara') == 'Baritone' ? 'selected' : '' }}>Baritone</option>
                                     </select>
                                 </div>
                                 @error('posisi_suara') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
@@ -376,7 +375,14 @@
                                     <select class="form-select @error('posisi') is-invalid @enderror" id="posisi" name="posisi" required>
                                         <option value="" selected>-- Pilih Posisi/Peran --</option>
                                         <option value="Anggota" {{ old('posisi') == 'Anggota' ? 'selected' : '' }}>Anggota</option>
-                                        <option value="Tim Aset & Perlengkapan" {{ old('posisi') == 'Tim Aset & Perlengkapan' ? 'selected' : '' }}>Tim Aset & Perlengkapan</option>
+                                        <option value="Aset & Perlengkapan" {{ old('posisi') == 'Aset & Perlengkapan' ? 'selected' : '' }}>Bidang Aset & Perlengkapan</option>
+                                        <option value="Artistik" {{ old('posisi') == 'Artistik' ? 'selected' : '' }}>Bidang Artistik</option>
+                                        <option value="Kepelatihan" {{ old('posisi') == 'Kepelatihan' ? 'selected' : '' }}>Bidang Kepelatihan</option>
+                                        <option value="Keanggotaan" {{ old('posisi') == 'Keanggotaan' ? 'selected' : '' }}>Bidang Keanggotaan</option>
+                                        <option value="Media & Dokumentasi" {{ old('posisi') == 'Media & Dokumentasi' ? 'selected' : '' }}>Bidang Media & Dokumentasi</option>
+                                        <option value="Peribadatan" {{ old('posisi') == 'Peribadatan' ? 'selected' : '' }}>Bidang Peribadatan</option>
+                                        <option value="Kewirausahaan" {{ old('posisi') == 'Kewirausahaan' ? 'selected' : '' }}>Bidang Kewirausahaan</option>
+                                        <option value="Pelatih" {{ old('posisi') == 'Pelatih' ? 'selected' : '' }}>Pelatih</option>
                                         <option value="NonBidang" {{ old('posisi') == 'NonBidang' ? 'selected' : '' }}>Admin (NonBidang)</option>
                                     </select>
                                 </div>

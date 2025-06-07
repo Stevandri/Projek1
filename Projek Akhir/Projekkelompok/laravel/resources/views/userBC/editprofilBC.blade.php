@@ -2,11 +2,13 @@
 <html lang="en">
   <head>
     <title>Edit Profil</title> <meta charset="utf-8">
-     <link rel="icon" type="image/png" href="../item/Logo.png">
+     <link rel="icon" type="image/png" href="{{ asset('item/Logo.png') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> <link rel="stylesheet" href="{{ asset('css/style.css') }}"> </head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  </head>
   <style>
     body {
       background-color: #DFEAFC;
@@ -94,13 +96,14 @@
     .input-group > .input-group-text:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
     .input-group > .input-group-text:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0;}
 
+    .zindexatas { z-index: 100; }
 
     #content {
       margin-left: 270px;
       width: calc(100% - 270px);
       min-height: 100vh;
       transition: all 0.3s;
-      overflow-y: auto;
+      padding: 20px;
     }
 
     #sidebar.active {
@@ -113,12 +116,15 @@
     }
 
     @media (max-width: 991.98px) {
-      #content {
-        margin-left: 0;
-        width: 100%;
+      #sidebar {
+        margin-left: -270px;
       }
       #sidebar.active {
         margin-left: 0;
+      }
+      #content {
+        margin-left: 0;
+        width: 100%;
       }
     }
 
@@ -146,21 +152,24 @@
         margin-bottom: 0.75rem;
       }
     }
-    .zindexmedium { z-index: 1030; }
-    .zindexatas { z-index: 100; }
+
+    @media (max-width: 575.98px) {
+      .zindexmedium { z-index: 1030; }
+    }
 
   </style>
   <body>
     <div class="wrapper d-flex align-items-stretch">
       <nav id="sidebar" class="min-vh-100">
-        <div class="custom-menu zindexmedium">
+        <div class="custom-menu">
           <button type="button" id="sidebarCollapse" class="btn btn-primary">
             <i class="fa fa-bars"></i>
             <span class="sr-only">Toggle Menu</span>
           </button>
         </div>
         <div class="p-4 zindexatas">
-          <h1><a href="{{ route('userbcdashboard') }}" class="logo">Blue Choir <span>> Edit Akun</span></a></h1> <ul class="list-unstyled components mb-5">
+          <h1><a href="{{ route('userbcdashboard') }}" class="logo">Blue Choir <span>> Edit Akun</span></a></h1>
+          <ul class="list-unstyled components mb-5">
             <li>
               <a href="{{ route('userbcdashboard') }}"><span class="fa fa-home mr-3"></span> Beranda</a>
             </li>
@@ -232,7 +241,8 @@
                   @endif
 
                   <form id="profile-form" action="{{ route('profil.update') }}" method="POST" enctype="multipart/form-data">
-                    @csrf <div class="text-center mb-4">
+                    @csrf
+                    <div class="text-center mb-4">
                       <img id="profile-picture" src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('item/profildefault.png') }}" alt="Foto Profil {{ $user->namadepan }}" class="profile-img">
                       <label for="photo-upload" class="custom-file-upload mt-2">
                         <i class="fa fa-camera"></i> Ubah Foto
@@ -273,7 +283,6 @@
                             <option value="Tenor 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Tenor 2' ? 'selected' : '' }}>Tenor 2</option>
                             <option value="Bass 1" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Bass 1' ? 'selected' : '' }}>Bass 1</option>
                             <option value="Bass 2" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Bass 2' ? 'selected' : '' }}>Bass 2</option>
-                            <option value="Baritone" {{ old('posisi_suara', $user->posisi_suara ?? '') == 'Baritone' ? 'selected' : '' }}>Baritone</option>
                           </select>
                       </div>
                       @error('posisi_suara') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
@@ -306,6 +315,36 @@
                       @error('telepon') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                     </div>
 
+                    <div class="mb-3">
+                        <label for="current_password" class="form-label">Password Lama (Wajib diisi jika ingin ganti password)</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control @error('current_password') is-invalid @enderror" id="current_password" name="current_password" placeholder="Masukkan password lama Anda">
+                        </div>
+                        @error('current_password')
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password Baru (Opsional)</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Kosongkan jika tidak ingin diubah">
+                        </div>
+                        @error('password')
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password_confirmation" class="form-label">Konfirmasi Password Baru</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Ulangi password baru">
+                        </div>
+                    </div>
+
                     <div class="d-grid mt-4">
                         <button type="submit" class="btn btn-primary btn-lg">
                             <i class="fa fa-save"></i> Simpan Perubahan
@@ -320,7 +359,11 @@
         </div>
       </div>
     </div>
-    <script src="{{ asset('js/jquery.min.js') }}"></script> <script src="{{ asset('js/popper.js') }}"></script> <script src="{{ asset('js/bootstrap.min.js') }}"></script> <script src="{{ asset('js/main.js') }}"></script> <script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script>
       $(document).ready(function() {
         $('#photo-upload').on('change', function(event) {
           var reader = new FileReader();
@@ -330,10 +373,6 @@
           if (event.target.files.length > 0) {
             reader.readAsDataURL(event.target.files[0]);
           }
-        });
-
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
         });
       });
     </script>

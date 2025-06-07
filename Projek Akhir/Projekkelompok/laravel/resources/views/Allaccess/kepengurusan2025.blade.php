@@ -85,22 +85,22 @@
     </div>
     <div class="row mt-2 justify-content-center">
       <div class="col-md-8 col-lg-4 col-xl-3 m-auto text-center">
-        <img alt="image" style="width:160px; height: 160px;" src="../Item/nonbid/Jueen.png" class="rounded-circle" />
+        <img alt="image" style="width:160px; height: 160px;" src="../allacces/Kepengurusan2025/Item/nonbid/Jueen.png" class="rounded-circle" />
         <p class="mt-4 fw-semibold fs-6 mb-0">Jueen Titiahy - Ketua</p>
         <p class="small">Perencanaan Wilayah dan Kota - 2021</p>
       </div>
       <div class="col-md-8 col-lg-4 col-xl-3 pt-5 pt-lg-0 m-auto text-center">
-        <img alt="image" style="width:160px; height: 160px;" src="../Item/nonbid/Lordy.png" class="rounded-circle" />
+        <img alt="image" style="width:160px; height: 160px;" src="../allacces/Kepengurusan2025/Item/nonbid/Lordy.png" class="rounded-circle" />
         <p class="mt-4 mb-0 fs-6 fw-semibold">Lordy Parihala - Wakil</p>
         <p class="small">Informatika - 2022</p>
       </div>
       <div class="col-md-8 col-lg-4 col-xl-3 pt-5 pt-lg-0 m-auto text-center">
-        <img alt="image" style="width:160px; height: 160px;" src="../Item/nonbid/Marco.png" class="rounded-circle" />
+        <img alt="image" style="width:160px; height: 160px;" src="../allacces/Kepengurusan2025/Item/nonbid/Marco.png" class="rounded-circle" />
         <p class="mt-4 mb-0 fs-6 fw-semibold">Marcho Tambingan - Sekretaris</p>
         <p class="small">Elektro - 2021</p>
       </div>
       <div class="col-md-8 col-lg-4 col-xl-3 m-auto text-center">
-        <img alt="image" style="width:160px; height: 160px;" src="../Item/nonbid/Nat.png" class="rounded-circle" />
+        <img alt="image" style="width:160px; height: 160px;" src="../allacces/Kepengurusan2025/Item/nonbid/Nat.png" class="rounded-circle" />
         <p class="mt-4 fw-semibold fs-6 mb-0">Natasha Najoan - Bendahara</p>
         <p class="small">Informatika - 2021</p>
       </div>
